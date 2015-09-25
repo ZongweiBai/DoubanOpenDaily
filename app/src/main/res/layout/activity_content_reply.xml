@@ -1,0 +1,44 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_main_bg"
+    android:fitsSystemWindows="true"
+    tools:context="com.monosky.daily.activity.ContentReplyActivity">
+
+    <include
+        android:id="@+id/reply_top_bar"
+        layout="@layout/actionbar_common" />
+
+    <RelativeLayout
+        android:id="@+id/reply_tip_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="?android:attr/selectableItemBackground">
+
+        <TextView
+            android:id="@+id/reply_tip"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/drawer_line"
+            android:gravity="center"
+            android:paddingBottom="12dp"
+            android:paddingTop="12dp"
+            android:text="@string/reply_login_tip"
+            android:textColor="@color/content_label_readed"
+            android:textSize="@dimen/text_size_16" />
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/reply_listview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/reply_tip_layout"
+        android:layout_below="@id/reply_top_bar"
+        android:divider="@color/drawer_line"
+        android:dividerHeight="1dp"
+        android:footerDividersEnabled="true"
+        android:scrollbars="vertical" />
+
+</RelativeLayout>

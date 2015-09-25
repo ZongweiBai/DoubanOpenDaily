@@ -1,0 +1,17 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_main_bg"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    tools:context="com.monosky.daily.activity.AuthorActivity">
+
+    <include layout="@layout/actionbar_common" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/author_recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="vertical" />
+</LinearLayout>

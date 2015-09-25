@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/action_bar_height"
+    android:background="@color/main_color"
+    android:orientation="horizontal">
+
+    <com.monosky.daily.view.materialMenu.MaterialMenuView xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/action_bar_menu"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_gravity="center_vertical"
+        android:background="?android:attr/selectableItemBackground"
+        app:mm_color="@android:color/white"
+        app:mm_rtlEnabled="false"
+        app:mm_scale="1"
+        app:mm_visible="true" />
+
+    <TextView
+        android:id="@+id/menu_title"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="@string/title_today"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_18" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginEnd="@dimen/common_horizontal_margin"
+        android:layout_marginRight="@dimen/common_horizontal_margin"
+        android:layout_weight="1"
+        android:gravity="end"
+        android:orientation="horizontal">
+
+        <ProgressBar
+            android:id="@+id/menu_progress_bar"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_gravity="center"
+            android:indeterminateDrawable="@drawable/progressbar_common"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/menu_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right|center"
+            android:src="@mipmap/ic_action_search"
+            android:visibility="visible" />
+    </LinearLayout>
+
+</LinearLayout>

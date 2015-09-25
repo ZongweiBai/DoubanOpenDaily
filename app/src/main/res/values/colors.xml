@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- APP主色调 -->
+    <color name="main_color">#1CC4AD</color>
+    <color name="logon_color">#6CD7B4</color>
+    <color name="app_main_bg">#F8F8F7</color>
+    <color name="drawer_bottom">#F1F0EE</color>
+    <color name="drawer_line">#E3E1DE</color>
+    <color name="drawer_bg">#009C9893</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="blue">#5CCAE6</color>
+
+    <!-- 文字颜色 -->
+    <color name="content_tile_unread">#212121</color>
+    <color name="content_label_unread">#727272</color>
+    <color name="content_tile_readed">#727272</color>
+    <color name="content_label_readed">#B6B6B6</color>
+    <color name="content_catalog">#BAB5AF</color>
+
+    <color name="black_overlay">#66000000</color>
+</resources>

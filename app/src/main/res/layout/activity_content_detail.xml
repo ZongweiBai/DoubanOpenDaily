@@ -1,0 +1,75 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_main_bg"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    tools:context="com.monosky.daily.activity.ContentDetailActivity">
+
+    <include
+        android:id="@+id/content_top"
+        layout="@layout/actionbar_common" />
+
+    <WebView
+        android:id="@+id/content_webivew"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/content_bottom"
+        android:layout_below="@id/content_top"></WebView>
+
+    <LinearLayout
+        android:id="@+id/content_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/black"
+        android:orientation="horizontal"
+        android:paddingLeft="40dp"
+        android:paddingRight="40dp">
+
+        <RelativeLayout
+            android:id="@+id/bottom_reply"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="?android:attr/selectableItemBackground"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@mipmap/ic_ab_comment_light" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/bottom_like"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="?android:attr/selectableItemBackground"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@mipmap/ic_ab_fav_off_light" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/bottom_share"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="?android:attr/selectableItemBackground"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@mipmap/ic_ab_share_light" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

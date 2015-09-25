@@ -1,0 +1,73 @@
+<resources>
+    <string name="app_name">一刻</string>
+    <string name="app_label">豆瓣每日内容精选</string>
+    <string name="un_login">未登录</string>
+    <string name="title_today">今日一刻</string>
+    <string name="history">往期内容</string>
+    <string name="hot_author">热门作者</string>
+    <string name="catalog">栏目浏览</string>
+    <string name="favorite">我的喜欢</string>
+    <string name="settings">设置</string>
+    <string name="night">夜晚</string>
+    <string name="offline">离线</string>
+
+    <string name="sure">确定</string>
+    <string name="cancel">取消</string>
+
+    <string name="week_recommand">本周推荐</string>
+    <string name="hot_author_recommand">热门作者</string>
+
+    <string name="favorite_title">喜欢（%1$d）</string>
+
+    <!-- 设置页面 -->
+    <string name="font_size">正文字号</string>
+    <string name="font_size_12">12号</string>
+    <string name="font_size_14">14号</string>
+    <string name="font_size_16">16号</string>
+    <string name="font_size_18">18号</string>
+    <string name="font_size_20">20号</string>
+    <string name="font_size_22">22号</string>
+    <string name="info_push">启用推送</string>
+    <string name="info_push_yes">接受推送</string>
+    <string name="info_push_no">禁用推送</string>
+    <string name="offline_setting">自动离线</string>
+    <string name="offline_setting_yes">已启用WIFI网络下自动离线下载</string>
+    <string name="offline_setting_no">已禁用WIFI网络下自动离线下载</string>
+    <string name="app_update">检查更新</string>
+    <string name="app_update_lasted">当前版本已是最新</string>
+    <string name="app_update_new">发现新版本</string>
+    <string name="feedback_title">意见反馈</string>
+    <string name="feedback_label">给我们发送意见和建议</string>
+    <string name="share_account">绑定分享账号</string>
+    <string name="open_src_title">开源许可</string>
+    <string name="open_src_label">开放源代码软件的许可协议</string>
+    <string name="app_about_tile">关于</string>
+    <string name="app_about_label">1.0.1</string>
+
+    <string name="reply_all_tip">评论就这么多啦</string>
+    <string name="reply_login_tip">登录发表评论</string>
+    <string name="reply_copy">复制评论</string>
+    <string name="reply_report">举报评论</string>
+
+    <string name="logon_account_hint">豆瓣账号（邮箱/手机号）</string>
+    <string name="logon_pwd_hint">密码</string>
+    <string name="logon_btn">登  录</string>
+    <string name="logoff_btn">退出登录</string>
+    <string name="register_hint">注册豆瓣账号</string>
+    <string name="register_account">注册豆瓣</string>
+    <string name="pwd_forget_hint">忘记密码？</string>
+    <string name="pwd_forget">忘记密码</string>
+    <string name="logon_waiting_tip">登录中，请稍后……</string>
+
+    <string name="author_page_title">%1$s的主页</string>
+    <string name="author_main_page">去豆瓣主页</string>
+    <string name="douban_title">豆瓣主页</string>
+    <string name="author_main_like">关注</string>
+    <string name="author_main_intro">个人简介</string>
+    <string name="like_num">关注：</string>
+    <string name="be_like_num">被关注：</string>
+    <string name="author_address">常居地：</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+</resources>

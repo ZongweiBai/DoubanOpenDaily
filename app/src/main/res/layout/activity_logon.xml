@@ -1,0 +1,97 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/background_img_login_light"
+    android:fitsSystemWindows="true"
+    tools:context="com.monosky.daily.activity.LogonActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="40dp"
+            android:text="@string/app_name"
+            android:textColor="@color/white"
+            android:textSize="22sp" />
+
+        <EditText
+            android:id="@+id/logon_account"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="24dp"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/logon_edittext_bg"
+            android:drawableLeft="@mipmap/ic_mini_login_user_light"
+            android:drawablePadding="@dimen/common_horizontal_margin"
+            android:hint="@string/logon_account_hint"
+            android:inputType="text"
+            android:paddingLeft="@dimen/common_horizontal_margin"
+            android:textColorHint="@color/content_label_readed"
+            android:textSize="@dimen/text_size_16" />
+
+        <EditText
+            android:id="@+id/logon_pwd"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="24dp"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:background="@drawable/logon_edittext_bg"
+            android:drawableLeft="@mipmap/ic_mini_login_pw_light"
+            android:drawablePadding="@dimen/common_horizontal_margin"
+            android:hint="@string/logon_pwd_hint"
+            android:inputType="textPassword"
+            android:paddingLeft="@dimen/common_horizontal_margin"
+            android:textColorHint="@color/content_label_readed"
+            android:textSize="@dimen/text_size_16" />
+
+        <Button
+            android:id="@+id/logon_btn"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="24dp"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:background="@drawable/logon_btn_bg"
+            android:text="@string/logon_btn"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_18" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="40dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/register_account"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="24dp"
+            android:text="@string/register_hint"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_18" />
+
+        <TextView
+            android:id="@+id/pwd_forget"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/pwd_forget_hint"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_18" />
+    </LinearLayout>
+</RelativeLayout>

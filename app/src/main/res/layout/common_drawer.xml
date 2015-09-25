@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_main_bg"
+    android:clickable="true"
+    android:focusable="true"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/drawer_login_layout"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <com.monosky.daily.view.roundedImageView.RoundedImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/drawer_author_img"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:scaleType="fitXY"
+            android:src="@mipmap/ic_default_avatar_light"
+            app:riv_oval="true" />
+
+        <TextView
+            android:id="@+id/drawer_login"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/common_horizontal_margin"
+            android:text="@string/un_login"
+            android:textSize="@dimen/text_size_16" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/drawer_today"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:drawableLeft="@mipmap/ic_nav_home_light"
+        android:drawablePadding="@dimen/common_horizontal_margin"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:text="@string/title_today"
+        android:textSize="@dimen/text_size_16" />
+
+    <TextView
+        android:id="@+id/drawer_history"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:drawableLeft="@mipmap/ic_nav_past_light"
+        android:drawablePadding="@dimen/common_horizontal_margin"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:text="@string/history"
+        android:textSize="@dimen/text_size_16" />
+
+    <TextView
+        android:id="@+id/drawer_hot_author"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:drawableLeft="@mipmap/ic_nav_subscribe"
+        android:drawablePadding="@dimen/common_horizontal_margin"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:text="@string/hot_author"
+        android:textSize="@dimen/text_size_16" />
+
+    <TextView
+        android:id="@+id/drawer_catalog"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:drawableLeft="@mipmap/ic_nav_column_light"
+        android:drawablePadding="@dimen/common_horizontal_margin"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:text="@string/catalog"
+        android:textSize="@dimen/text_size_16" />
+
+    <TextView
+        android:id="@+id/drawer_favorite"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:drawableLeft="@mipmap/ic_nav_likes_light"
+        android:drawablePadding="@dimen/common_horizontal_margin"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:text="@string/favorite"
+        android:textSize="@dimen/text_size_16" />
+
+    <TextView
+        android:id="@+id/drawer_setting"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:drawableLeft="@mipmap/ic_nav_setting_light"
+        android:drawablePadding="@dimen/common_horizontal_margin"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:text="@string/settings"
+        android:textSize="@dimen/text_size_16" />
+
+    <LinearLayout
+        android:id="@+id/drawer_bottom_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="bottom"
+        android:orientation="vertical">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/drawer_line" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/drawer_night"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center|bottom"
+                android:layout_weight="1"
+                android:background="@color/drawer_bottom"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/ic_nav_dark" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:paddingLeft="@dimen/common_horizontal_margin"
+                    android:text="@string/night"
+                    android:textSize="@dimen/text_size_14" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="0.5dp"
+                android:layout_height="50dp"
+                android:background="@color/drawer_line" />
+
+            <LinearLayout
+                android:id="@+id/drawer_offline"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center|bottom"
+                android:layout_weight="1"
+                android:background="@color/drawer_bottom"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/ic_nav_offline_light" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:paddingLeft="@dimen/common_horizontal_margin"
+                    android:text="@string/offline"
+                    android:textSize="@dimen/text_size_14" />
+            </LinearLayout>
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</LinearLayout>
