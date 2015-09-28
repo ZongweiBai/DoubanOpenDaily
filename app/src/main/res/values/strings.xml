@@ -67,7 +67,10 @@
     <string name="like_num">关注：</string>
     <string name="be_like_num">被关注：</string>
     <string name="author_address">常居地：</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
+
+    <!-- Volley异常定义 -->
+    <string name="no_internet">无网络连接，请检查您的手机网络~~~</string>
+    <string name="server_down">连接服务器失败,请稍后再试~~~</string>
+    <string name="server_error">网络异常,请稍后再试~~~</string>
 
 </resources>
