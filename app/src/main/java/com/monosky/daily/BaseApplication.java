@@ -1,6 +1,7 @@
 package com.monosky.daily;
 
 import android.app.Application;
+import android.content.Context;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
@@ -11,6 +12,7 @@ import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 public class BaseApplication extends Application {
 
     private static BaseApplication baseApplicationInstance;
+    private static Context mContext;
     public static int screenWidht = 0;  //dp
     public static int screenHeight = 0; //dp
     public static int densityDpi = 0;
@@ -19,14 +21,20 @@ public class BaseApplication extends Application {
     public void onCreate() {
         super.onCreate();
         baseApplicationInstance = this;
+        mContext = getApplicationContext();
 
         //创建默认的ImageLoader配置参数
         ImageLoaderConfiguration configuration = ImageLoaderConfiguration.createDefault(this);
         //Initialize ImageLoader with configuration.
         ImageLoader.getInstance().init(configuration);
+
     }
 
     public static BaseApplication getInstance() {
         return baseApplicationInstance;
+    }
+
+    public static Context getContext() {
+        return mContext;
     }
 }

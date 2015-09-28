@@ -8,6 +8,9 @@ import java.io.Serializable;
  */
 public class ConstData implements Serializable {
 
+    public static final Boolean isDebug = true;
+    public static final String TAG = "DoubanOpenDaily";
+
     /**
      * 广播常量
      */
