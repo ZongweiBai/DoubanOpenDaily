@@ -1,1 +1,1 @@
-include ':app', ':materialDialogs-library'
+include ':app'

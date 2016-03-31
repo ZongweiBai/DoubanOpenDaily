@@ -11,12 +11,12 @@ public class ContentData implements Serializable {
     public static final int ITEM = 0;
     public static final int SECTION = 1;
 
-    private String contentTitle;
-    private String contentLabel;
-    private String contentCatlog;
-    private String contentImg;
+    private String contentTitle;    // 文章标题
+    private String contentLabel;    // 文章摘要
+    private String contentCatlog;   // 文章标签（所属栏目）
+    private String contentImg;  // 文章图片
     private int sortType;    //0:真实内容 1：内容分类（暂时以日期分类）
-    private String contentTime;
+    private String contentTime; // 文章发布时间
 
     public ContentData() {
     }

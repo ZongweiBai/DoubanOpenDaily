@@ -16,7 +16,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import org.apache.http.Header;
 import org.apache.http.HttpEntity;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
+//import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.message.BasicHeader;
 import org.apache.http.message.BasicNameValuePair;
 
@@ -113,11 +113,11 @@ public class RequestParams {
             }
             entity = multipartEntity;
         } else {
-            try {
-                entity = new UrlEncodedFormEntity(getParamsList(), ENCODING);
-            } catch (UnsupportedEncodingException e) {
-                e.printStackTrace();
-            }
+//            try {
+//                entity = new UriEncodedFormEntity(getParamsList(), ENCODING);
+//            } catch (UnsupportedEncodingException e) {
+//                e.printStackTrace();
+//            }
         }
         return entity;
     }
