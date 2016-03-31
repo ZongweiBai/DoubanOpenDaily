@@ -13,7 +13,7 @@ public class BaseApplication extends Application {
 
     private static BaseApplication baseApplicationInstance;
     private static Context mContext;
-    public static int screenWidht = 0;  //dp
+    public static int screenWidth = 0;  //dp
     public static int screenHeight = 0; //dp
     public static int densityDpi = 0;
 

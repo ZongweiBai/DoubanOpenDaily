@@ -5,7 +5,7 @@
     android:background="@color/main_color"
     android:gravity="center_horizontal"
     android:orientation="vertical"
-    tools:context="com.monosky.daily.activity.AppLoadingActivity">
+    tools:context=".ui.activity.AppLoadingActivity">
 
     <ImageView
         android:layout_width="wrap_content"

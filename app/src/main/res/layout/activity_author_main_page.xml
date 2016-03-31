@@ -5,7 +5,7 @@
     android:background="#F1F0EE"
     android:fitsSystemWindows="true"
     android:orientation="vertical"
-    tools:context="com.monosky.daily.activity.AuthorMainPageActivity">
+    tools:context=".ui.activity.AuthorMainPageActivity">
 
     <include layout="@layout/actionbar_common" />
 
@@ -30,7 +30,7 @@
                 android:touchscreenBlocksFocus="false">
 
 
-                <com.monosky.daily.view.roundedImageView.RoundedImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                <com.monosky.daily.ui.view.roundedImageView.RoundedImageView xmlns:app="http://schemas.android.com/apk/res-auto"
                     android:id="@+id/author_main_img"
                     android:layout_width="48dp"
                     android:layout_height="48dp"

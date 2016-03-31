@@ -5,7 +5,7 @@
     android:background="@color/app_main_bg"
     android:fitsSystemWindows="true"
     android:orientation="vertical"
-    tools:context="com.monosky.daily.activity.AuthorActivity">
+    tools:context=".ui.activity.AuthorActivity">
 
     <include layout="@layout/actionbar_common" />
 

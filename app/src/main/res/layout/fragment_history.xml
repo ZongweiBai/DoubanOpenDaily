@@ -3,19 +3,19 @@
     android:layout_height="match_parent"
     android:background="@color/app_main_bg">
 
-    <com.monosky.daily.widget.swipyRefreshLayout.SwipyRefreshLayout xmlns:swipy="http://schemas.android.com/apk/res-auto"
+    <com.monosky.daily.ui.widget.swipyRefreshLayout.SwipyRefreshLayout xmlns:swipy="http://schemas.android.com/apk/res-auto"
         android:id="@+id/history_refresh_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         swipy:direction="bottom">
 
-        <com.monosky.daily.widget.PinnedSectionListView
+        <com.monosky.daily.ui.widget.PinnedSectionListView
             android:id="@+id/history_listview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:divider="@null"
             android:dividerHeight="0dp"
             android:scrollbars="vertical" />
-    </com.monosky.daily.widget.swipyRefreshLayout.SwipyRefreshLayout>
+    </com.monosky.daily.ui.widget.swipyRefreshLayout.SwipyRefreshLayout>
 
 </FrameLayout>

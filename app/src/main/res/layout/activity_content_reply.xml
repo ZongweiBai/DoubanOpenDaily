@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:background="@color/app_main_bg"
     android:fitsSystemWindows="true"
-    tools:context="com.monosky.daily.activity.ContentReplyActivity">
+    tools:context=".ui.activity.ContentReplyActivity">
 
     <include
         android:id="@+id/reply_top_bar"

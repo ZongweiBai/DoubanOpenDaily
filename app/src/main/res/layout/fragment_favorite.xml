@@ -6,7 +6,7 @@
     android:background="@color/app_main_bg"
     android:orientation="vertical">
 
-    <com.monosky.daily.widget.swipyRefreshLayout.SwipyRefreshLayout xmlns:swipy="http://schemas.android.com/apk/res-auto"
+    <com.monosky.daily.ui.widget.swipyRefreshLayout.SwipyRefreshLayout xmlns:swipy="http://schemas.android.com/apk/res-auto"
         android:id="@+id/fav_refresh_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -20,6 +20,6 @@
             android:divider="@null"
             android:dividerHeight="0dp"
             android:scrollbars="vertical" />
-    </com.monosky.daily.widget.swipyRefreshLayout.SwipyRefreshLayout>
+    </com.monosky.daily.ui.widget.swipyRefreshLayout.SwipyRefreshLayout>
 
 </LinearLayout>

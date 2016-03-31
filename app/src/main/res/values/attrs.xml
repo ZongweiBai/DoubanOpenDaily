@@ -39,36 +39,6 @@
         </attr>
     </declare-styleable>
 
-    <!-- 上滑面板组件属性 -->
-    <declare-styleable name="SlidingUpPanelLayout">
-        <attr name="umanoPanelHeight" format="dimension" />
-        <attr name="umanoShadowHeight" format="dimension" />
-        <attr name="umanoParalaxOffset" format="dimension" />
-        <attr name="umanoFadeColor" format="color" />
-        <attr name="umanoFlingVelocity" format="integer" />
-        <attr name="umanoDragView" format="reference" />
-        <attr name="umanoScrollableView" format="reference" />
-        <attr name="umanoOverlay" format="boolean"/>
-        <attr name="umanoClipPanel" format="boolean"/>
-        <attr name="umanoAnchorPoint" format="float" />
-        <attr name="umanoInitialState" format="enum">
-            <enum name="expanded" value="0" />
-            <enum name="collapsed" value="1" />
-            <enum name="anchored" value="2" />
-            <enum name="hidden" value="3" />
-        </attr>
-    </declare-styleable>
-
-    <!-- Material Design风格菜单属性 -->
-    <declare-styleable name="MaterialMenuView">
-        <attr name="mm_color" format="color"/>
-        <attr name="mm_visible" format="boolean"/>
-        <attr name="mm_scale" format="integer"/>
-        <attr name="mm_transformDuration" format="integer"/>
-        <attr name="mm_strokeWidth" format="integer"/>
-        <attr name="mm_rtlEnabled" format="boolean"/>
-    </declare-styleable>
-
     <!-- Declare custom theme attributes that allow changing which styles are
          used for button bars depending on the API level.
          ?android:attr/buttonBarStyle is new as of API 11 so this is

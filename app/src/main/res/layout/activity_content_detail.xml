@@ -5,7 +5,7 @@
     android:background="@color/app_main_bg"
     android:fitsSystemWindows="true"
     android:orientation="vertical"
-    tools:context="com.monosky.daily.activity.ContentDetailActivity">
+    tools:context=".ui.activity.ContentDetailActivity">
 
     <include
         android:id="@+id/content_top"

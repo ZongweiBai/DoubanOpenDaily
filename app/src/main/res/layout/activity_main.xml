@@ -6,7 +6,7 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <include layout="@layout/menu_common" />
+    <include layout="@layout/toolbar_common"/>
 
     <android.support.v4.widget.DrawerLayout
         android:id="@+id/drawer_layout"

@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:background="@mipmap/background_img_login_light"
     android:fitsSystemWindows="true"
-    tools:context="com.monosky.daily.activity.LogonActivity">
+    tools:context=".ui.activity.LogonActivity">
 
     <LinearLayout
         android:layout_width="match_parent"

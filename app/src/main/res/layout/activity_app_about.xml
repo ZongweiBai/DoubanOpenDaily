@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     android:orientation="vertical"
-    tools:context="com.monosky.daily.activity.AppAboutActivity">
+    tools:context=".ui.activity.AppAboutActivity">
 
     <include layout="@layout/actionbar_common" />
 

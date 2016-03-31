@@ -5,7 +5,7 @@
     android:background="@color/main_color"
     android:orientation="horizontal">
 
-    <com.monosky.daily.view.materialMenu.MaterialMenuView xmlns:app="http://schemas.android.com/apk/res-auto"
+    <com.monosky.daily.ui.view.materialMenu.MaterialMenuView xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/action_bar_menu"
         android:layout_width="56dp"
         android:layout_height="56dp"

@@ -37,7 +37,7 @@
         android:paddingRight="@dimen/activity_horizontal_margin"
         android:paddingTop="@dimen/activity_vertical_margin">
 
-        <com.monosky.daily.view.roundedImageView.RoundedImageView xmlns:rounded="http://schemas.android.com/apk/res-auto"
+        <com.monosky.daily.ui.view.roundedImageView.RoundedImageView xmlns:rounded="http://schemas.android.com/apk/res-auto"
             android:id="@+id/author_img"
             android:layout_width="50dp"
             android:layout_height="50dp"

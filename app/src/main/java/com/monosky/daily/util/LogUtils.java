@@ -2,7 +2,7 @@ package com.monosky.daily.util;
 
 import android.util.Log;
 
-import com.monosky.daily.ConstData;
+import com.monosky.daily.constant.ConstData;
 
 
 /**
