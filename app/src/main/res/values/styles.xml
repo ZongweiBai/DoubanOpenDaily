@@ -58,4 +58,10 @@
     <!-- Backward-compatible version of ?android:attr/buttonBarButtonStyle -->
     <style name="ButtonBarButton" />
 
+    <!-- Toast自定义动画 -->
+    <style name="toast_anim_style" parent="android:Animation">
+        <item name="@android:windowEnterAnimation">@anim/toast_push_up</item>
+        <item name="@android:windowExitAnimation">@anim/toast_slide_down</item>
+    </style>
+
 </resources>

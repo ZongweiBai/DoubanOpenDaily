@@ -29,7 +29,6 @@ import com.monosky.daily.module.AuthorData;
 import com.monosky.daily.test.GenerateTestDatas;
 import com.monosky.daily.util.ImageLoaderOption;
 import com.monosky.daily.util.SharedPreferencesUtil;
-import com.monosky.daily.ui.view.roundedImageView.RoundedImageView;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 import java.util.ArrayList;
@@ -37,6 +36,7 @@ import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
  * APP主页面
@@ -49,7 +49,7 @@ public class MainActivity extends BaseActivity {
     @Bind(R.id.main_container)
     RelativeLayout mMainContainer;
     @Bind(R.id.drawer_author_img)
-    RoundedImageView mDrawerAuthorImg;
+    CircleImageView mDrawerAuthorImg;
     @Bind(R.id.drawer_login)
     TextView mDrawerLogin;
     @Bind(R.id.drawer_login_layout)
@@ -119,8 +119,6 @@ public class MainActivity extends BaseActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
-        boolean drawerOpen = mDrawerLayout.isDrawerOpen(mLeftDrawer);
-        menu.findItem(R.id.action_search).setVisible(!drawerOpen);
         return true;
     }
 
@@ -140,7 +138,6 @@ public class MainActivity extends BaseActivity {
                 if (getSupportActionBar() != null) {
                     getSupportActionBar().setTitle(mainPageTitle);
                 }
-                supportInvalidateOptionsMenu();
                 super.onDrawerClosed(drawerView);
             }
 
@@ -149,7 +146,6 @@ public class MainActivity extends BaseActivity {
                 if (getSupportActionBar() != null) {
                     getSupportActionBar().setTitle(R.string.app_name);
                 }
-                supportInvalidateOptionsMenu();
                 super.onDrawerOpened(drawerView);
             }
         };

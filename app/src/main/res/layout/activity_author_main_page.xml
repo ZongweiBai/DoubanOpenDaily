@@ -30,13 +30,12 @@
                 android:touchscreenBlocksFocus="false">
 
 
-                <com.monosky.daily.ui.view.roundedImageView.RoundedImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
                     android:id="@+id/author_main_img"
                     android:layout_width="48dp"
                     android:layout_height="48dp"
                     android:scaleType="fitXY"
-                    android:src="@mipmap/ic_default_avatar_light"
-                    app:riv_oval="true" />
+                    android:src="@mipmap/ic_default_avatar_light" />
 
                 <TextView
                     android:id="@+id/author_main_name"

@@ -41,13 +41,14 @@ dependencies {
     compile 'com.android.support:design:24.0.0-alpha1'
     compile 'org.jsoup:jsoup:1.8.3'
     compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
-    compile 'com.nineoldandroids:library:2.4.0'
-    compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'com.github.afollestad.material-dialogs:core:0.8.5.7@aar'
     // material-dialogs要依赖materialprogressbar
     compile 'me.zhanghai.android.materialprogressbar:library:1.1.5'
     compile 'com.jakewharton:butterknife:7.0.1'
     compile 'com.kymjs.rxvolley:rxvolley:1.0.9'
     compile 'com.kymjs.rxvolley:okhttp:1.0.9'
+    compile 'io.reactivex:rxjava:1.1.2'
+    compile 'io.reactivex:rxandroid:1.1.0'
     compile 'com.alibaba:fastjson:1.2.8'
+    compile 'de.hdodenhof:circleimageview:2.0.0'
 }
