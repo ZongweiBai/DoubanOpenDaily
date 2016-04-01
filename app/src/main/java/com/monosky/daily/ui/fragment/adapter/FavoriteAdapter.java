@@ -60,15 +60,15 @@ public class FavoriteAdapter extends BaseAdapter {
         } else {
             viewHolder.mFavItemTitle.setVisibility(View.GONE);
             viewHolder.mFavContentLayout.setVisibility(View.VISIBLE);
-            if(TextUtils.isEmpty(favContent.getContentCatlog())) {
-                viewHolder.mFavCatalogLayout.setVisibility(View.GONE);
-            } else {
-                viewHolder.mFavCatalog.setText(favContent.getContentCatlog());
-                viewHolder.mFavCatalogLayout.setVisibility(View.VISIBLE);
-            }
-            viewHolder.mFavContentTitle.setText(favContent.getContentTitle());
-            viewHolder.mFavContentLabel.setText(favContent.getContentLabel());
-            imageLoader.displayImage(favContent.getContentImg(), viewHolder.mFavContentImg, ImageLoaderOption.optionInfoImage(R.mipmap.ic_default_avatar_light));
+//            if(TextUtils.isEmpty(favContent.getContentCatlog())) {
+//                viewHolder.mFavCatalogLayout.setVisibility(View.GONE);
+//            } else {
+//                viewHolder.mFavCatalog.setText(favContent.getContentCatlog());
+//                viewHolder.mFavCatalogLayout.setVisibility(View.VISIBLE);
+//            }
+//            viewHolder.mFavContentTitle.setText(favContent.getContentTitle());
+//            viewHolder.mFavContentLabel.setText(favContent.getContentLabel());
+//            imageLoader.displayImage(favContent.getContentImg(), viewHolder.mFavContentImg, ImageLoaderOption.optionInfoImage(R.mipmap.ic_default_avatar_light));
         }
 
         convertView.setOnTouchListener(new View.OnTouchListener() {

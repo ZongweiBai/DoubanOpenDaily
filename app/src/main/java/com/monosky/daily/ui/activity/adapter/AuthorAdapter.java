@@ -82,9 +82,9 @@ public class AuthorAdapter extends RecyclerView.Adapter<AuthorAdapter.ViewHolder
         } else {
             holder.mAuthorLayout.setVisibility(View.GONE);
         }
-        holder.mContentTitle.setText(contentData.getContentTitle());
-        imageLoader.displayImage(contentData.getContentImg(), holder.mContentImg, ImageLoaderOption.optionInfoImage(R.mipmap.ic_empty_light));
-        holder.mContentLabel.setText(contentData.getContentLabel());
+//        holder.mContentTitle.setText(contentData.getContentTitle());
+//        imageLoader.displayImage(contentData.getContentImg(), holder.mContentImg, ImageLoaderOption.optionInfoImage(R.mipmap.ic_empty_light));
+//        holder.mContentLabel.setText(contentData.getContentLabel());
         holder.mContentLayout.setTag(position);
         holder.mContentLayout.setOnClickListener(mContentClickListener);
     }

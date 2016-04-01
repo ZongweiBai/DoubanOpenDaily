@@ -12,6 +12,7 @@ import com.monosky.daily.module.AuthorData;
 import com.monosky.daily.module.ContentData;
 import com.monosky.daily.test.GenerateTestDatas;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -50,7 +51,7 @@ public class AuthorActivity extends BaseActivity {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         mAuthorRecycleView.setLayoutManager(layoutManager);
-        mAuthorContents = GenerateTestDatas.getDefaultContents();
+        mAuthorContents = new ArrayList<>();
         mAuthorAdapter = new AuthorAdapter(mInstance, mAuthorData, mAuthorContents);
         mAuthorRecycleView.setAdapter(mAuthorAdapter);
 

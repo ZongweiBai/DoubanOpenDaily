@@ -68,7 +68,7 @@ public class FavoriteFragment extends Fragment {
         });
 
         mListView = (ListView) getView().findViewById(R.id.fav_listview);
-        mFavContentList = GenerateTestDatas.getFavContentData();
+//        mFavContentList = GenerateTestDatas.getFavContentData();
         mFavContentList.add(0, new ContentData());
         mFavAdapter = new FavoriteAdapter(getActivity(), mFavContentList);
         mListView.setAdapter(mFavAdapter);

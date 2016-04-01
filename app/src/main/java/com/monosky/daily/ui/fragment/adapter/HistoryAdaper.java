@@ -83,41 +83,41 @@ public class HistoryAdaper extends BaseAdapter implements PinnedSectionListView.
         }
 
         ContentData contentData = getItem(position);
-        if(ContentData.SECTION == contentData.getSortType()) {
-            viewHolder.mContentLayout.setVisibility(View.GONE);
-            viewHolder.mCatalog.setVisibility(View.GONE);
-            viewHolder.mContentTitle.setVisibility(View.GONE);
-            viewHolder.mContentImg.setVisibility(View.GONE);
-            viewHolder.mContentLabel.setVisibility(View.GONE);
-            viewHolder.mHistoryItemTitleLayout.setVisibility(View.VISIBLE);
-            viewHolder.mHistoryItemTitle.setText(contentData.getContentTime());
-            viewHolder.mContentSepline.setVisibility(View.GONE);
-        } else {
-            viewHolder.mHistoryItemTitleLayout.setVisibility(View.GONE);
-            viewHolder.mContentLayout.setVisibility(View.VISIBLE);
-            viewHolder.mContentLayout.setTag(R.id.history_content_layout, position);
-            viewHolder.mContentLayout.setOnClickListener(mHistoryClickListener);
-            if(TextUtils.isEmpty(contentData.getContentCatlog())) {
-                viewHolder.mCatalog.setVisibility(View.GONE);
-            } else {
-                viewHolder.mCatalog.setText(contentData.getContentCatlog());
-                viewHolder.mCatalog.setVisibility(View.VISIBLE);
-            }
-            viewHolder.mContentTitle.setText(contentData.getContentTitle());
-            viewHolder.mContentLabel.setText(contentData.getContentLabel());
-            imageLoader.displayImage(contentData.getContentImg(), viewHolder.mContentImg, ImageLoaderOption.optionInfoImage(R.mipmap.ic_empty_light));
-            if(position == contentDataList.size()-1) {
-                viewHolder.mContentSepline.setVisibility(View.GONE);
-            } else {
-                viewHolder.mContentSepline.setVisibility(View.VISIBLE);
-            }
-        }
+//        if(ContentData.SECTION == contentData.getSortType()) {
+//            viewHolder.mContentLayout.setVisibility(View.GONE);
+//            viewHolder.mCatalog.setVisibility(View.GONE);
+//            viewHolder.mContentTitle.setVisibility(View.GONE);
+//            viewHolder.mContentImg.setVisibility(View.GONE);
+//            viewHolder.mContentLabel.setVisibility(View.GONE);
+//            viewHolder.mHistoryItemTitleLayout.setVisibility(View.VISIBLE);
+//            viewHolder.mHistoryItemTitle.setText(contentData.getContentTime());
+//            viewHolder.mContentSepline.setVisibility(View.GONE);
+//        } else {
+//            viewHolder.mHistoryItemTitleLayout.setVisibility(View.GONE);
+//            viewHolder.mContentLayout.setVisibility(View.VISIBLE);
+//            viewHolder.mContentLayout.setTag(R.id.history_content_layout, position);
+//            viewHolder.mContentLayout.setOnClickListener(mHistoryClickListener);
+//            if(TextUtils.isEmpty(contentData.getContentCatlog())) {
+//                viewHolder.mCatalog.setVisibility(View.GONE);
+//            } else {
+//                viewHolder.mCatalog.setText(contentData.getContentCatlog());
+//                viewHolder.mCatalog.setVisibility(View.VISIBLE);
+//            }
+//            viewHolder.mContentTitle.setText(contentData.getContentTitle());
+//            viewHolder.mContentLabel.setText(contentData.getContentLabel());
+//            imageLoader.displayImage(contentData.getContentImg(), viewHolder.mContentImg, ImageLoaderOption.optionInfoImage(R.mipmap.ic_empty_light));
+//            if(position == contentDataList.size()-1) {
+//                viewHolder.mContentSepline.setVisibility(View.GONE);
+//            } else {
+//                viewHolder.mContentSepline.setVisibility(View.VISIBLE);
+//            }
+//        }
         return convertView;
     }
 
     @Override
     public boolean isItemViewTypePinned(int viewType) {
-        return viewType == ContentData.SECTION;//0是标题，1是内容
+        return viewType == 1;//0是标题，1是内容
     }
 
     @Override
@@ -127,7 +127,7 @@ public class HistoryAdaper extends BaseAdapter implements PinnedSectionListView.
 
     @Override
     public int getItemViewType(int position) {
-        return ((ContentData) getItem(position)).getSortType();
+        return 0;
     }
 
     private class ViewHolder {
