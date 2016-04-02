@@ -1,21 +1,20 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/app_main_bg">
+    android:layout_height="match_parent">
 
-    <com.monosky.daily.ui.widget.swipyRefreshLayout.SwipyRefreshLayout xmlns:swipy="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/history_refresh_layout"
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_refresh"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        swipy:direction="bottom">
+        android:layout_height="wrap_content">
 
-        <com.monosky.daily.ui.widget.PinnedSectionListView
-            android:id="@+id/history_listview"
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/history_recycler_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:divider="@null"
             android:dividerHeight="0dp"
-            android:scrollbars="vertical" />
-    </com.monosky.daily.ui.widget.swipyRefreshLayout.SwipyRefreshLayout>
+            android:scrollbars="none"/>
+    </android.support.v4.widget.SwipeRefreshLayout>
 
 </FrameLayout>

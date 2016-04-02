@@ -2,6 +2,7 @@ package com.monosky.daily.ui.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.content.ContextCompat;
 import android.widget.TextView;
 
@@ -41,25 +42,15 @@ public class AppLoadingActivity extends BaseActivity {
      */
     private void skip2NextAct() {
 
-        new Thread(new Runnable() {
+        new Handler().postDelayed(new Runnable() {
+            @Override
             public void run() {
-
-                long start = System.currentTimeMillis();
-                long costTime = System.currentTimeMillis() - start;
-                if (SPLASH_DISPLAY_LENGTH - costTime > 0) {
-                    try {
-                        Thread.sleep(SPLASH_DISPLAY_LENGTH - costTime);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }
-                //进入主页面
                 Intent intent = new Intent(AppLoadingActivity.this, MainActivity.class);
                 startActivity(intent);
+                overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
                 supportFinishAfterTransition();
-
             }
-        }).start();
+        }, SPLASH_DISPLAY_LENGTH);
 
     }
 

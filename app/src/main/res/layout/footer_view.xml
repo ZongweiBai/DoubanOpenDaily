@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="horizontal"
+    android:padding="8dp">
+
+    <com.monosky.daily.ui.view.ProgressWheel
+        xmlns:wheel="http://schemas.android.com/apk/res-auto"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_centerVertical="true"
+        wheel:matProg_barColor="@color/main_color"
+        wheel:matProg_barWidth="4dp"
+        wheel:matProg_progressIndeterminate="true"
+        wheel:matProg_rimWidth="4dp"/>
+
+</LinearLayout>

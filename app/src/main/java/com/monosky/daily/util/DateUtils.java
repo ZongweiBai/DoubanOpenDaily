@@ -19,9 +19,8 @@ public class DateUtils {
     public static Calendar calendar = Calendar.getInstance();
 
     /**
-     *
      * @return yyyy-mm-dd
-     *  2012-12-25
+     * 2012-12-25
      */
     public static String getDate() {
         return getYear() + "-" + getMonth() + "-" + getDay();
@@ -29,10 +28,8 @@ public class DateUtils {
 
     /**
      * @param format
-     * @return
-     * yyyy年MM月dd HH:mm
+     * @return yyyy年MM月dd HH:mm
      * MM-dd HH:mm 2012-12-25
-     *
      */
     public static String getDate(String format) {
         SimpleDateFormat simple = new SimpleDateFormat(format);
@@ -40,7 +37,6 @@ public class DateUtils {
     }
 
     /**
-     *
      * @return yyyy-MM-dd HH:mm
      * 2012-12-29 23:47
      */
@@ -50,10 +46,8 @@ public class DateUtils {
     }
 
     /**
-     *
-     * @return
-     *  yyyy-MM-dd HH:mm:ss
-     *  2012-12-29 23:47:36
+     * @return yyyy-MM-dd HH:mm:ss
+     * 2012-12-29 23:47:36
      */
     public static String getFullDate() {
         SimpleDateFormat simple = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -62,9 +56,9 @@ public class DateUtils {
 
     /**
      * 距离今天多久
+     *
      * @param date
      * @return
-     *
      */
     public static String fromToday(Date date) {
         Calendar calendar = Calendar.getInstance();
@@ -191,6 +185,30 @@ public class DateUtils {
 
     public static String getSecond() {
         return calendar.get(Calendar.SECOND) + "";
+    }
+
+    /**
+     * 查询指定日期前(后)x天的日期
+     *
+     * @param date 当前日期
+     * @param day  天数（如果day数为负数,说明是此日期前的天数）
+     * @return Date
+     */
+    public static Date beforeNumDay(Date date, int day) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        calendar.add(Calendar.DAY_OF_YEAR, day);
+        return calendar.getTime();
+    }
+
+    /**
+     * 查询距离当前日期前(后)x天的日期
+     *
+     * @param day 天数（如果day数为负数,说明是此日期前的天数）
+     * @return Date
+     */
+    public static Date beforeToday(int day) {
+        return beforeNumDay(new Date(), day);
     }
 
     public static void main(String[] args) throws ParseException {
