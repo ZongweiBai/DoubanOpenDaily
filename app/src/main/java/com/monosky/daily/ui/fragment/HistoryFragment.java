@@ -4,20 +4,20 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
-import android.view.View;
 
 import com.alibaba.fastjson.JSON;
 import com.kymjs.rxvolley.RxVolley;
 import com.kymjs.rxvolley.client.HttpCallback;
-import com.monosky.daily.BaseApplication;
 import com.monosky.daily.R;
 import com.monosky.daily.constant.APIConstData;
+import com.monosky.daily.constant.ConstData;
 import com.monosky.daily.module.ContentData;
-import com.monosky.daily.ui.fragment.adapter.HistoryAdaper;
+import com.monosky.daily.module.entity.PostsEntity;
+import com.monosky.daily.ui.fragment.adapter.HistoryAdapter;
 import com.monosky.daily.util.DateUtils;
 import com.monosky.daily.util.ToastUtils;
 import com.timehop.stickyheadersrecyclerview.StickyRecyclerHeadersDecoration;
+import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -34,13 +34,14 @@ public class HistoryFragment extends BaseRefreshFragment {
 
     @Bind(R.id.history_recycler_view)
     RecyclerView mHistoryRecyclerView;
-    private HistoryAdaper mHistoryAdapter;
-    private View footerView;
-    private List<ContentData.PostsEntity> mPostsEntityList = new ArrayList<>();
+    private HistoryAdapter mHistoryAdapter;
+    private List<PostsEntity> mPostsEntityList = new ArrayList<>();
     private SimpleDateFormat formatSdf = new SimpleDateFormat("yyyy-MM-dd");
+    private LinearLayoutManager layoutManager;
     private int dayBefore = -1;
 
     @Override
+
     protected int getLayout() {
         return R.layout.fragment_history;
     }
@@ -49,44 +50,33 @@ public class HistoryFragment extends BaseRefreshFragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        // 脚部
-        footerView = LayoutInflater.from(BaseApplication.getContext()).inflate(R.layout.footer_view, null);
-        // 创建一个线性布局管理器
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
+        // create linear manager
+        layoutManager = new LinearLayoutManager(getActivity());
         // 设置布局管理器
         mHistoryRecyclerView.setLayoutManager(layoutManager);
-//        mHistoryRecyclerView.setLoadMore(true);
-        // 添加头部和脚部，如果不添加就使用默认的头部和脚部
-//        mHistoryRecyclerView.addFootView(footerView);
 
         // 创建Adapter,并指定数据集
-        mHistoryAdapter = new HistoryAdaper(mPostsEntityList);
+        mHistoryAdapter = new HistoryAdapter(mPostsEntityList);
         mHistoryRecyclerView.setAdapter(mHistoryAdapter);
-
         // Add the sticky headers decoration
         final StickyRecyclerHeadersDecoration headersDecor = new StickyRecyclerHeadersDecoration(mHistoryAdapter);
         mHistoryRecyclerView.addItemDecoration(headersDecor);
+        mHistoryAdapter.registerAdapterDataObserver(new RecyclerView.AdapterDataObserver() {
+            @Override
+            public void onChanged() {
+                headersDecor.invalidateHeaders();
+            }
+        });
 
         // Add decoration for dividers between list items
-//        mHistoryRecyclerView.addItemDecoration(new DividerDecoration(this));
+        HorizontalDividerItemDecoration mItemDecoration = new HorizontalDividerItemDecoration.Builder(getActivity())
+                .colorResId(R.color.drawer_line).sizeResId(R.dimen.common_divider).build();
+        mHistoryRecyclerView.addItemDecoration(mItemDecoration);
 
-        // 设置加载更多数据的监听
-//        mHistoryRecyclerView.setLoadDataListener(new LoadMoreRecyclerView.LoadDataListener() {
-//            @Override
-//            public void onLoadMore() {
-//                new Handler().postDelayed(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        mHistoryRecyclerView.getAdapter().notifyDataSetChanged();
-//                        // 加载更多完成后调用，必须在UI线程中
-//                        mHistoryRecyclerView.loadMoreComplete();
-////                        mHistoryRecyclerView.setLoadMore(false);
-//                    }
-//                }, 4000);
-//            }
-//        });
+        // Add scrollListener
+        mHistoryRecyclerView.addOnScrollListener(myOnScrollListener);
 
-        // 初始化swipeRefreshLayout并发起请求
+        // initialize swipeRefreshLayout and request
         initSwipeLayout();
 
     }
@@ -94,6 +84,10 @@ public class HistoryFragment extends BaseRefreshFragment {
     @Override
     protected void onRefreshStarted() {
         dayBefore = -1;
+        requestContent();
+    }
+
+    private void requestContent() {
         String requestUrl = APIConstData.GetContentByDate + formatSdf.format(DateUtils.beforeToday(dayBefore));
         new RxVolley.Builder()
                 .url(requestUrl)
@@ -105,9 +99,10 @@ public class HistoryFragment extends BaseRefreshFragment {
                     public void onSuccess(String t) {
                         super.onSuccess(t);
                         ContentData contentData = JSON.parseObject(t, ContentData.class);
-                        mPostsEntityList.clear();
+                        if ((ConstData.REQUEST_REFRESH).equals(mRequestType)) {
+                            mPostsEntityList.clear();
+                        }
                         mPostsEntityList.addAll(contentData.getPosts());
-//                        mHistoryAdapter = (HistoryAdaper) mHistoryRecyclerView.getAdapter();
                         mHistoryAdapter.refresh(mPostsEntityList);
                         ToastUtils.showShort(getContext(), "请求成功");
                     }
@@ -121,12 +116,37 @@ public class HistoryFragment extends BaseRefreshFragment {
                     @Override
                     public void onFinish() {
                         super.onFinish();
+                        mRefreshing = false;
+                        mLoading = false;
                         mSwipeRefresh.setRefreshing(false);
                     }
                 })
                 .encoding("UTF-8")
                 .doTask();
     }
+
+    /**
+     * 设置recycleView的滚动监听
+     */
+    RecyclerView.OnScrollListener myOnScrollListener = new RecyclerView.OnScrollListener() {
+        int currentPosition = 0;
+
+        @Override
+        public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+            super.onScrolled(recyclerView, dx, dy);
+            currentPosition = layoutManager.findLastVisibleItemPosition();
+            if (mPostsEntityList == null || mPostsEntityList.isEmpty() || mRefreshing || mLoading) {
+                return;
+            }
+            if (currentPosition + 4 >= mPostsEntityList.size()) {
+                mSwipeRefresh.setRefreshing(true);
+                mLoading = true;
+                mRequestType = ConstData.REQUEST_LOAD;
+                dayBefore--;
+                requestContent();
+            }
+        }
+    };
 
     @Override
     public void onDestroyView() {

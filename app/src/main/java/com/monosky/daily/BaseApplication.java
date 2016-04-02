@@ -2,13 +2,16 @@ package com.monosky.daily;
 
 import android.app.Application;
 import android.content.Context;
+import android.text.TextUtils;
 
+import com.monosky.daily.constant.ConstData;
+import com.monosky.daily.util.LogUtils;
+import com.monosky.daily.util.SPUtils;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
-/**
- * Created by jonez_000 on 2015/8/16.
- */
+import java.util.UUID;
+
 public class BaseApplication extends Application {
 
     private static BaseApplication baseApplicationInstance;

@@ -45,7 +45,7 @@ public class AuthorActivity extends BaseActivity {
     }
 
     private void setViews() {
-        mTopTitle.setText(getResources().getString(R.string.author_page_title, mAuthorData.getAuthorName()));
+//        mTopTitle.setText(getResources().getString(R.string.author_page_title, mAuthorData.getAuthorName()));
         mTopTitle.setOnClickListener(mAuthoOnClickListener);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);

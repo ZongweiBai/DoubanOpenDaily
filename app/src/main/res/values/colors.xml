@@ -20,5 +20,5 @@
 
     <color name="black_overlay">#66000000</color>
     <!-- 自定义Toast背景色-->
-    <color name="bg_toast">#9d1CC4AD</color>
+    <color name="bg_toast">#CC00BFA2</color>
 </resources>

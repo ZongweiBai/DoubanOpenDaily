@@ -1,14 +1,22 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/app_main_bg">
 
-    <GridView
-        android:id="@+id/catalog_gridview"
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_refresh"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:horizontalSpacing="0dp"
-        android:numColumns="2"
-        android:verticalSpacing="0dp" />
+        android:layout_height="wrap_content">
+
+        <GridView
+            android:id="@+id/catalog_gridview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:horizontalSpacing="0dp"
+            android:numColumns="2"
+            android:verticalSpacing="0dp"/>
+
+    </android.support.v4.widget.SwipeRefreshLayout>
 
 </FrameLayout>

@@ -1,9 +1,9 @@
 package com.monosky.daily.test;
 
 import com.monosky.daily.module.AuthorData;
-import com.monosky.daily.module.CatalogData;
 import com.monosky.daily.module.ContentData;
 import com.monosky.daily.module.ReplyData;
+import com.monosky.daily.module.entity.AuthorsEntity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,19 +39,19 @@ public class GenerateTestDatas {
      */
     public static List<AuthorData> getAuthors() {
         List<AuthorData> authors = new ArrayList<>();
-        authors.add(new AuthorData(AuthorData.SECTION, AuthorData.TYPE_WEEK));
-        authors.add(new AuthorData("http://img3.douban.com/icon/ul79644553-1.jpg", "静岛", "写过风月小说，写过星座专栏，写过唱片简介，写过电视剧，面善嘴毒，脸尖腿粗", AuthorData.ITEM, AuthorData.TYPE_WEEK));
-        authors.add(new AuthorData("http://img3.douban.com/icon/ul79644553-1.jpg", "静岛", "写过风月小说，写过星座专栏，写过唱片简介，写过电视剧，面善嘴毒，脸尖腿粗", AuthorData.ITEM, AuthorData.TYPE_WEEK));
-        authors.add(new AuthorData("http://img3.douban.com/icon/ul79644553-1.jpg", "静岛", "写过风月小说，写过星座专栏，写过唱片简介，写过电视剧，面善嘴毒，脸尖腿粗", AuthorData.ITEM, AuthorData.TYPE_WEEK));
-        authors.add(new AuthorData("http://img3.douban.com/icon/ul79644553-1.jpg", "静岛", "写过风月小说，写过星座专栏，写过唱片简介，写过电视剧，面善嘴毒，脸尖腿粗", AuthorData.ITEM, AuthorData.TYPE_WEEK));
-        authors.add(new AuthorData(AuthorData.SECTION, AuthorData.TYPE_HOT));
-        authors.add(new AuthorData("http://img3.douban.com/icon/ul79644553-1.jpg", "静岛", "写过风月小说，写过星座专栏，写过唱片简介，写过电视剧，面善嘴毒，脸尖腿粗", AuthorData.ITEM, AuthorData.TYPE_HOT));
-        authors.add(new AuthorData("http://img3.douban.com/icon/ul79644553-1.jpg", "静岛", "写过风月小说，写过星座专栏，写过唱片简介，写过电视剧，面善嘴毒，脸尖腿粗", AuthorData.ITEM, AuthorData.TYPE_HOT));
-        authors.add(new AuthorData("http://img3.douban.com/icon/ul79644553-1.jpg", "静岛", "写过风月小说，写过星座专栏，写过唱片简介，写过电视剧，面善嘴毒，脸尖腿粗", AuthorData.ITEM, AuthorData.TYPE_HOT));
-        authors.add(new AuthorData("http://img3.douban.com/icon/ul79644553-1.jpg", "静岛", "写过风月小说，写过星座专栏，写过唱片简介，写过电视剧，面善嘴毒，脸尖腿粗", AuthorData.ITEM, AuthorData.TYPE_HOT));
-        authors.add(new AuthorData("http://img3.douban.com/icon/ul79644553-1.jpg", "静岛", "写过风月小说，写过星座专栏，写过唱片简介，写过电视剧，面善嘴毒，脸尖腿粗", AuthorData.ITEM, AuthorData.TYPE_HOT));
-        authors.add(new AuthorData("http://img3.douban.com/icon/ul79644553-1.jpg", "静岛", "写过风月小说，写过星座专栏，写过唱片简介，写过电视剧，面善嘴毒，脸尖腿粗", AuthorData.ITEM, AuthorData.TYPE_HOT));
-        authors.add(new AuthorData("http://img3.douban.com/icon/ul79644553-1.jpg", "静岛", "写过风月小说，写过星座专栏，写过唱片简介，写过电视剧，面善嘴毒，脸尖腿粗", AuthorData.ITEM, AuthorData.TYPE_HOT));
+//        authors.add(new AuthorData(AuthorData.SECTION, AuthorData.TYPE_WEEK));
+//        authors.add(new AuthorData("http://img3.douban.com/icon/ul79644553-1.jpg", "静岛", "写过风月小说，写过星座专栏，写过唱片简介，写过电视剧，面善嘴毒，脸尖腿粗", AuthorData.ITEM, AuthorData.TYPE_WEEK));
+//        authors.add(new AuthorData("http://img3.douban.com/icon/ul79644553-1.jpg", "静岛", "写过风月小说，写过星座专栏，写过唱片简介，写过电视剧，面善嘴毒，脸尖腿粗", AuthorData.ITEM, AuthorData.TYPE_WEEK));
+//        authors.add(new AuthorData("http://img3.douban.com/icon/ul79644553-1.jpg", "静岛", "写过风月小说，写过星座专栏，写过唱片简介，写过电视剧，面善嘴毒，脸尖腿粗", AuthorData.ITEM, AuthorData.TYPE_WEEK));
+//        authors.add(new AuthorData("http://img3.douban.com/icon/ul79644553-1.jpg", "静岛", "写过风月小说，写过星座专栏，写过唱片简介，写过电视剧，面善嘴毒，脸尖腿粗", AuthorData.ITEM, AuthorData.TYPE_WEEK));
+//        authors.add(new AuthorData(AuthorData.SECTION, AuthorData.TYPE_HOT));
+//        authors.add(new AuthorData("http://img3.douban.com/icon/ul79644553-1.jpg", "静岛", "写过风月小说，写过星座专栏，写过唱片简介，写过电视剧，面善嘴毒，脸尖腿粗", AuthorData.ITEM, AuthorData.TYPE_HOT));
+//        authors.add(new AuthorData("http://img3.douban.com/icon/ul79644553-1.jpg", "静岛", "写过风月小说，写过星座专栏，写过唱片简介，写过电视剧，面善嘴毒，脸尖腿粗", AuthorData.ITEM, AuthorData.TYPE_HOT));
+//        authors.add(new AuthorData("http://img3.douban.com/icon/ul79644553-1.jpg", "静岛", "写过风月小说，写过星座专栏，写过唱片简介，写过电视剧，面善嘴毒，脸尖腿粗", AuthorData.ITEM, AuthorData.TYPE_HOT));
+//        authors.add(new AuthorData("http://img3.douban.com/icon/ul79644553-1.jpg", "静岛", "写过风月小说，写过星座专栏，写过唱片简介，写过电视剧，面善嘴毒，脸尖腿粗", AuthorData.ITEM, AuthorData.TYPE_HOT));
+//        authors.add(new AuthorData("http://img3.douban.com/icon/ul79644553-1.jpg", "静岛", "写过风月小说，写过星座专栏，写过唱片简介，写过电视剧，面善嘴毒，脸尖腿粗", AuthorData.ITEM, AuthorData.TYPE_HOT));
+//        authors.add(new AuthorData("http://img3.douban.com/icon/ul79644553-1.jpg", "静岛", "写过风月小说，写过星座专栏，写过唱片简介，写过电视剧，面善嘴毒，脸尖腿粗", AuthorData.ITEM, AuthorData.TYPE_HOT));
+//        authors.add(new AuthorData("http://img3.douban.com/icon/ul79644553-1.jpg", "静岛", "写过风月小说，写过星座专栏，写过唱片简介，写过电视剧，面善嘴毒，脸尖腿粗", AuthorData.ITEM, AuthorData.TYPE_HOT));
         return authors;
     }
 
@@ -62,36 +62,12 @@ public class GenerateTestDatas {
      */
     public static List<AuthorData> loadAuthors() {
         List<AuthorData> authors = new ArrayList<>();
-        authors.add(new AuthorData("http://img3.douban.com/icon/ul81006765-2.jpg", "莫吉托", "天秤座，既往选择困难，人格分裂，时而正能量爆棚，时而45度仰望天空。拖着青春的尾巴不愿长大。", AuthorData.ITEM, AuthorData.TYPE_HOT));
-        authors.add(new AuthorData("http://img3.douban.com/icon/ul81006765-2.jpg", "莫吉托", "天秤座，既往选择困难，人格分裂，时而正能量爆棚，时而45度仰望天空。拖着青春的尾巴不愿长大。", AuthorData.ITEM, AuthorData.TYPE_HOT));
-        authors.add(new AuthorData("http://img3.douban.com/icon/ul81006765-2.jpg", "莫吉托", "天秤座，既往选择困难，人格分裂，时而正能量爆棚，时而45度仰望天空。拖着青春的尾巴不愿长大。", AuthorData.ITEM, AuthorData.TYPE_HOT));
-        authors.add(new AuthorData("http://img3.douban.com/icon/ul81006765-2.jpg", "莫吉托", "天秤座，既往选择困难，人格分裂，时而正能量爆棚，时而45度仰望天空。拖着青春的尾巴不愿长大。", AuthorData.ITEM, AuthorData.TYPE_HOT));
-        authors.add(new AuthorData("http://img3.douban.com/icon/ul81006765-2.jpg", "莫吉托", "天秤座，既往选择困难，人格分裂，时而正能量爆棚，时而45度仰望天空。拖着青春的尾巴不愿长大。", AuthorData.ITEM, AuthorData.TYPE_HOT));
+//        authors.add(new AuthorData("http://img3.douban.com/icon/ul81006765-2.jpg", "莫吉托", "天秤座，既往选择困难，人格分裂，时而正能量爆棚，时而45度仰望天空。拖着青春的尾巴不愿长大。", AuthorData.ITEM, AuthorData.TYPE_HOT));
+//        authors.add(new AuthorData("http://img3.douban.com/icon/ul81006765-2.jpg", "莫吉托", "天秤座，既往选择困难，人格分裂，时而正能量爆棚，时而45度仰望天空。拖着青春的尾巴不愿长大。", AuthorData.ITEM, AuthorData.TYPE_HOT));
+//        authors.add(new AuthorData("http://img3.douban.com/icon/ul81006765-2.jpg", "莫吉托", "天秤座，既往选择困难，人格分裂，时而正能量爆棚，时而45度仰望天空。拖着青春的尾巴不愿长大。", AuthorData.ITEM, AuthorData.TYPE_HOT));
+//        authors.add(new AuthorData("http://img3.douban.com/icon/ul81006765-2.jpg", "莫吉托", "天秤座，既往选择困难，人格分裂，时而正能量爆棚，时而45度仰望天空。拖着青春的尾巴不愿长大。", AuthorData.ITEM, AuthorData.TYPE_HOT));
+//        authors.add(new AuthorData("http://img3.douban.com/icon/ul81006765-2.jpg", "莫吉托", "天秤座，既往选择困难，人格分裂，时而正能量爆棚，时而45度仰望天空。拖着青春的尾巴不愿长大。", AuthorData.ITEM, AuthorData.TYPE_HOT));
         return authors;
-    }
-
-    /**
-     * 生成栏目数据
-     *
-     * @return
-     */
-    public static List<CatalogData> getCatalogData() {
-        List<CatalogData> catalogs = new ArrayList<>();
-        catalogs.add(new CatalogData(null, "热门精选", "收录“一刻”最受欢迎内容"));
-        catalogs.add(new CatalogData(null, "打鸡血", "每日段子，提神醒脑"));
-        catalogs.add(new CatalogData(null, "洗洗睡", "睡前静静，做个好梦"));
-        catalogs.add(new CatalogData(null, "爱美丽", "时尚穿衣护肤美发全搜罗内容"));
-        catalogs.add(new CatalogData(null, "打鸡血", "每日段子，提神醒脑"));
-        catalogs.add(new CatalogData(null, "洗洗睡", "睡前静静，做个好梦"));
-        catalogs.add(new CatalogData(null, "爱美丽", "时尚穿衣护肤美发全搜罗内容"));
-        catalogs.add(new CatalogData(null, "打鸡血", "每日段子，提神醒脑"));
-        catalogs.add(new CatalogData(null, "洗洗睡", "睡前静静，做个好梦"));
-        catalogs.add(new CatalogData(null, "爱美丽", "时尚穿衣护肤美发全搜罗内容"));
-        catalogs.add(new CatalogData(null, "打鸡血", "每日段子，提神醒脑"));
-        catalogs.add(new CatalogData(null, "洗洗睡", "睡前静静，做个好梦"));
-        catalogs.add(new CatalogData(null, "爱美丽", "时尚穿衣护肤美发全搜罗"));
-        catalogs.add(new CatalogData(null, "爱美丽", "时尚穿衣护肤美发全搜罗"));
-        return catalogs;
     }
 
     /**
@@ -115,8 +91,8 @@ public class GenerateTestDatas {
      *
      * @return
      */
-    public static AuthorData getLogonAuthor() {
-        AuthorData authorData = new AuthorData("http://img4.douban.com/icon/ul72417058-6.jpg", "lost");
-        return authorData;
+    public static AuthorsEntity getLogonAuthor() {
+//        AuthorData authorData = new AuthorData("http://img4.douban.com/icon/ul72417058-6.jpg", "lost");
+        return null;
     }
 }

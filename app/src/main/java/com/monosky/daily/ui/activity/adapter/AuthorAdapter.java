@@ -53,7 +53,7 @@ public class AuthorAdapter extends RecyclerView.Adapter<AuthorAdapter.ViewHolder
                 case R.id.author_main_page:
                     intent = new Intent(mContext, AuthorMainPageActivity.class);
                     Bundle bundle = new Bundle();
-                    bundle.putSerializable("authorData", mAuthorData);
+//                    bundle.putSerializable("authorData", mAuthorData);
                     intent.putExtras(bundle);
                     intent.putExtra("type", ConstData.MAIN_PAGE_TYPE_OTHER);
                     mContext.startActivity(intent);
@@ -73,9 +73,9 @@ public class AuthorAdapter extends RecyclerView.Adapter<AuthorAdapter.ViewHolder
     public void onBindViewHolder(ViewHolder holder, int position) {
         ContentData contentData = mAuthorContents.get(position);
         if(position == 0) {
-            imageLoader.displayImage(mAuthorData.getAuthorImg(), holder.mAuthorImg, ImageLoaderOption.optionInfoImage(R.mipmap.ic_default_avatar_light));
-            holder.mAuthorName.setText(mAuthorData.getAuthorName());
-            holder.mAuthorLabel.setText(mAuthorData.getAuthorLabel());
+//            imageLoader.displayImage(mAuthorData.getAuthorImg(), holder.mAuthorImg, ImageLoaderOption.optionInfoImage(R.mipmap.ic_default_avatar_light));
+//            holder.mAuthorName.setText(mAuthorData.getAuthorName());
+//            holder.mAuthorLabel.setText(mAuthorData.getAuthorLabel());
             holder.mAuthorLayout.setVisibility(View.VISIBLE);
 
             holder.mAuthorMainPage.setOnClickListener(mContentClickListener);

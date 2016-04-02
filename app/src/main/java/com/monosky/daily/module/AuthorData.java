@@ -1,83 +1,49 @@
 package com.monosky.daily.module;
 
-import java.io.Serializable;
+import com.monosky.daily.module.entity.AuthorsEntity;
+
+import java.util.List;
 
 /**
- * 热门作者实体类
- * Created by jonez_000 on 2015/8/18.
+ * 作者接口解析类
  */
-public class AuthorData implements Serializable {
+public class AuthorData {
 
-    public static final int ITEM = 0;
-    public static final int SECTION = 1;
+    private int count;
+    private int start;
+    private int total;
 
-    public static final int TYPE_WEEK = 0;
-    public static final int TYPE_HOT = 1;
+    private List<AuthorsEntity> authors;
 
-    private String authorImg;
-    private String authorName;
-    private String authorLabel;
-    private int sortType;    //0:真实内容 1：内容分类
-    private int type;    //0:本周推荐 1：热门作者
-
-    public AuthorData() {
+    public void setCount(int count) {
+        this.count = count;
     }
 
-    public AuthorData(int sortType, int type) {
-        this.sortType = sortType;
-        this.type = type;
+    public void setStart(int start) {
+        this.start = start;
     }
 
-    public AuthorData(String authorImg, String authorName) {
-        this.authorImg = authorImg;
-        this.authorName = authorName;
+    public void setTotal(int total) {
+        this.total = total;
     }
 
-    public AuthorData(String authorImg, String authorName, String authorLabel, int sortType, int type) {
-        this.authorImg = authorImg;
-        this.authorName = authorName;
-        this.authorLabel = authorLabel;
-        this.sortType = sortType;
-        this.type = type;
+    public void setAuthors(List<AuthorsEntity> authors) {
+        this.authors = authors;
     }
 
-    public String getAuthorImg() {
-        return authorImg;
+    public int getCount() {
+        return count;
     }
 
-    public void setAuthorImg(String authorImg) {
-        this.authorImg = authorImg;
+    public int getStart() {
+        return start;
     }
 
-    public String getAuthorName() {
-        return authorName;
+    public int getTotal() {
+        return total;
     }
 
-    public void setAuthorName(String authorName) {
-        this.authorName = authorName;
-    }
-
-    public String getAuthorLabel() {
-        return authorLabel;
-    }
-
-    public void setAuthorLabel(String authorLabel) {
-        this.authorLabel = authorLabel;
-    }
-
-    public int getSortType() {
-        return sortType;
-    }
-
-    public void setSortType(int sortType) {
-        this.sortType = sortType;
-    }
-
-    public int getType() {
-        return type;
-    }
-
-    public void setType(int type) {
-        this.type = type;
+    public List<AuthorsEntity> getAuthors() {
+        return authors;
     }
 }

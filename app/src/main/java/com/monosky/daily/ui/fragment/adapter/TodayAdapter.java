@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.monosky.daily.BaseApplication;
 import com.monosky.daily.R;
 import com.monosky.daily.module.ContentData;
+import com.monosky.daily.module.entity.PostsEntity;
 import com.monosky.daily.ui.activity.MainActivity;
 import com.monosky.daily.util.ImageLoaderOption;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -31,9 +32,9 @@ public class TodayAdapter extends RecyclerView.Adapter<TodayAdapter.ViewHolder> 
 
     private ImageLoader imageLoader = ImageLoader.getInstance();
     // 数据集
-    private List<ContentData.PostsEntity> mPostList;
+    private List<PostsEntity> mPostList;
 
-    public TodayAdapter(List<ContentData.PostsEntity> dataList) {
+    public TodayAdapter(List<PostsEntity> dataList) {
         super();
         mPostList = dataList;
     }
@@ -71,7 +72,7 @@ public class TodayAdapter extends RecyclerView.Adapter<TodayAdapter.ViewHolder> 
         } else {
             viewHolder.mTodayToHistory.setVisibility(View.GONE);
         }
-        ContentData.PostsEntity postsEntity = mPostList.get(pos);
+        PostsEntity postsEntity = mPostList.get(pos);
         if (TextUtils.isEmpty(postsEntity.getColumn())) {
             viewHolder.mTodayContentCatalog.setVisibility(View.GONE);
         } else {

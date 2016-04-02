@@ -8,48 +8,48 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.monosky.daily.BaseApplication;
 import com.monosky.daily.R;
-import com.monosky.daily.module.CatalogData;
+import com.monosky.daily.module.entity.ColumnsEntity;
+import com.monosky.daily.util.ImageLoaderOption;
+import com.nostra13.universalimageloader.core.ImageLoader;
 
 import java.util.List;
 
-/**
- * Created by jonez_000 on 2015/8/18.
- */
+import butterknife.Bind;
+import butterknife.ButterKnife;
+
 public class CatalogAdapter extends BaseAdapter {
 
-    private List<CatalogData> catalogDataList;
+    private List<ColumnsEntity> catalogDataList;
     private Context mContext;
+    private ImageLoader mImageLoader = ImageLoader.getInstance();
 
-    public CatalogAdapter(Context mContext, List<CatalogData> catalogDataList) {
-        this.mContext = mContext;
+    public CatalogAdapter(List<ColumnsEntity> catalogDataList) {
         this.catalogDataList = catalogDataList;
+        this.mContext = BaseApplication.getContext();
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        ViewHolder viewHolder = null;
-        if(convertView == null) {
-            viewHolder = new ViewHolder();
+        ViewHolder viewHolder;
+        if (convertView == null) {
             convertView = LayoutInflater.from(mContext).inflate(R.layout.fragment_catalog_item, null);
-            viewHolder.mCatalogTopLine = (View) convertView.findViewById(R.id.catalog_top_line);
-            viewHolder.mCatalogImg = (ImageView) convertView.findViewById(R.id.catalog_img);
-            viewHolder.mCatalogTitle = (TextView) convertView.findViewById(R.id.catalog_title);
-            viewHolder.mCatalogLabel = (TextView) convertView.findViewById(R.id.catalog_label);
+            viewHolder = new ViewHolder(convertView);
             convertView.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
 
-        CatalogData catalogData = getItem(position);
-        if(position == 0 || position == 1) {
+        ColumnsEntity columnsEntity = getItem(position);
+        if (position == 0 || position == 1) {
             viewHolder.mCatalogTopLine.setVisibility(View.VISIBLE);
         } else {
             viewHolder.mCatalogTopLine.setVisibility(View.GONE);
         }
-        viewHolder.mCatalogImg.setBackgroundResource(R.mipmap.ic_column_default_light);
-        viewHolder.mCatalogTitle.setText(catalogData.getCatalogTitle());
-        viewHolder.mCatalogLabel.setText(catalogData.getCatalogLabel());
+        mImageLoader.displayImage(columnsEntity.getIcon(), viewHolder.mCatalogImg, ImageLoaderOption.optionInfoImage(R.mipmap.ic_column_default_light));
+        viewHolder.mCatalogTitle.setText(columnsEntity.getName());
+        viewHolder.mCatalogLabel.setText(columnsEntity.getDescription());
         return convertView;
     }
 
@@ -59,7 +59,7 @@ public class CatalogAdapter extends BaseAdapter {
     }
 
     @Override
-    public CatalogData getItem(int position) {
+    public ColumnsEntity getItem(int position) {
         return catalogDataList.get(position);
     }
 
@@ -68,10 +68,18 @@ public class CatalogAdapter extends BaseAdapter {
         return position;
     }
 
-    public class ViewHolder{
+    static class ViewHolder {
+        @Bind(R.id.catalog_top_line)
         View mCatalogTopLine;
+        @Bind(R.id.catalog_img)
         ImageView mCatalogImg;
+        @Bind(R.id.catalog_title)
         TextView mCatalogTitle;
+        @Bind(R.id.catalog_label)
         TextView mCatalogLabel;
+
+        ViewHolder(View view) {
+            ButterKnife.bind(this, view);
+        }
     }
 }

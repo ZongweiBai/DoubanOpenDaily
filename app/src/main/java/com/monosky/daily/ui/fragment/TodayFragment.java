@@ -12,6 +12,7 @@ import com.kymjs.rxvolley.client.HttpCallback;
 import com.monosky.daily.R;
 import com.monosky.daily.constant.APIConstData;
 import com.monosky.daily.module.ContentData;
+import com.monosky.daily.module.entity.PostsEntity;
 import com.monosky.daily.ui.activity.ContentDetailActivity;
 import com.monosky.daily.ui.fragment.adapter.TodayAdapter;
 import com.monosky.daily.util.DateUtils;
@@ -31,7 +32,7 @@ public class TodayFragment extends BaseRefreshFragment {
     @Bind(R.id.today_recycle_view)
     RecyclerView mRecycleView;
     private TodayAdapter mTodayAdapter;
-    private List<ContentData.PostsEntity> mListData = new ArrayList<>();
+    private List<PostsEntity> mListData = new ArrayList<>();
 
     @Override
     protected int getLayout() {

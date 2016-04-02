@@ -35,11 +35,11 @@ public class BaseActivity extends AppCompatActivity {
         SystemBarTintManager tintManager = new SystemBarTintManager(this);
         tintManager.setStatusBarTintEnabled(true);
         tintManager.setNavigationBarTintEnabled(true);
-        tintManager.setStatusBarTintResource(R.color.main_color);//设置颜色
+        tintManager.setStatusBarTintResource(R.color.blue);//设置颜色
     }
 
     private void getScreenParams() {
-        DisplayMetrics dm =getResources().getDisplayMetrics();
+        DisplayMetrics dm = getResources().getDisplayMetrics();
         BaseApplication.screenWidth = dm.widthPixels;
         BaseApplication.screenHeight = dm.heightPixels;
         BaseApplication.densityDpi = dm.densityDpi;
@@ -59,6 +59,7 @@ public class BaseActivity extends AppCompatActivity {
 
     /**
      * 关闭软键盘
+     *
      * @param view
      */
     protected void closeInputMethod(View view) {

@@ -40,7 +40,7 @@ public class ToastUtils extends Toast {
             textView.setText(message);
 
             toast.setView(toastView);
-            toast.setGravity(Gravity.CENTER_VERTICAL, 0, (int) (0.3 * ScreenUtils.getScreenHeight(context)));
+            toast.setGravity(Gravity.CENTER_VERTICAL, 0, (int) (0.35 * ScreenUtils.getScreenHeight(context)));
             toast.setDuration(duration);
             try {
                 Object mTN = getField(toast, "mTN");

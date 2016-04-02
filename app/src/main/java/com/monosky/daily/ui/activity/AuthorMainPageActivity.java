@@ -14,6 +14,8 @@ import com.afollestad.materialdialogs.MaterialDialog;
 import com.monosky.daily.constant.ConstData;
 import com.monosky.daily.R;
 import com.monosky.daily.module.AuthorData;
+import com.monosky.daily.module.ContentData;
+import com.monosky.daily.module.entity.AuthorsEntity;
 import com.monosky.daily.util.ImageLoaderOption;
 import com.monosky.daily.util.SharedPreferencesUtil;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -30,7 +32,7 @@ public class AuthorMainPageActivity extends BaseActivity {
     private TextView mAuthorLike;
     private Button mLogoffBtn;
 
-    private AuthorData mAuthorData;
+    private AuthorsEntity mAuthorData;
     private String type;
 
     @Override
@@ -39,7 +41,7 @@ public class AuthorMainPageActivity extends BaseActivity {
 
         setContentView(R.layout.activity_author_main_page);
 
-        mAuthorData = (AuthorData) getIntent().getSerializableExtra("authorData");
+        mAuthorData = (AuthorsEntity) getIntent().getSerializableExtra("authorData");
         type = getIntent().getStringExtra("type");
 
         getViews();
@@ -57,8 +59,8 @@ public class AuthorMainPageActivity extends BaseActivity {
 
     private void setViews() {
         mTopTitle.setText(getResources().getString(R.string.douban_title));
-        imageLoader.displayImage(mAuthorData.getAuthorImg(), mAuthorImg, ImageLoaderOption.optionInfoImage(R.mipmap.ic_default_avatar_light));
-        mAuthorName.setText(mAuthorData.getAuthorName());
+        imageLoader.displayImage(mAuthorData.getAvatar(), mAuthorImg, ImageLoaderOption.optionInfoImage(R.mipmap.ic_default_avatar_light));
+        mAuthorName.setText(mAuthorData.getName());
 
         if(type.equals(ConstData.MAIN_PAGE_TYPE_OTHER)) {
             mAuthorLike.setVisibility(View.VISIBLE);

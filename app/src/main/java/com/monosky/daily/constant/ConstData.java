@@ -18,6 +18,12 @@ public class ConstData implements Serializable {
     public static String BROADCAST_LOGOFF = "BROADCAST_LOGOFF";
 
     /**
+     * 刷新或者加载更多
+     */
+    public static String REQUEST_REFRESH = "refresh";
+    public static String REQUEST_LOAD = "load";
+
+    /**
      * SharePreference常量
      */
     public static String FONT_SIZE_SETTING = "FONT_SIZE_SETTING";

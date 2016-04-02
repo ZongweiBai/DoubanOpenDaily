@@ -1,128 +1,138 @@
 package com.monosky.daily.ui.fragment.adapter;
 
 import android.content.Context;
+import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.monosky.daily.BaseApplication;
 import com.monosky.daily.R;
-import com.monosky.daily.module.AuthorData;
+import com.monosky.daily.module.entity.AuthorsEntity;
 import com.monosky.daily.util.ImageLoaderOption;
-import com.monosky.daily.ui.widget.PinnedSectionListView;
 import com.nostra13.universalimageloader.core.ImageLoader;
+import com.timehop.stickyheadersrecyclerview.StickyRecyclerHeadersAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
+import de.hdodenhof.circleimageview.CircleImageView;
+
 /**
- * Created by jonez_000 on 2015/8/18.
+ * 热门作者adapter
  */
-public class HotAuthorAdapter extends BaseAdapter implements PinnedSectionListView.PinnedSectionListAdapter {
+public class HotAuthorAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
+        implements StickyRecyclerHeadersAdapter<RecyclerView.ViewHolder> {
 
-    private List<AuthorData> authorDataList = new ArrayList<>();
+    private List<AuthorsEntity> mAuthorsEntities = new ArrayList<>();
     private Context mContext;
-    private ImageLoader imageLoader =  ImageLoader.getInstance();
+    private ImageLoader imageLoader = ImageLoader.getInstance();
 
-    public HotAuthorAdapter(Context context,List<AuthorData> list){
-        this.authorDataList.clear();
-        this.authorDataList.addAll(list);
-        this.mContext=context;
+    public HotAuthorAdapter(List<AuthorsEntity> list) {
+        this.mAuthorsEntities = list;
+        this.mContext = BaseApplication.getContext();
     }
 
     @Override
-    public int getCount() {
-        return authorDataList.size();
-    }
-
-    @Override
-    public AuthorData getItem(int position) {
-        return authorDataList.get(position);
-    }
-
-    @Override
-    public long getItemId(int position) {
-        return position;
-    }
-
-    @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        ViewHolder viewHolder = null;
-        if(convertView == null) {
-            viewHolder = new ViewHolder();
-            convertView = LayoutInflater.from(mContext).inflate(R.layout.fragment_hot_author_item, null);
-            viewHolder.mAuthorItemTitleLayout = (LinearLayout) convertView.findViewById(R.id.hot_author_item_title_layout);
-            viewHolder.mAuthorItemTitle = (TextView) convertView.findViewById(R.id.hot_author_item_title);
-            viewHolder.mAuthorLayout = (RelativeLayout) convertView.findViewById(R.id.hot_author_content_layout);
-            viewHolder.mAuthorName = (TextView) convertView.findViewById(R.id.author_name);
-            viewHolder.mAuthorImg = (ImageView) convertView.findViewById(R.id.author_img);
-            viewHolder.mAuthorLabel = (TextView) convertView.findViewById(R.id.author_label);
-            viewHolder.mAuthorSepline = (View) convertView.findViewById(R.id.hot_author_item_sepline);
-            convertView.setTag(viewHolder);
+    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        if (viewType == -1) {
+            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_hot_author_footer, parent, false);
+            return new FooterViewHolder(view);
         } else {
-            viewHolder = (ViewHolder) convertView.getTag();
+            View view = View.inflate(parent.getContext(), R.layout.fragment_hot_author_item, null);
+            return new ItemViewHolder(view);
         }
+    }
 
-        AuthorData authorData = getItem(position);
-        if(AuthorData.SECTION == authorData.getSortType()) {
-            viewHolder.mAuthorLayout.setVisibility(View.GONE);
-            viewHolder.mAuthorName.setVisibility(View.GONE);
-            viewHolder.mAuthorImg.setVisibility(View.GONE);
-            viewHolder.mAuthorLabel.setVisibility(View.GONE);
-            viewHolder.mAuthorItemTitleLayout.setVisibility(View.VISIBLE);
-            if(AuthorData.TYPE_WEEK==authorData.getType()) {
-                viewHolder.mAuthorItemTitle.setText(mContext.getResources().getString(R.string.week_recommand));
-            } else {
-                viewHolder.mAuthorItemTitle.setText(mContext.getResources().getString(R.string.hot_author_recommand));
-            }
-            viewHolder.mAuthorSepline.setVisibility(View.GONE);
+    @Override
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+        if (getItemViewType(position) == -1) {
+            FooterViewHolder footerHolder = (FooterViewHolder) holder;
+            footerHolder.mHotAuthorFooter.setText(mContext.getString(R.string.author_all));
         } else {
-            viewHolder.mAuthorItemTitleLayout.setVisibility(View.GONE);
-            viewHolder.mAuthorLayout.setVisibility(View.VISIBLE);
-            viewHolder.mAuthorName.setText(authorData.getAuthorName());
-            viewHolder.mAuthorLabel.setText(authorData.getAuthorLabel());
-            imageLoader.displayImage(authorData.getAuthorImg(), viewHolder.mAuthorImg, ImageLoaderOption.optionInfoImage(R.mipmap.ic_empty_light));
-            if(position == authorDataList.size()-1) {
-                viewHolder.mAuthorSepline.setVisibility(View.GONE);
-            } else {
-                viewHolder.mAuthorSepline.setVisibility(View.VISIBLE);
-            }
+            ItemViewHolder itemHolder = (ItemViewHolder) holder;
+            AuthorsEntity authorData = mAuthorsEntities.get(position);
+            itemHolder.mAuthorName.setText(authorData.getName());
+            itemHolder.mAuthorLabel.setText(authorData.getEditorNotes());
+            imageLoader.displayImage(authorData.getAvatar(), itemHolder.mAuthorImg, ImageLoaderOption.optionInfoImage(R.mipmap.ic_empty_light));
         }
-        return convertView;
     }
 
     @Override
-    public boolean isItemViewTypePinned(int viewType) {
-        return viewType == AuthorData.SECTION;//0是标题，1是内容
+    public long getHeaderId(int position) {
+        if (position < 5) {
+            return 0;
+        }
+        return 1;
     }
 
     @Override
-    public int getViewTypeCount() {
-        return 2;//2种view的类型 baseAdapter中得方法
+    public RecyclerView.ViewHolder onCreateHeaderViewHolder(ViewGroup parent) {
+        View view = View.inflate(parent.getContext(), R.layout.fragment_hot_author_header, null);
+        return new HeaderViewHolder(view);
+    }
+
+    @Override
+    public void onBindHeaderViewHolder(RecyclerView.ViewHolder holder, int position) {
+        HeaderViewHolder headerHolder = (HeaderViewHolder) holder;
+        if (position < 5) {
+            headerHolder.mHotAuthorHeader.setText(mContext.getString(R.string.week_rec));
+        } else {
+            headerHolder.mHotAuthorHeader.setText(mContext.getString(R.string.hot_author_rec));
+        }
+    }
+
+    @Override
+    public int getItemCount() {
+        return mAuthorsEntities.size();
     }
 
     @Override
     public int getItemViewType(int position) {
-        return ((AuthorData) getItem(position)).getSortType();
+        if (TextUtils.isEmpty(mAuthorsEntities.get(position).getName())) {
+            return -1;
+        }
+        return 0;
     }
 
-    private class ViewHolder {
-        LinearLayout mAuthorItemTitleLayout;
-        TextView mAuthorItemTitle;
-        RelativeLayout mAuthorLayout;
-        ImageView mAuthorImg;
+    static class ItemViewHolder extends RecyclerView.ViewHolder {
+        @Bind(R.id.author_img)
+        CircleImageView mAuthorImg;
+        @Bind(R.id.author_name)
         TextView mAuthorName;
+        @Bind(R.id.author_label)
         TextView mAuthorLabel;
-        View mAuthorSepline;
+        @Bind(R.id.hot_author_content_layout)
+        RelativeLayout mHotAuthorContentLayout;
+
+        ItemViewHolder(View view) {
+            super(view);
+            ButterKnife.bind(this, view);
+        }
     }
 
-    public void refresh(List<AuthorData> refreshList) {
-        authorDataList.clear();
-        authorDataList.addAll(refreshList);
-        this.notifyDataSetChanged();
+    static class HeaderViewHolder extends RecyclerView.ViewHolder {
+        @Bind(R.id.hot_author_header)
+        TextView mHotAuthorHeader;
+
+        HeaderViewHolder(View view) {
+            super(view);
+            ButterKnife.bind(this, view);
+        }
+    }
+
+    static class FooterViewHolder extends RecyclerView.ViewHolder {
+        @Bind(R.id.hot_author_footer)
+        TextView mHotAuthorFooter;
+
+        FooterViewHolder(View view) {
+            super(view);
+            ButterKnife.bind(this, view);
+        }
     }
 }

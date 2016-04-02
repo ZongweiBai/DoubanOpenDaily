@@ -1,47 +1,32 @@
 package com.monosky.daily.module;
 
-import java.io.Serializable;
+import com.monosky.daily.module.entity.ColumnsEntity;
+
+import java.util.List;
 
 /**
- * 栏目分类
- * Created by jonez_000 on 2015/8/18.
+ * 栏目分类接口解析类
  */
-public class CatalogData implements Serializable {
+public class CatalogData {
 
-    private String catalogImg;
-    private String catalogTitle;
-    private String catalogLabel;
+    private int total;
 
-    public CatalogData() {
+    private List<ColumnsEntity> columns;
+
+    public void setTotal(int total) {
+        this.total = total;
     }
 
-    public CatalogData(String catalogImg, String catalogTitle, String catalogLabel) {
-        this.catalogImg = catalogImg;
-        this.catalogTitle = catalogTitle;
-        this.catalogLabel = catalogLabel;
+    public void setColumns(List<ColumnsEntity> columns) {
+        this.columns = columns;
     }
 
-    public String getCatalogImg() {
-        return catalogImg;
+    public int getTotal() {
+        return total;
     }
 
-    public void setCatalogImg(String catalogImg) {
-        this.catalogImg = catalogImg;
+    public List<ColumnsEntity> getColumns() {
+        return columns;
     }
 
-    public String getCatalogTitle() {
-        return catalogTitle;
-    }
-
-    public void setCatalogTitle(String catalogTitle) {
-        this.catalogTitle = catalogTitle;
-    }
-
-    public String getCatalogLabel() {
-        return catalogLabel;
-    }
-
-    public void setCatalogLabel(String catalogLabel) {
-        this.catalogLabel = catalogLabel;
-    }
 }

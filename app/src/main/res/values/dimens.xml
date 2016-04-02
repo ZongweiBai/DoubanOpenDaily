@@ -4,9 +4,17 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="common_horizontal_margin">8dp</dimen>
+    <dimen name="common_divider">1dp</dimen>
 
     <dimen name="mm_up_arrow_margin">-16dp</dimen>
     <dimen name="action_bar_height">56dp</dimen>
+    <dimen name="dp_48">48dp</dimen>
+    <dimen name="dp_40">40dp</dimen>
+    <dimen name="dp_36">36dp</dimen>
+    <dimen name="dp_32">32dp</dimen>
+    <dimen name="dp_8">8dp</dimen>
+    <dimen name="dp_6">6dp</dimen>
+    <dimen name="dp_4">4dp</dimen>
 
     <dimen name="text_size_20">20dp</dimen>
     <dimen name="text_size_18">18dp</dimen>

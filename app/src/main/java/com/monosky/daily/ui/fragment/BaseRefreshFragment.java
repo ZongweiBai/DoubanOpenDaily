@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.monosky.daily.R;
+import com.monosky.daily.constant.ConstData;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -16,6 +17,13 @@ import butterknife.ButterKnife;
  * 可刷新的Fragment基类
  */
 public abstract class BaseRefreshFragment extends BaseFragment {
+
+    protected String mRequestType = ConstData.REQUEST_REFRESH;
+    protected Boolean mRefreshing = false;
+    protected Boolean mLoading = false;
+    protected Boolean mHasNext = true;
+    protected int mPositionStart = 0;
+    protected int mItemCount = 0;
 
     @Bind(R.id.swipe_refresh)
     SwipeRefreshLayout mSwipeRefresh;
@@ -34,6 +42,7 @@ public abstract class BaseRefreshFragment extends BaseFragment {
         mSwipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
+                mRequestType = ConstData.REQUEST_REFRESH;
                 onRefreshStarted();
             }
         });
@@ -42,10 +51,12 @@ public abstract class BaseRefreshFragment extends BaseFragment {
 
             @Override
             public void run() {
+                mRefreshing = true;
                 mSwipeRefresh.setRefreshing(true);
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
+                        mRequestType = ConstData.REQUEST_REFRESH;
                         onRefreshStarted();
                     }
                 }, 998);

@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import com.monosky.daily.BaseApplication;
 import com.monosky.daily.R;
-import com.monosky.daily.module.ContentData;
+import com.monosky.daily.module.entity.PostsEntity;
 import com.monosky.daily.ui.activity.ContentDetailActivity;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.timehop.stickyheadersrecyclerview.StickyRecyclerHeadersAdapter;
@@ -29,17 +29,18 @@ import butterknife.ButterKnife;
 /**
  * 往期内容适配器
  */
-public class HistoryAdaper extends RecyclerView.Adapter<RecyclerView.ViewHolder>
+public class HistoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         implements StickyRecyclerHeadersAdapter<RecyclerView.ViewHolder> {
 
-    private List<ContentData.PostsEntity> mPostsEntities = new ArrayList<>();
+    private List<PostsEntity> mPostsEntities = new ArrayList<>();
     private Context mContext;
     private ImageLoader imageLoader = ImageLoader.getInstance();
     private View.OnClickListener mHistoryClickListener;
     private SimpleDateFormat parseSdf = new SimpleDateFormat("yyyy-MM-dd");
-    private SimpleDateFormat formatSdf = new SimpleDateFormat("dd MMM", Locale.ENGLISH);
+    private SimpleDateFormat formatSdf = new SimpleDateFormat("dd", Locale.ENGLISH);
+    private SimpleDateFormat formatSdfMonth = new SimpleDateFormat("MMM", Locale.ENGLISH);
 
-    public HistoryAdaper(List<ContentData.PostsEntity> list) {
+    public HistoryAdapter(List<PostsEntity> list) {
         this.mPostsEntities.clear();
         this.mPostsEntities.addAll(list);
         this.mHistoryClickListener = historyClickListener;
@@ -62,11 +63,16 @@ public class HistoryAdaper extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
     @Override
     public long getHeaderId(int position) {
-        return getItem(position).charAt(0);
+        return getPublishDate(position).getTime();
     }
 
-    public String getItem(int position) {
-        return mPostsEntities.get(position).getDate();
+    public Date getPublishDate(int position) {
+        try {
+            return parseSdf.parse(mPostsEntities.get(position).getDate());
+        } catch (ParseException e) {
+            e.printStackTrace();
+            return new Date();
+        }
     }
 
     @Override
@@ -79,12 +85,9 @@ public class HistoryAdaper extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     @Override
     public void onBindHeaderViewHolder(RecyclerView.ViewHolder holder, int position) {
         HeaderViewHolder headerViewHolder = (HeaderViewHolder) holder;
-        try {
-            Date publishTime = parseSdf.parse(getItem(position));
-            headerViewHolder.mItemHeader.setText(formatSdf.format(publishTime));
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+        Date publishTime = getPublishDate(position);
+        headerViewHolder.mItemHeader.setText(formatSdf.format(publishTime));
+        headerViewHolder.mItemHeaderMonth.setText(formatSdfMonth.format(publishTime));
     }
 
     @Override
@@ -103,12 +106,12 @@ public class HistoryAdaper extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         ItemViewHolder itemHolder = (ItemViewHolder) holder;
 
-        ContentData.PostsEntity postsEntity = mPostsEntities.get(position);
+        PostsEntity postsEntity = mPostsEntities.get(position);
         itemHolder.mHistoryContentTitle.setText(postsEntity.getTitle());
 
     }
 
-    public void refresh(List<ContentData.PostsEntity> refreshList) {
+    public void refresh(List<PostsEntity> refreshList) {
         mPostsEntities.clear();
         mPostsEntities.addAll(refreshList);
         this.notifyDataSetChanged();
@@ -117,6 +120,8 @@ public class HistoryAdaper extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     static class HeaderViewHolder extends RecyclerView.ViewHolder {
         @Bind(R.id.item_header)
         TextView mItemHeader;
+        @Bind(R.id.item_header_month)
+        TextView mItemHeaderMonth;
 
         HeaderViewHolder(View view) {
             super(view);
@@ -137,12 +142,15 @@ public class HistoryAdaper extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         TextView mHistoryContentLabel;
         @Bind(R.id.history_content_layout)
         RelativeLayout mHistoryContentLayout;
-        @Bind(R.id.history_item_sepline)
-        View mHistoryItemSepline;
 
         ItemViewHolder(View view) {
             super(view);
             ButterKnife.bind(this, view);
         }
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        return super.getItemViewType(position);
     }
 }

@@ -20,6 +20,7 @@ import android.widget.Toast;
 
 import com.monosky.daily.constant.ConstData;
 import com.monosky.daily.R;
+import com.monosky.daily.module.entity.AuthorsEntity;
 import com.monosky.daily.ui.fragment.CatalogFragment;
 import com.monosky.daily.ui.fragment.FavoriteFragment;
 import com.monosky.daily.ui.fragment.HistoryFragment;
@@ -159,9 +160,9 @@ public class MainActivity extends BaseActivity {
     private void setDrawerView() {
 
         if (!TextUtils.isEmpty(SharedPreferencesUtil.getInstance().getValue(ConstData.LOGON_ACCOUNT))) {
-            AuthorData authorData = GenerateTestDatas.getLogonAuthor();
-            imageLoader.displayImage(authorData.getAuthorImg(), mDrawerAuthorImg, ImageLoaderOption.optionInfoImage(R.mipmap.ic_default_avatar_light));
-            mDrawerLogin.setText(authorData.getAuthorName());
+            AuthorsEntity authorData = GenerateTestDatas.getLogonAuthor();
+            imageLoader.displayImage(authorData.getAvatar(), mDrawerAuthorImg, ImageLoaderOption.optionInfoImage(R.mipmap.ic_default_avatar_light));
+            mDrawerLogin.setText(authorData.getName());
         }
 
         mDrawerLoginLayout.setOnClickListener(onClick);
@@ -190,10 +191,10 @@ public class MainActivity extends BaseActivity {
                         Intent intent = new Intent(mainActivity, LogonActivity.class);
                         mainActivity.startActivity(intent);
                     } else {
-                        AuthorData authorData = GenerateTestDatas.getLogonAuthor();
+                        AuthorsEntity authorData = GenerateTestDatas.getLogonAuthor();
                         Intent intent = new Intent(mainActivity, AuthorMainPageActivity.class);
                         Bundle bundle = new Bundle();
-                        bundle.putSerializable("authorData", authorData);
+//                        bundle.putSerializable("authorData", authorData);
                         intent.putExtras(bundle);
                         intent.putExtra("type", ConstData.MAIN_PAGE_TYPE_SELF);
                         mainActivity.startActivity(intent);
@@ -299,9 +300,9 @@ public class MainActivity extends BaseActivity {
         public void onReceive(Context context, Intent intent) {
             if ((ConstData.BROADCAST_LOGON).equals(intent.getAction())) {
                 mDrawerLayout.closeDrawers();
-                AuthorData authorData = GenerateTestDatas.getLogonAuthor();
-                imageLoader.displayImage(authorData.getAuthorImg(), mDrawerAuthorImg, ImageLoaderOption.optionInfoImage(R.mipmap.ic_default_avatar_light));
-                mDrawerLogin.setText(authorData.getAuthorName());
+                AuthorsEntity authorData = GenerateTestDatas.getLogonAuthor();
+                imageLoader.displayImage(authorData.getAvatar(), mDrawerAuthorImg, ImageLoaderOption.optionInfoImage(R.mipmap.ic_default_avatar_light));
+                mDrawerLogin.setText(authorData.getName());
             }
         }
     };
