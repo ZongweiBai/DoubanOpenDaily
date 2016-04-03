@@ -31,11 +31,11 @@
             android:label="@string/app_name"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ui.activity.ContentDetailActivity"
+            android:name=".ui.activity.PostDetailActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ui.activity.ContentReplyActivity"
+            android:name=".ui.activity.PostReplyActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait" />
         <activity

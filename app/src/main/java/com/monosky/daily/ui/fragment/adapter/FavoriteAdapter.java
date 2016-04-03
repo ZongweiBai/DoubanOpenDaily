@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * 我的喜欢Adapter
  */
-public class FavoriteAdapter extends RecyclerView.Adapter<TodayAdapter.ViewHolder> {
+public class FavoriteAdapter extends RecyclerView.Adapter<TodayAdapter.HeaderViewHolder> {
 
     private ImageLoader imageLoader = ImageLoader.getInstance();
     private List<PostsEntity> mPostList;
@@ -25,12 +25,12 @@ public class FavoriteAdapter extends RecyclerView.Adapter<TodayAdapter.ViewHolde
     }
 
     @Override
-    public TodayAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public TodayAdapter.HeaderViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         return null;
     }
 
     @Override
-    public void onBindViewHolder(TodayAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(TodayAdapter.HeaderViewHolder holder, int position) {
 
     }
 

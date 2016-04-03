@@ -1,10 +1,8 @@
 package com.monosky.daily.ui.fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
 
 import com.alibaba.fastjson.JSON;
 import com.kymjs.rxvolley.RxVolley;
@@ -13,10 +11,10 @@ import com.monosky.daily.R;
 import com.monosky.daily.constant.APIConstData;
 import com.monosky.daily.module.ContentData;
 import com.monosky.daily.module.entity.PostsEntity;
-import com.monosky.daily.ui.activity.ContentDetailActivity;
 import com.monosky.daily.ui.fragment.adapter.TodayAdapter;
 import com.monosky.daily.util.DateUtils;
 import com.monosky.daily.util.ToastUtils;
+import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,13 +48,10 @@ public class TodayFragment extends BaseRefreshFragment {
         // 创建Adapter,并指定数据集
         mTodayAdapter = new TodayAdapter(mListData);
         mRecycleView.setAdapter(mTodayAdapter);
-        mTodayAdapter.setOnItemClickListener(new TodayAdapter.OnRecyclerViewItemClickListener() {
-            @Override
-            public void onItemClick(View view, Object data) {
-                Intent intent = new Intent(getActivity(), ContentDetailActivity.class);
-                getActivity().startActivity(intent);
-            }
-        });
+        // Add decoration for dividers between list items
+        HorizontalDividerItemDecoration mItemDecoration = new HorizontalDividerItemDecoration.Builder(getActivity())
+                .colorResId(R.color.drawer_line).sizeResId(R.dimen.common_divider).build();
+        mRecycleView.addItemDecoration(mItemDecoration);
 
         // 初始化swipeRefreshLayout并发起请求
         initSwipeLayout();
@@ -76,7 +71,9 @@ public class TodayFragment extends BaseRefreshFragment {
                         super.onSuccess(t);
                         ContentData contentData = JSON.parseObject(t, ContentData.class);
                         mListData.clear();
+                        mListData.add(new PostsEntity());
                         mListData.addAll(contentData.getPosts());
+                        mListData.add(new PostsEntity());
                         mTodayAdapter.notifyDataSetChanged();
                         ToastUtils.showShort(getContext(), "请求成功");
                     }

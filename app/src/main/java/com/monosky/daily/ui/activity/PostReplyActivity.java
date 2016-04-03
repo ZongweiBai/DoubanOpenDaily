@@ -18,9 +18,9 @@ import java.util.List;
 /**
  * 文章评论
  */
-public class ContentReplyActivity extends BaseActivity {
+public class PostReplyActivity extends BaseActivity {
 
-    public static ContentReplyActivity mContentReplyActivity;
+    public static PostReplyActivity mContentReplyActivity;
 
     private TextView mTopTitle;
     private ListView mRelpyListView;
@@ -31,7 +31,7 @@ public class ContentReplyActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_content_reply);
+        setContentView(R.layout.activity_post_reply);
         mContentReplyActivity = this;
 
         getViews();
@@ -70,12 +70,12 @@ public class ContentReplyActivity extends BaseActivity {
         public void onClick(View v) {
             switch (v.getId()) {
                 case R.id.actionbar_title:
-                    ContentReplyActivity.this.finish();
+                    PostReplyActivity.this.finish();
                     break;
                 case R.id.reply_tip:
                     // 跳转到登录页，登录成功后关闭登录页
-                    Intent intent = new Intent(ContentReplyActivity.this, LogonActivity.class);
-                    ContentReplyActivity.this.startActivity(intent);
+                    Intent intent = new Intent(PostReplyActivity.this, LogonActivity.class);
+                    PostReplyActivity.this.startActivity(intent);
                     break;
             }
         }

@@ -12,10 +12,10 @@
     <color name="black">#000000</color>
 
     <!-- 文字颜色 -->
-    <color name="content_tile_unread">#222222</color>
-    <color name="content_label_unread">#676661</color>
-    <color name="content_tile_readed">#4B4B49</color>
-    <color name="content_label_readed">#B2AEA8</color>
+    <color name="content_tile_unread">#000000</color>
+    <color name="content_label_unread">#4B4B49</color>
+    <color name="content_tile_readed">#222222</color>
+    <color name="content_label_readed">#676661</color>
     <color name="content_catalog">#BAB5AF</color>
 
     <color name="black_overlay">#66000000</color>

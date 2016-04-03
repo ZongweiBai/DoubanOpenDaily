@@ -8,12 +8,14 @@ import android.webkit.WebViewClient;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.monosky.daily.BaseApplication;
 import com.monosky.daily.R;
+import com.monosky.daily.module.entity.PostsEntity;
 
 /**
  * 文章详细页，以webview加载
  */
-public class ContentDetailActivity extends BaseActivity {
+public class PostDetailActivity extends BaseActivity {
 
     private TextView mTopTitle;
     private WebView mContentWebview;
@@ -24,7 +26,7 @@ public class ContentDetailActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_content_detail);
+        setContentView(R.layout.activity_post_detail);
 
         getViews();
         setViews();
@@ -50,7 +52,7 @@ public class ContentDetailActivity extends BaseActivity {
         mBottomShare.setOnClickListener(contentOnClick);
     }
 
-    private class contentWebViewClient extends  WebViewClient {
+    private class contentWebViewClient extends WebViewClient {
         @Override
         public boolean shouldOverrideUrlLoading(WebView view, String url) {
             view.loadUrl(url);
@@ -63,11 +65,11 @@ public class ContentDetailActivity extends BaseActivity {
         public void onClick(View v) {
             switch (v.getId()) {
                 case R.id.actionbar_title:
-                    ContentDetailActivity.this.finish();
+                    PostDetailActivity.this.finish();
                     break;
                 case R.id.bottom_reply:
-                    Intent intent = new Intent(ContentDetailActivity.this, ContentReplyActivity.class);
-                    ContentDetailActivity.this.startActivity(intent);
+                    Intent intent = new Intent(PostDetailActivity.this, PostReplyActivity.class);
+                    PostDetailActivity.this.startActivity(intent);
                     break;
                 case R.id.bottom_like:
                     break;
@@ -83,5 +85,12 @@ public class ContentDetailActivity extends BaseActivity {
             }
         }
     };
+
+    public static void gotoPostDetail(PostsEntity postsEntity) {
+        Intent intent = new Intent(BaseApplication.getContext(), PostDetailActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.putExtra("post", postsEntity);
+        BaseApplication.getContext().startActivity(intent);
+    }
 
 }

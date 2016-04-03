@@ -13,7 +13,6 @@
         android:id="@+id/author_img"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_below="@id/history_content_title"
         android:layout_marginRight="@dimen/activity_horizontal_margin"
         android:background="@mipmap/ic_empty_light"
         android:scaleType="centerCrop"/>

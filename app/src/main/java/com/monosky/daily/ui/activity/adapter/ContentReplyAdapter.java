@@ -15,7 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.monosky.daily.R;
-import com.monosky.daily.ui.activity.ContentReplyActivity;
+import com.monosky.daily.ui.activity.PostReplyActivity;
 import com.monosky.daily.module.ReplyData;
 import com.monosky.daily.util.ImageLoaderOption;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -103,7 +103,7 @@ public class ContentReplyAdapter extends BaseAdapter {
         int[] location = new int[2];
         View viewShow = viewMap.get(String.valueOf(position));
         viewShow.getLocationOnScreen(location);
-        if(ContentReplyActivity.mContentReplyActivity.getmRelpyListView().getLastVisiblePosition() == position) {
+        if(PostReplyActivity.mContentReplyActivity.getmRelpyListView().getLastVisiblePosition() == position) {
             popupWindow.showAtLocation(viewShow, Gravity.NO_GRAVITY,
                     popupWidth/2, location[1]-popupHeight);
         } else {

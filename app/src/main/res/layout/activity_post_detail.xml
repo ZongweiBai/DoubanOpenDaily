@@ -1,22 +1,30 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/app_main_bg"
     android:fitsSystemWindows="true"
     android:orientation="vertical"
-    tools:context=".ui.activity.ContentDetailActivity">
+    tools:context=".ui.activity.PostDetailActivity">
 
     <include
         android:id="@+id/content_top"
-        layout="@layout/actionbar_common" />
+        layout="@layout/actionbar_common"/>
 
-    <WebView
-        android:id="@+id/content_webivew"
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_refresh"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@+id/content_bottom"
-        android:layout_below="@id/content_top"></WebView>
+        android:layout_height="match_parent">
+
+
+        <WebView
+            android:id="@+id/content_webivew"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/content_bottom"
+            android:layout_below="@id/content_top"></WebView>
+    </android.support.v4.widget.SwipeRefreshLayout>
 
     <LinearLayout
         android:id="@+id/content_bottom"
@@ -39,7 +47,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@mipmap/ic_ab_comment_light" />
+                android:background="@mipmap/ic_ab_comment_light"/>
         </RelativeLayout>
 
         <RelativeLayout
@@ -53,7 +61,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@mipmap/ic_ab_fav_off_light" />
+                android:background="@mipmap/ic_ab_fav_off_light"/>
         </RelativeLayout>
 
         <RelativeLayout
@@ -67,9 +75,9 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@mipmap/ic_ab_share_light" />
+                android:background="@mipmap/ic_ab_share_light"/>
         </RelativeLayout>
 
     </LinearLayout>
 
-</RelativeLayout>
+</LinearLayout>

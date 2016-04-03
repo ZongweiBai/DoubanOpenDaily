@@ -2,12 +2,15 @@ package com.monosky.daily.module.entity;
 
 import com.alibaba.fastjson.annotation.JSONField;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * 文章实体类
  */
-public class PostsEntity {
+public class PostsEntity implements Serializable {
+
+    private static final long serialVersionUID = -3013120344884696524L;
 
     private int display_style;
     private boolean is_editor_choice;

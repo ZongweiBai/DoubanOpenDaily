@@ -41,10 +41,10 @@ public class HotAuthorAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         if (viewType == -1) {
-            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_hot_author_footer, parent, false);
+            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_hot_author_footer, parent, false);
             return new FooterViewHolder(view);
         } else {
-            View view = View.inflate(parent.getContext(), R.layout.fragment_hot_author_item, null);
+            View view = View.inflate(parent.getContext(), R.layout.item_hot_author, null);
             return new ItemViewHolder(view);
         }
     }
@@ -73,7 +73,7 @@ public class HotAuthorAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
     @Override
     public RecyclerView.ViewHolder onCreateHeaderViewHolder(ViewGroup parent) {
-        View view = View.inflate(parent.getContext(), R.layout.fragment_hot_author_header, null);
+        View view = View.inflate(parent.getContext(), R.layout.item_hot_author_header, null);
         return new HeaderViewHolder(view);
     }
 

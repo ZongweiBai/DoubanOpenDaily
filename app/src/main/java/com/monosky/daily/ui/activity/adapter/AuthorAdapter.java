@@ -14,10 +14,9 @@ import android.widget.TextView;
 import com.monosky.daily.constant.ConstData;
 import com.monosky.daily.R;
 import com.monosky.daily.ui.activity.AuthorMainPageActivity;
-import com.monosky.daily.ui.activity.ContentDetailActivity;
+import com.monosky.daily.ui.activity.PostDetailActivity;
 import com.monosky.daily.module.AuthorData;
 import com.monosky.daily.module.ContentData;
-import com.monosky.daily.util.ImageLoaderOption;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 import java.util.List;
@@ -47,7 +46,7 @@ public class AuthorAdapter extends RecyclerView.Adapter<AuthorAdapter.ViewHolder
             switch (v.getId()) {
                 case R.id.author_content_layout:
                     int pos = Integer.parseInt(String.valueOf(v.getTag()));
-                    intent = new Intent(mContext, ContentDetailActivity.class);
+                    intent = new Intent(mContext, PostDetailActivity.class);
                     mContext.startActivity(intent);
                     break;
                 case R.id.author_main_page:
