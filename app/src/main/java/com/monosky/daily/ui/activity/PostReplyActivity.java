@@ -29,9 +29,13 @@ public class PostReplyActivity extends BaseActivity {
     private List<ReplyData> mReplyDataList = new ArrayList<>();
 
     @Override
+    protected int getLayout() {
+        return R.layout.activity_post_reply;
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_post_reply);
         mContentReplyActivity = this;
 
         getViews();

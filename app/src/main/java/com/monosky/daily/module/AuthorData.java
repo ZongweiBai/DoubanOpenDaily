@@ -1,11 +1,11 @@
 package com.monosky.daily.module;
 
-import com.monosky.daily.module.entity.AuthorsEntity;
+import com.monosky.daily.module.entity.AuthorEntity;
 
 import java.util.List;
 
 /**
- * 作者接口解析类
+ * 作者列表接口解析类
  */
 public class AuthorData {
 
@@ -13,7 +13,7 @@ public class AuthorData {
     private int start;
     private int total;
 
-    private List<AuthorsEntity> authors;
+    private List<AuthorEntity> authors;
 
     public void setCount(int count) {
         this.count = count;
@@ -27,7 +27,7 @@ public class AuthorData {
         this.total = total;
     }
 
-    public void setAuthors(List<AuthorsEntity> authors) {
+    public void setAuthors(List<AuthorEntity> authors) {
         this.authors = authors;
     }
 
@@ -43,7 +43,7 @@ public class AuthorData {
         return total;
     }
 
-    public List<AuthorsEntity> getAuthors() {
+    public List<AuthorEntity> getAuthors() {
         return authors;
     }
 }

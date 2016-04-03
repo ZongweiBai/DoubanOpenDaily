@@ -35,29 +35,24 @@
         android:textSize="@dimen/text_size_18"/>
 
     <ImageView
-        android:id="@+id/post_editor_mark"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/post_column"
-        android:layout_marginBottom="@dimen/common_horizontal_margin"
-        android:layout_marginLeft="@dimen/dp_4"
-        android:layout_marginTop="@dimen/dp_22"
-        android:layout_toRightOf="@id/post_title"
-        android:src="@mipmap/editor_choice_mark"/>
+        android:id="@+id/post_thumb"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/post_title"
+        android:layout_marginLeft="@dimen/common_horizontal_margin"
+        android:background="@mipmap/ic_default_image_square_light"
+        android:scaleType="fitXY"/>
 
-    <RelativeLayout
+    <TextView
+        android:id="@+id/post_abstract"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/post_title"
-        android:background="@drawable/background_feed_photo_album_light">
-
-        <ImageView
-            android:id="@+id/post_thumb"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:layout_alignParentRight="true"
-            android:background="@mipmap/ic_default_image_light"
-            android:scaleType="centerCrop"/>
-    </RelativeLayout>
-
+        android:layout_toLeftOf="@id/post_thumb"
+        android:ellipsize="end"
+        android:maxLines="3"
+        android:text="@string/app_name"
+        android:textColor="@color/content_label_unread"
+        android:textSize="@dimen/text_size_14"/>
 </RelativeLayout>

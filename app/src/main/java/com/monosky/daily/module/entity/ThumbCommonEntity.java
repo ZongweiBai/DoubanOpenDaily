@@ -1,9 +1,13 @@
 package com.monosky.daily.module.entity;
 
+import java.io.Serializable;
+
 /**
  * 缩略图通用实体类
  */
-public class ThumbCommonEntity {
+public class ThumbCommonEntity implements Serializable {
+
+    private static final long serialVersionUID = -657008840713642886L;
 
     private String url;
     private int width;

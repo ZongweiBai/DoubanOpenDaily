@@ -10,7 +10,7 @@ import com.kymjs.rxvolley.client.HttpCallback;
 import com.monosky.daily.R;
 import com.monosky.daily.constant.APIConstData;
 import com.monosky.daily.module.ContentData;
-import com.monosky.daily.module.entity.PostsEntity;
+import com.monosky.daily.module.entity.PostEntity;
 import com.monosky.daily.ui.fragment.adapter.TodayAdapter;
 import com.monosky.daily.util.DateUtils;
 import com.monosky.daily.util.ToastUtils;
@@ -30,7 +30,7 @@ public class TodayFragment extends BaseRefreshFragment {
     @Bind(R.id.today_recycle_view)
     RecyclerView mRecycleView;
     private TodayAdapter mTodayAdapter;
-    private List<PostsEntity> mListData = new ArrayList<>();
+    private List<PostEntity> mListData = new ArrayList<>();
 
     @Override
     protected int getLayout() {
@@ -71,9 +71,9 @@ public class TodayFragment extends BaseRefreshFragment {
                         super.onSuccess(t);
                         ContentData contentData = JSON.parseObject(t, ContentData.class);
                         mListData.clear();
-                        mListData.add(new PostsEntity());
+                        mListData.add(new PostEntity());
                         mListData.addAll(contentData.getPosts());
-                        mListData.add(new PostsEntity());
+                        mListData.add(new PostEntity());
                         mTodayAdapter.notifyDataSetChanged();
                         ToastUtils.showShort(getContext(), "请求成功");
                     }

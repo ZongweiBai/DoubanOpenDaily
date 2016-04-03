@@ -1,17 +1,19 @@
 package com.monosky.daily.module;
 
+import com.monosky.daily.module.entity.AuthorEntity;
 import com.monosky.daily.module.entity.PostEntity;
 
 import java.util.List;
 
 /**
- * 每日文章接口解析类
+ * 作者详情接口解析类
  */
-public class ContentData {
+public class AuthorDetailData {
 
     private int count;
+
+    private AuthorEntity author;
     private int offset;
-    private String date;
     private int total;
 
     private List<PostEntity> posts;
@@ -20,12 +22,12 @@ public class ContentData {
         this.count = count;
     }
 
-    public void setOffset(int offset) {
-        this.offset = offset;
+    public void setAuthor(AuthorEntity author) {
+        this.author = author;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public void setOffset(int offset) {
+        this.offset = offset;
     }
 
     public void setTotal(int total) {
@@ -40,12 +42,12 @@ public class ContentData {
         return count;
     }
 
-    public int getOffset() {
-        return offset;
+    public AuthorEntity getAuthor() {
+        return author;
     }
 
-    public String getDate() {
-        return date;
+    public int getOffset() {
+        return offset;
     }
 
     public int getTotal() {

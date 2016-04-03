@@ -15,7 +15,7 @@ import butterknife.ButterKnife;
 /**
  * APP loading页
  */
-public class AppLoadingActivity extends BaseActivity {
+public class AppSplashActivity extends BaseActivity {
 
     private final int SPLASH_DISPLAY_LENGTH = 2000;
     @Bind(R.id.app_copyright)
@@ -26,9 +26,13 @@ public class AppLoadingActivity extends BaseActivity {
     TextView mAppDesc;
 
     @Override
+    protected int getLayout() {
+        return R.layout.activity_app_loading;
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_app_loading);
         ButterKnife.bind(this);
         mAppCopyright.setTextColor(ContextCompat.getColor(BaseApplication.getContext(), R.color.white));
         mAppName.setTextColor(ContextCompat.getColor(BaseApplication.getContext(), R.color.white));
@@ -45,7 +49,7 @@ public class AppLoadingActivity extends BaseActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(AppLoadingActivity.this, MainActivity.class);
+                Intent intent = new Intent(AppSplashActivity.this, MainActivity.class);
                 startActivity(intent);
                 overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
                 supportFinishAfterTransition();

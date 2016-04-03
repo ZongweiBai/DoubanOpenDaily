@@ -2,6 +2,7 @@ package com.monosky.daily.ui.fragment;
 
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,7 +17,7 @@ import butterknife.ButterKnife;
 /**
  * 可刷新的Fragment基类
  */
-public abstract class BaseRefreshFragment extends BaseFragment {
+public abstract class BaseRefreshFragment extends Fragment {
 
     protected String mRequestType = ConstData.REQUEST_REFRESH;
     protected Boolean mRefreshing = false;

@@ -5,7 +5,7 @@ import com.alibaba.fastjson.annotation.JSONField;
 /**
  * 栏目实体类
  */
-public class ColumnsEntity {
+public class ColumnEntity {
 
     private int id;
     private String icon;

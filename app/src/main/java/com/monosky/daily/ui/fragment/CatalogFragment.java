@@ -9,7 +9,7 @@ import com.kymjs.rxvolley.client.HttpCallback;
 import com.monosky.daily.R;
 import com.monosky.daily.constant.APIConstData;
 import com.monosky.daily.module.CatalogData;
-import com.monosky.daily.module.entity.ColumnsEntity;
+import com.monosky.daily.module.entity.ColumnEntity;
 import com.monosky.daily.ui.fragment.adapter.CatalogAdapter;
 import com.monosky.daily.util.ToastUtils;
 
@@ -27,7 +27,7 @@ public class CatalogFragment extends BaseRefreshFragment {
     @Bind(R.id.catalog_gridview)
     GridView mCatalogGridview;
     private CatalogAdapter mCatalogAdapter;
-    private List<ColumnsEntity> mColumnsEntities = new ArrayList<>();
+    private List<ColumnEntity> mColumnsEntities = new ArrayList<>();
 
     @Override
     protected int getLayout() {

@@ -13,8 +13,8 @@ import android.widget.TextView;
 import com.monosky.daily.BaseApplication;
 import com.monosky.daily.R;
 import com.monosky.daily.constant.ConstData;
-import com.monosky.daily.module.entity.PostsEntity;
-import com.monosky.daily.module.entity.ThumbsEntity;
+import com.monosky.daily.module.entity.PostEntity;
+import com.monosky.daily.module.entity.ThumbEntity;
 import com.monosky.daily.ui.activity.PostDetailActivity;
 import com.monosky.daily.util.ImageLoaderOption;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -37,14 +37,14 @@ public class HistoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         implements StickyRecyclerHeadersAdapter<RecyclerView.ViewHolder> {
 
     private Context mContext = BaseApplication.getContext();
-    private List<PostsEntity> mPostsEntities = new ArrayList<>();
+    private List<PostEntity> mPostsEntities = new ArrayList<>();
     private ImageLoader imageLoader = ImageLoader.getInstance();
     private View.OnClickListener mHistoryClickListener;
     private SimpleDateFormat parseSdf = new SimpleDateFormat("yyyy-MM-dd");
     private SimpleDateFormat formatSdf = new SimpleDateFormat("dd", Locale.ENGLISH);
     private SimpleDateFormat formatSdfMonth = new SimpleDateFormat("MMM", Locale.ENGLISH);
 
-    public HistoryAdapter(List<PostsEntity> list) {
+    public HistoryAdapter(List<PostEntity> list) {
         this.mPostsEntities.clear();
         this.mPostsEntities.addAll(list);
         this.mHistoryClickListener = historyClickListener;
@@ -76,7 +76,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        PostsEntity postsEntity = mPostsEntities.get(position);
+        PostEntity postsEntity = mPostsEntities.get(position);
         int viewType = getItemViewType(position);
         if (viewType == ConstData.POST_IMAGE) {
             ImageViewHolder imageHolder = (ImageViewHolder) holder;
@@ -157,7 +157,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         }
     }
 
-    public void refresh(List<PostsEntity> refreshList) {
+    public void refresh(List<PostEntity> refreshList) {
         mPostsEntities.clear();
         mPostsEntities.addAll(refreshList);
         this.notifyDataSetChanged();
@@ -165,17 +165,17 @@ public class HistoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
     @Override
     public int getItemViewType(int position) {
-        PostsEntity postsEntity = mPostsEntities.get(position);
+        PostEntity postsEntity = mPostsEntities.get(position);
         if (postsEntity.getDisplay_style() == 10003) {
-            List<ThumbsEntity> thumbsEntityList = postsEntity.getThumbs();
+            List<ThumbEntity> thumbsEntityList = postsEntity.getThumbs();
             if (thumbsEntityList == null || thumbsEntityList.isEmpty()) {
                 return ConstData.POST_LIST;
             }
-            ThumbsEntity thumbsEntity = thumbsEntityList.get(0);
+            ThumbEntity thumbsEntity = thumbsEntityList.get(0);
             if (thumbsEntity == null || TextUtils.isEmpty(thumbsEntity.getTag_name())) {
                 return ConstData.POST_LIST;
             }
-            if ("img_3".equals(thumbsEntity.getTag_name()) || thumbsEntityList.size() < 3) {
+            if (!"img_1".equals(thumbsEntity.getTag_name()) || thumbsEntityList.size() < 3) {
                 return ConstData.POST_IMAGE;
             } else {
                 return ConstData.POST_IMG_BOX;

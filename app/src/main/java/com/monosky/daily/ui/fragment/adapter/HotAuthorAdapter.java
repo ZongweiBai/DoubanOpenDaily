@@ -11,7 +11,9 @@ import android.widget.TextView;
 
 import com.monosky.daily.BaseApplication;
 import com.monosky.daily.R;
-import com.monosky.daily.module.entity.AuthorsEntity;
+import com.monosky.daily.constant.ConstData;
+import com.monosky.daily.module.entity.AuthorEntity;
+import com.monosky.daily.ui.activity.AuthorActivity;
 import com.monosky.daily.util.ImageLoaderOption;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.timehop.stickyheadersrecyclerview.StickyRecyclerHeadersAdapter;
@@ -29,19 +31,27 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class HotAuthorAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         implements StickyRecyclerHeadersAdapter<RecyclerView.ViewHolder> {
 
-    private List<AuthorsEntity> mAuthorsEntities = new ArrayList<>();
+    private List<AuthorEntity> mAuthorsEntities = new ArrayList<>();
     private Context mContext;
     private ImageLoader imageLoader = ImageLoader.getInstance();
+    private View.OnClickListener mOnClickListener;
 
-    public HotAuthorAdapter(List<AuthorsEntity> list) {
+    public HotAuthorAdapter(List<AuthorEntity> list) {
         this.mAuthorsEntities = list;
         this.mContext = BaseApplication.getContext();
+        this.mOnClickListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int pos = Integer.parseInt(String.valueOf(view.getTag()));
+                AuthorActivity.gotoAuthorDetail(mAuthorsEntities.get(pos));
+            }
+        };
     }
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         if (viewType == -1) {
-            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_hot_author_footer, parent, false);
+            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_common_simple_footer, parent, false);
             return new FooterViewHolder(view);
         } else {
             View view = View.inflate(parent.getContext(), R.layout.item_hot_author, null);
@@ -51,15 +61,17 @@ public class HotAuthorAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        if (getItemViewType(position) == -1) {
+        if (getItemViewType(position) == ConstData.FOOTER) {
             FooterViewHolder footerHolder = (FooterViewHolder) holder;
             footerHolder.mHotAuthorFooter.setText(mContext.getString(R.string.author_all));
         } else {
             ItemViewHolder itemHolder = (ItemViewHolder) holder;
-            AuthorsEntity authorData = mAuthorsEntities.get(position);
+            AuthorEntity authorData = mAuthorsEntities.get(position);
             itemHolder.mAuthorName.setText(authorData.getName());
             itemHolder.mAuthorLabel.setText(authorData.getEditorNotes());
             imageLoader.displayImage(authorData.getAvatar(), itemHolder.mAuthorImg, ImageLoaderOption.optionInfoImage(R.mipmap.ic_empty_light));
+            itemHolder.mHotAuthorContentLayout.setTag(position);
+            itemHolder.mHotAuthorContentLayout.setOnClickListener(mOnClickListener);
         }
     }
 
@@ -95,7 +107,7 @@ public class HotAuthorAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     @Override
     public int getItemViewType(int position) {
         if (TextUtils.isEmpty(mAuthorsEntities.get(position).getName())) {
-            return -1;
+            return ConstData.FOOTER;
         }
         return 0;
     }
@@ -127,7 +139,7 @@ public class HotAuthorAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     }
 
     static class FooterViewHolder extends RecyclerView.ViewHolder {
-        @Bind(R.id.hot_author_footer)
+        @Bind(R.id.simple_footer_text)
         TextView mHotAuthorFooter;
 
         FooterViewHolder(View view) {

@@ -12,7 +12,7 @@ import com.monosky.daily.R;
 import com.monosky.daily.constant.APIConstData;
 import com.monosky.daily.constant.ConstData;
 import com.monosky.daily.module.AuthorData;
-import com.monosky.daily.module.entity.AuthorsEntity;
+import com.monosky.daily.module.entity.AuthorEntity;
 import com.monosky.daily.ui.fragment.adapter.HotAuthorAdapter;
 import com.monosky.daily.util.ToastUtils;
 import com.timehop.stickyheadersrecyclerview.StickyRecyclerHeadersDecoration;
@@ -32,7 +32,7 @@ public class HotAuthorFragment extends BaseRefreshFragment {
     @Bind(R.id.hot_author_recycler)
     RecyclerView mHotAuthorRecycler;
     private HotAuthorAdapter mAuthorAdapter;
-    private List<AuthorsEntity> mAuthorsEntities = new ArrayList<>();
+    private List<AuthorEntity> mAuthorsEntities = new ArrayList<>();
     private LinearLayoutManager layoutManager;
     private int start = 0;
     private int recCount = 0;
@@ -140,7 +140,7 @@ public class HotAuthorFragment extends BaseRefreshFragment {
     }
 
     private void requestAuthors() {
-        String requestUrl = APIConstData.GetAuthor + start;
+        String requestUrl = APIConstData.GetHotAuthor + start;
         new RxVolley.Builder()
                 .url(requestUrl)
                 .httpMethod(RxVolley.Method.GET)
@@ -156,7 +156,7 @@ public class HotAuthorFragment extends BaseRefreshFragment {
                         mAuthorsEntities.addAll(authorData.getAuthors());
                         if (mAuthorsEntities.size() >= recCount + (authorData.getTotal())) {
                             mHasNext = false;
-                            mAuthorsEntities.add(new AuthorsEntity());
+                            mAuthorsEntities.add(new AuthorEntity());
                         }
                         mItemCount = mAuthorsEntities.size() - mPositionStart;
                         mAuthorAdapter.notifyItemRangeChanged(mPositionStart, mItemCount);

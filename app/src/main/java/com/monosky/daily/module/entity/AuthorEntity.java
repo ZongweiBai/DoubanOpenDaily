@@ -2,10 +2,15 @@ package com.monosky.daily.module.entity;
 
 import com.alibaba.fastjson.annotation.JSONField;
 
+import java.io.Serializable;
+
 /**
  * 作者实体类
  */
-public class AuthorsEntity {
+public class AuthorEntity implements Serializable {
+
+    private static final long serialVersionUID = -4526786472961708980L;
+
     @JSONField(name = "is_followed")
     private boolean followed;
     @JSONField(name = "editor_notes")

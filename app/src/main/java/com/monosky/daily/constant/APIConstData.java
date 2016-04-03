@@ -18,13 +18,31 @@ public class APIConstData {
     public static String GetColumns = "https://moment.douban.com/api/columns";
 
     /**
-     * 热门作者
+     * 推荐作者
      */
     public static String GetRecAuthor = "https://moment.douban.com/api/auth_authors/rec";
 
     /**
-     * 全部作者
+     * 热门作者
      * https://moment.douban.com/api/auth_authors/all?count=20&start=20
      */
-    public static String GetAuthor = "https://moment.douban.com/api/auth_authors/all?count=20&start=";
+    public static String GetHotAuthor = "https://moment.douban.com/api/auth_authors/all?count=20&start=";
+
+    /**
+     * 作者信息
+     */
+    public static String GetAuthorDetail = "https://moment.douban.com/api/author/{authorId}/posts";
+
+    /**
+     * 作者更多文章信息
+     * https://moment.douban.com/api/author/1992643/posts?count=10&max_id=109408
+     */
+    public static String GetAuthorDetailMore = "https://moment.douban.com/api/author/{authorId}/posts?count=10&max_id={maxId}";
+
+    /**
+     * 作者主页信息
+     */
+    public static String GetProfile = "https://moment.douban.com/api/user/{authorId}/profile";
+
+
 }

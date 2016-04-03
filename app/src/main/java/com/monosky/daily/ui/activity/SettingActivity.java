@@ -9,8 +9,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.afollestad.materialdialogs.MaterialDialog;
-import com.monosky.daily.constant.ConstData;
 import com.monosky.daily.R;
+import com.monosky.daily.constant.ConstData;
 import com.monosky.daily.util.SharedPreferencesUtil;
 
 /**
@@ -38,9 +38,13 @@ public class SettingActivity extends BaseActivity {
     private int mCheckedId;
 
     @Override
+    protected int getLayout() {
+        return R.layout.activity_setting;
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_setting);
 
         // 获取控件
         getViews();
@@ -102,7 +106,7 @@ public class SettingActivity extends BaseActivity {
                     showFontSizeSettingDialog();
                     break;
                 case R.id.info_push_rl:
-                    if(mInfoPushCheck.isChecked()) {
+                    if (mInfoPushCheck.isChecked()) {
                         mInfoPushCheck.setChecked(false);
                         mInfoPushValue.setText(getResources().getString(R.string.info_push_no));
                     } else {
@@ -111,7 +115,7 @@ public class SettingActivity extends BaseActivity {
                     }
                     break;
                 case R.id.info_push_check:
-                    if(mInfoPushCheck.isChecked()) {
+                    if (mInfoPushCheck.isChecked()) {
                         mInfoPushCheck.setChecked(true);
                         mInfoPushValue.setText(getResources().getString(R.string.info_push_yes));
                     } else {
@@ -120,7 +124,7 @@ public class SettingActivity extends BaseActivity {
                     }
                     break;
                 case R.id.offline_rl:
-                    if(mOfflineCheck.isChecked()) {
+                    if (mOfflineCheck.isChecked()) {
                         mOfflineCheck.setChecked(false);
                         mOfflineValue.setText(getResources().getString(R.string.offline_setting_no));
                     } else {
@@ -129,7 +133,7 @@ public class SettingActivity extends BaseActivity {
                     }
                     break;
                 case R.id.offline_check:
-                    if(mOfflineCheck.isChecked()) {
+                    if (mOfflineCheck.isChecked()) {
                         mOfflineCheck.setChecked(true);
                         mOfflineValue.setText(getResources().getString(R.string.offline_setting_yes));
                     } else {

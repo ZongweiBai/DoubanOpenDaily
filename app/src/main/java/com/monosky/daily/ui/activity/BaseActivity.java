@@ -1,14 +1,11 @@
 package com.monosky.daily.ui.activity;
 
-import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
-import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.view.inputmethod.InputMethodManager;
 
 import com.monosky.daily.BaseApplication;
 import com.monosky.daily.R;
@@ -16,9 +13,8 @@ import com.monosky.daily.util.SystemBarTintManager;
 
 /**
  * Activity基类
- * Created by jonez_000 on 2015/8/15.
  */
-public class BaseActivity extends AppCompatActivity {
+public abstract class BaseActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +32,8 @@ public class BaseActivity extends AppCompatActivity {
         tintManager.setStatusBarTintEnabled(true);
         tintManager.setNavigationBarTintEnabled(true);
         tintManager.setStatusBarTintResource(R.color.blue);//设置颜色
+
+        setContentView(getLayout());
     }
 
     private void getScreenParams() {
@@ -57,18 +55,6 @@ public class BaseActivity extends AppCompatActivity {
         win.setAttributes(winParams);
     }
 
-    /**
-     * 关闭软键盘
-     *
-     * @param view
-     */
-    protected void closeInputMethod(View view) {
-        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
-        boolean isOpen = imm.isActive();
-        if (isOpen) {
-            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
-        }
-    }
+    protected abstract int getLayout();
 
 }

@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import com.monosky.daily.BaseApplication;
 import com.monosky.daily.R;
-import com.monosky.daily.module.entity.ColumnsEntity;
+import com.monosky.daily.module.entity.ColumnEntity;
 import com.monosky.daily.util.ImageLoaderOption;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
@@ -21,11 +21,11 @@ import butterknife.ButterKnife;
 
 public class CatalogAdapter extends BaseAdapter {
 
-    private List<ColumnsEntity> catalogDataList;
+    private List<ColumnEntity> catalogDataList;
     private Context mContext;
     private ImageLoader mImageLoader = ImageLoader.getInstance();
 
-    public CatalogAdapter(List<ColumnsEntity> catalogDataList) {
+    public CatalogAdapter(List<ColumnEntity> catalogDataList) {
         this.catalogDataList = catalogDataList;
         this.mContext = BaseApplication.getContext();
     }
@@ -41,7 +41,7 @@ public class CatalogAdapter extends BaseAdapter {
             viewHolder = (ViewHolder) convertView.getTag();
         }
 
-        ColumnsEntity columnsEntity = getItem(position);
+        ColumnEntity columnsEntity = getItem(position);
         if (position == 0 || position == 1) {
             viewHolder.mCatalogTopLine.setVisibility(View.VISIBLE);
         } else {
@@ -59,7 +59,7 @@ public class CatalogAdapter extends BaseAdapter {
     }
 
     @Override
-    public ColumnsEntity getItem(int position) {
+    public ColumnEntity getItem(int position) {
         return catalogDataList.get(position);
     }
 

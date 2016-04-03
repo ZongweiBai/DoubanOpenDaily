@@ -22,7 +22,7 @@ import com.monosky.daily.R;
 import com.monosky.daily.util.SystemBarTintManager;
 import com.monosky.daily.util.SharedPreferencesUtil;
 
-public class LogonActivity extends AppCompatActivity {
+public class LogonActivity extends BaseActivity {
 
     private EditText mLogonAccount;
     private EditText mLogonPwd;
@@ -31,18 +31,13 @@ public class LogonActivity extends AppCompatActivity {
     private TextView mForgetPwd;
 
     @Override
+    protected int getLayout() {
+        return R.layout.activity_logon;
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // 设置沉浸式状态栏
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            setTranslucentStatus(true);
-        }
-
-        SystemBarTintManager tintManager = new SystemBarTintManager(this);
-        tintManager.setStatusBarTintEnabled(true);
-        tintManager.setNavigationBarTintEnabled(true);
-        tintManager.setStatusBarTintResource(R.color.main_color);//设置颜色
-        setContentView(R.layout.activity_logon);
 
         getViews();
         setViews();

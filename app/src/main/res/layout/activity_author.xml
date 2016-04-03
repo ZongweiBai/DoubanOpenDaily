@@ -1,4 +1,5 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,11 +8,17 @@
     android:orientation="vertical"
     tools:context=".ui.activity.AuthorActivity">
 
-    <include layout="@layout/actionbar_common" />
+    <include layout="@layout/toolbar_common"/>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/author_recyclerview"
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_refresh"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:scrollbars="vertical" />
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/author_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="none"/>
+    </android.support.v4.widget.SwipeRefreshLayout>
 </LinearLayout>

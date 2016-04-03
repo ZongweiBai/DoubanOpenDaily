@@ -48,12 +48,13 @@
 
     <ImageView
         android:id="@+id/post_thumb"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
         android:layout_alignParentRight="true"
         android:layout_below="@id/post_title"
+        android:layout_marginLeft="@dimen/common_horizontal_margin"
         android:background="@mipmap/ic_default_image_square_light"
-        android:scaleType="fitXY"/>
+        android:scaleType="centerCrop"/>
 
     <TextView
         android:id="@+id/post_abstract"

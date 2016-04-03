@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import com.monosky.daily.BaseApplication;
 import com.monosky.daily.R;
-import com.monosky.daily.module.entity.PostsEntity;
+import com.monosky.daily.module.entity.PostEntity;
 
 /**
  * 文章详细页，以webview加载
@@ -24,9 +24,13 @@ public class PostDetailActivity extends BaseActivity {
     private RelativeLayout mBottomShare;
 
     @Override
+    protected int getLayout() {
+        return R.layout.activity_post_detail;
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_post_detail);
 
         getViews();
         setViews();
@@ -86,7 +90,7 @@ public class PostDetailActivity extends BaseActivity {
         }
     };
 
-    public static void gotoPostDetail(PostsEntity postsEntity) {
+    public static void gotoPostDetail(PostEntity postsEntity) {
         Intent intent = new Intent(BaseApplication.getContext(), PostDetailActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.putExtra("post", postsEntity);

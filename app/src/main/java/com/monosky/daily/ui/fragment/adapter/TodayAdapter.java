@@ -14,8 +14,8 @@ import android.widget.TextView;
 import com.monosky.daily.BaseApplication;
 import com.monosky.daily.R;
 import com.monosky.daily.constant.ConstData;
-import com.monosky.daily.module.entity.PostsEntity;
-import com.monosky.daily.module.entity.ThumbsEntity;
+import com.monosky.daily.module.entity.PostEntity;
+import com.monosky.daily.module.entity.ThumbEntity;
 import com.monosky.daily.ui.activity.MainActivity;
 import com.monosky.daily.ui.activity.PostDetailActivity;
 import com.monosky.daily.util.ImageLoaderOption;
@@ -40,9 +40,9 @@ public class TodayAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     private SimpleDateFormat formatSdf = new SimpleDateFormat("dd", Locale.ENGLISH);
     private SimpleDateFormat formatSdfMonth = new SimpleDateFormat("MMM", Locale.ENGLISH);
     // 数据集
-    private List<PostsEntity> mPostList;
+    private List<PostEntity> mPostList;
 
-    public TodayAdapter(List<PostsEntity> dataList) {
+    public TodayAdapter(List<PostEntity> dataList) {
         super();
         mPostList = dataList;
         this.mOnClickListener = myOnClickListener;
@@ -80,7 +80,7 @@ public class TodayAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        PostsEntity postsEntity = mPostList.get(position);
+        PostEntity postsEntity = mPostList.get(position);
         int viewType = getItemViewType(position);
         if (viewType == ConstData.HEADER) {
             HeaderViewHolder headerHolder = (HeaderViewHolder) holder;
@@ -181,21 +181,21 @@ public class TodayAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
     @Override
     public int getItemViewType(int position) {
-        PostsEntity postsEntity = mPostList.get(position);
+        PostEntity postsEntity = mPostList.get(position);
         if (position == 0 && TextUtils.isEmpty(postsEntity.getTitle())) {
             return ConstData.HEADER;
         } else if (position == (mPostList.size() - 1) && TextUtils.isEmpty(postsEntity.getTitle())) {
             return ConstData.FOOTER;
         } else if (postsEntity.getDisplay_style() == 10003) {
-            List<ThumbsEntity> thumbsEntityList = postsEntity.getThumbs();
+            List<ThumbEntity> thumbsEntityList = postsEntity.getThumbs();
             if (thumbsEntityList == null || thumbsEntityList.isEmpty()) {
                 return ConstData.POST_LIST;
             }
-            ThumbsEntity thumbsEntity = thumbsEntityList.get(0);
+            ThumbEntity thumbsEntity = thumbsEntityList.get(0);
             if (thumbsEntity == null || TextUtils.isEmpty(thumbsEntity.getTag_name())) {
                 return ConstData.POST_LIST;
             }
-            if ("img_3".equals(thumbsEntity.getTag_name()) || thumbsEntityList.size() < 3) {
+            if (!"img_1".equals(thumbsEntity.getTag_name()) || thumbsEntityList.size() < 3) {
                 return ConstData.POST_IMAGE;
             } else {
                 return ConstData.POST_IMG_BOX;

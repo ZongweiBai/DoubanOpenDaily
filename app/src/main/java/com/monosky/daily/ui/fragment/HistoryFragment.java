@@ -12,7 +12,7 @@ import com.monosky.daily.R;
 import com.monosky.daily.constant.APIConstData;
 import com.monosky.daily.constant.ConstData;
 import com.monosky.daily.module.ContentData;
-import com.monosky.daily.module.entity.PostsEntity;
+import com.monosky.daily.module.entity.PostEntity;
 import com.monosky.daily.ui.fragment.adapter.HistoryAdapter;
 import com.monosky.daily.util.DateUtils;
 import com.monosky.daily.util.ToastUtils;
@@ -35,7 +35,7 @@ public class HistoryFragment extends BaseRefreshFragment {
     @Bind(R.id.history_recycler_view)
     RecyclerView mHistoryRecyclerView;
     private HistoryAdapter mHistoryAdapter;
-    private List<PostsEntity> mPostsEntityList = new ArrayList<>();
+    private List<PostEntity> mPostsEntityList = new ArrayList<>();
     private SimpleDateFormat formatSdf = new SimpleDateFormat("yyyy-MM-dd");
     private LinearLayoutManager layoutManager;
     private int dayBefore = -1;

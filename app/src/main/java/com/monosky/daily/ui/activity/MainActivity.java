@@ -18,16 +18,15 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.monosky.daily.constant.ConstData;
 import com.monosky.daily.R;
-import com.monosky.daily.module.entity.AuthorsEntity;
+import com.monosky.daily.constant.ConstData;
+import com.monosky.daily.module.entity.AuthorEntity;
+import com.monosky.daily.test.GenerateTestDatas;
 import com.monosky.daily.ui.fragment.CatalogFragment;
 import com.monosky.daily.ui.fragment.FavoriteFragment;
 import com.monosky.daily.ui.fragment.HistoryFragment;
 import com.monosky.daily.ui.fragment.HotAuthorFragment;
 import com.monosky.daily.ui.fragment.TodayFragment;
-import com.monosky.daily.module.AuthorData;
-import com.monosky.daily.test.GenerateTestDatas;
 import com.monosky.daily.util.ImageLoaderOption;
 import com.monosky.daily.util.SharedPreferencesUtil;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -89,9 +88,13 @@ public class MainActivity extends BaseActivity {
     private FavoriteFragment mFavoriteFragment;
 
     @Override
+    protected int getLayout() {
+        return R.layout.activity_main;
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         mainActivity = this;
 
@@ -160,7 +163,7 @@ public class MainActivity extends BaseActivity {
     private void setDrawerView() {
 
         if (!TextUtils.isEmpty(SharedPreferencesUtil.getInstance().getValue(ConstData.LOGON_ACCOUNT))) {
-            AuthorsEntity authorData = GenerateTestDatas.getLogonAuthor();
+            AuthorEntity authorData = GenerateTestDatas.getLogonAuthor();
             imageLoader.displayImage(authorData.getAvatar(), mDrawerAuthorImg, ImageLoaderOption.optionInfoImage(R.mipmap.ic_default_avatar_light));
             mDrawerLogin.setText(authorData.getName());
         }
@@ -191,7 +194,7 @@ public class MainActivity extends BaseActivity {
                         Intent intent = new Intent(mainActivity, LogonActivity.class);
                         mainActivity.startActivity(intent);
                     } else {
-                        AuthorsEntity authorData = GenerateTestDatas.getLogonAuthor();
+                        AuthorEntity authorData = GenerateTestDatas.getLogonAuthor();
                         Intent intent = new Intent(mainActivity, AuthorMainPageActivity.class);
                         Bundle bundle = new Bundle();
 //                        bundle.putSerializable("authorData", authorData);
@@ -282,7 +285,7 @@ public class MainActivity extends BaseActivity {
         }
         trx.show(mHistoryFragment).commit();
         currentFragment = mHistoryFragment;
-        if(getSupportActionBar() != null) {
+        if (getSupportActionBar() != null) {
             getSupportActionBar().setTitle(mainPageTitle);
         }
     }
@@ -300,7 +303,7 @@ public class MainActivity extends BaseActivity {
         public void onReceive(Context context, Intent intent) {
             if ((ConstData.BROADCAST_LOGON).equals(intent.getAction())) {
                 mDrawerLayout.closeDrawers();
-                AuthorsEntity authorData = GenerateTestDatas.getLogonAuthor();
+                AuthorEntity authorData = GenerateTestDatas.getLogonAuthor();
                 imageLoader.displayImage(authorData.getAvatar(), mDrawerAuthorImg, ImageLoaderOption.optionInfoImage(R.mipmap.ic_default_avatar_light));
                 mDrawerLogin.setText(authorData.getName());
             }

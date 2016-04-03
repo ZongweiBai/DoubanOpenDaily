@@ -1,6 +1,6 @@
 package com.monosky.daily.module;
 
-import com.monosky.daily.module.entity.ColumnsEntity;
+import com.monosky.daily.module.entity.ColumnEntity;
 
 import java.util.List;
 
@@ -11,13 +11,13 @@ public class CatalogData {
 
     private int total;
 
-    private List<ColumnsEntity> columns;
+    private List<ColumnEntity> columns;
 
     public void setTotal(int total) {
         this.total = total;
     }
 
-    public void setColumns(List<ColumnsEntity> columns) {
+    public void setColumns(List<ColumnEntity> columns) {
         this.columns = columns;
     }
 
@@ -25,7 +25,7 @@ public class CatalogData {
         return total;
     }
 
-    public List<ColumnsEntity> getColumns() {
+    public List<ColumnEntity> getColumns() {
         return columns;
     }
 

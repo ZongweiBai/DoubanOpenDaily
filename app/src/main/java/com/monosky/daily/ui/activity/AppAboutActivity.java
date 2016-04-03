@@ -11,9 +11,13 @@ import com.monosky.daily.R;
 public class AppAboutActivity extends BaseActivity {
 
     @Override
+    protected int getLayout() {
+        return R.layout.activity_app_about;
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_app_about);
 
         TextView mTopTitle = (TextView) findViewById(R.id.actionbar_title);
         mTopTitle.setText(getResources().getString(R.string.app_name));

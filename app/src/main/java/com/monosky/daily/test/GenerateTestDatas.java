@@ -3,7 +3,7 @@ package com.monosky.daily.test;
 import com.monosky.daily.module.AuthorData;
 import com.monosky.daily.module.ContentData;
 import com.monosky.daily.module.ReplyData;
-import com.monosky.daily.module.entity.AuthorsEntity;
+import com.monosky.daily.module.entity.AuthorEntity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -91,7 +91,7 @@ public class GenerateTestDatas {
      *
      * @return
      */
-    public static AuthorsEntity getLogonAuthor() {
+    public static AuthorEntity getLogonAuthor() {
 //        AuthorData authorData = new AuthorData("http://img4.douban.com/icon/ul72417058-6.jpg", "lost");
         return null;
     }

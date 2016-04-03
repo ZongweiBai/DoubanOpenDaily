@@ -5,7 +5,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.monosky.daily.R;
-import com.monosky.daily.module.entity.PostsEntity;
+import com.monosky.daily.module.entity.PostEntity;
 import com.monosky.daily.ui.fragment.adapter.FavoriteAdapter;
 
 import java.util.ArrayList;
@@ -21,7 +21,7 @@ public class FavoriteFragment extends BaseRefreshFragment {
 
     @Bind(R.id.fav_recycler)
     RecyclerView mFavRecycler;
-    private List<PostsEntity> mFavPostList = new ArrayList();
+    private List<PostEntity> mFavPostList = new ArrayList();
     private FavoriteAdapter mFavAdapter;
     private LinearLayoutManager mLayoutManager;
 

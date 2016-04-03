@@ -5,7 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
 
 import com.monosky.daily.BaseApplication;
-import com.monosky.daily.module.entity.PostsEntity;
+import com.monosky.daily.module.entity.PostEntity;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 import java.util.List;
@@ -16,10 +16,10 @@ import java.util.List;
 public class FavoriteAdapter extends RecyclerView.Adapter<TodayAdapter.HeaderViewHolder> {
 
     private ImageLoader imageLoader = ImageLoader.getInstance();
-    private List<PostsEntity> mPostList;
+    private List<PostEntity> mPostList;
     private Context mContext;
 
-    public FavoriteAdapter(List<PostsEntity> mFavContentList) {
+    public FavoriteAdapter(List<PostEntity> mFavContentList) {
         this.mPostList = mFavContentList;
         this.mContext = BaseApplication.getContext();
     }

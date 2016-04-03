@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * 文章实体类
  */
-public class PostsEntity implements Serializable {
+public class PostEntity implements Serializable {
 
     private static final long serialVersionUID = -3013120344884696524L;
 
@@ -20,7 +20,7 @@ public class PostsEntity implements Serializable {
     private String short_url;
     private boolean is_liked;
 
-    private AuthorsEntity author;
+    private AuthorEntity author;
     private String column;
     private int app_css;
     @JSONField(name = "abstract")
@@ -33,7 +33,7 @@ public class PostsEntity implements Serializable {
     private String share_pic_url;
     private String type;
     private int id;
-    private List<ThumbsEntity> thumbs;
+    private List<ThumbEntity> thumbs;
 
     public void setDisplay_style(int display_style) {
         this.display_style = display_style;
@@ -63,7 +63,7 @@ public class PostsEntity implements Serializable {
         this.is_liked = is_liked;
     }
 
-    public void setAuthor(AuthorsEntity author) {
+    public void setAuthor(AuthorEntity author) {
         this.author = author;
     }
 
@@ -111,7 +111,7 @@ public class PostsEntity implements Serializable {
         this.id = id;
     }
 
-    public void setThumbs(List<ThumbsEntity> thumbs) {
+    public void setThumbs(List<ThumbEntity> thumbs) {
         this.thumbs = thumbs;
     }
 
@@ -143,7 +143,7 @@ public class PostsEntity implements Serializable {
         return is_liked;
     }
 
-    public AuthorsEntity getAuthor() {
+    public AuthorEntity getAuthor() {
         return author;
     }
 
@@ -191,7 +191,7 @@ public class PostsEntity implements Serializable {
         return id;
     }
 
-    public List<ThumbsEntity> getThumbs() {
+    public List<ThumbEntity> getThumbs() {
         return thumbs;
     }
 }

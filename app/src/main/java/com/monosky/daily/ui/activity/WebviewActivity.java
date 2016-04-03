@@ -19,9 +19,13 @@ public class WebviewActivity extends BaseActivity {
     private String type;
 
     @Override
+    protected int getLayout() {
+        return R.layout.activity_webview;
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_webview);
         type = getIntent().getStringExtra("type");
 
         getViews();

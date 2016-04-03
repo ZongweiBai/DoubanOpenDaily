@@ -20,6 +20,7 @@
     <string name="week_rec">本周推荐</string>
     <string name="hot_author_rec">热门作者</string>
     <string name="author_all">热门作者暂时就这么多啦</string>
+    <string name="author_post_all">TA的文章就就这么多啦！</string>
 
     <string name="favorite_title">喜欢（%1$d）</string>
 
@@ -67,6 +68,7 @@
     <string name="author_main_page">去豆瓣主页</string>
     <string name="douban_title">豆瓣主页</string>
     <string name="author_main_like">关注</string>
+    <string name="author_main_liked">已关注</string>
     <string name="author_main_intro">个人简介</string>
     <string name="like_num">关注：</string>
     <string name="be_like_num">被关注：</string>

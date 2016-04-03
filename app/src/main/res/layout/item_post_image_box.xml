@@ -60,7 +60,7 @@
             android:layout_marginRight="@dimen/common_horizontal_margin"
             android:layout_weight="1"
             android:background="@mipmap/ic_default_image_light"
-            android:scaleType="fitXY"/>
+            android:scaleType="centerCrop"/>
 
         <ImageView
             android:id="@+id/post_thumb2"
@@ -70,7 +70,7 @@
             android:layout_marginRight="@dimen/common_horizontal_margin"
             android:layout_weight="1"
             android:background="@mipmap/ic_default_image_light"
-            android:scaleType="fitXY"/>
+            android:scaleType="centerCrop"/>
 
         <ImageView
             android:id="@+id/post_thumb3"
@@ -79,7 +79,7 @@
             android:layout_alignParentRight="true"
             android:layout_weight="1"
             android:background="@mipmap/ic_default_image_light"
-            android:scaleType="fitXY"/>
+            android:scaleType="centerCrop"/>
     </LinearLayout>
 
 </RelativeLayout>
