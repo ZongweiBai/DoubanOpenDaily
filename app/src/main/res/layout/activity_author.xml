@@ -6,7 +6,7 @@
     android:background="@color/app_main_bg"
     android:fitsSystemWindows="true"
     android:orientation="vertical"
-    tools:context=".ui.activity.AuthorActivity">
+    tools:context=".ui.activity.author.AuthorActivity">
 
     <include layout="@layout/toolbar_common"/>
 

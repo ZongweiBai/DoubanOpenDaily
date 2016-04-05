@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     android:orientation="vertical"
-    tools:context=".ui.activity.AuthorMainPageActivity">
+    tools:context=".ui.activity.author.AuthorMainPageActivity">
 
     <include layout="@layout/toolbar_common"/>
 
@@ -25,7 +25,6 @@
                 android:orientation="vertical">
 
                 <LinearLayout
-                    android:id="@+id/author_main_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/app_main_bg"

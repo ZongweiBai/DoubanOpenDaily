@@ -2,10 +2,14 @@ package com.monosky.daily.module;
 
 import com.alibaba.fastjson.annotation.JSONField;
 
+import java.io.Serializable;
+
 /**
  * 作者主页信息接口解析类
  */
-public class ProfileData {
+public class ProfileData implements Serializable {
+
+    private static final long serialVersionUID = 6414433294952693514L;
 
     private String follower_url;
     @JSONField(name = "is_followed")

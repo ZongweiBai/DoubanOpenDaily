@@ -1,4 +1,4 @@
-package com.monosky.daily.ui.activity.adapter;
+package com.monosky.daily.ui.activity.post.adapter;
 
 import android.content.ClipData;
 import android.content.ClipboardManager;
@@ -15,7 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.monosky.daily.R;
-import com.monosky.daily.ui.activity.PostReplyActivity;
+import com.monosky.daily.ui.activity.post.PostReplyActivity;
 import com.monosky.daily.module.ReplyData;
 import com.monosky.daily.util.ImageLoaderOption;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -28,7 +28,7 @@ import java.util.Map;
  * 文章评论Adapter
  * Created by jonez_000 on 2015/8/20.
  */
-public class ContentReplyAdapter extends BaseAdapter {
+public class PostReplyAdapter extends BaseAdapter {
 
     private Context mContext;
     private List<ReplyData> mReplyDatas;
@@ -36,7 +36,7 @@ public class ContentReplyAdapter extends BaseAdapter {
     private View.OnClickListener mReplyOnClickListener;
     private Map<String, View> viewMap = new HashMap<>();
 
-    public ContentReplyAdapter(Context mContext, List<ReplyData> mReplyDatas) {
+    public PostReplyAdapter(Context mContext, List<ReplyData> mReplyDatas) {
         this.mContext = mContext;
         this.mReplyDatas = mReplyDatas;
         this.mReplyOnClickListener = replyOnClickListener;

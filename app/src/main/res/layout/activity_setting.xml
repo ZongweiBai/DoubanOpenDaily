@@ -1,11 +1,12 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/app_main_bg"
     android:fitsSystemWindows="true"
     android:orientation="vertical">
 
-    <include layout="@layout/actionbar_common" />
+    <include layout="@layout/toolbar_common"/>
 
     <RelativeLayout
         android:id="@+id/font_size_rl"
@@ -22,7 +23,7 @@
             android:layout_height="wrap_content"
             android:text="@string/font_size"
             android:textColor="@color/content_tile_unread"
-            android:textSize="@dimen/text_size_16" />
+            android:textSize="@dimen/text_size_16"/>
 
         <TextView
             android:id="@+id/font_size_value"
@@ -32,7 +33,7 @@
             android:layout_marginTop="2dp"
             android:text="@string/font_size_18"
             android:textColor="@color/content_label_unread"
-            android:textSize="@dimen/text_size_14" />
+            android:textSize="@dimen/text_size_14"/>
     </RelativeLayout>
 
     <View
@@ -40,7 +41,7 @@
         android:layout_height="1dp"
         android:layout_marginLeft="@dimen/common_horizontal_margin"
         android:layout_marginRight="@dimen/common_horizontal_margin"
-        android:background="@color/drawer_line" />
+        android:background="@color/drawer_line"/>
 
     <RelativeLayout
         android:id="@+id/info_push_rl"
@@ -59,7 +60,7 @@
             android:clickable="false"
             android:focusable="false"
             android:focusableInTouchMode="false"
-            android:gravity="center_vertical" />
+            android:gravity="center_vertical"/>
 
         <TextView
             android:id="@+id/info_push_setting"
@@ -68,7 +69,7 @@
             android:layout_toLeftOf="@id/info_push_check"
             android:text="@string/info_push"
             android:textColor="@color/content_tile_unread"
-            android:textSize="@dimen/text_size_16" />
+            android:textSize="@dimen/text_size_16"/>
 
         <TextView
             android:id="@+id/info_push_value"
@@ -79,7 +80,7 @@
             android:layout_toLeftOf="@id/info_push_check"
             android:text="@string/info_push_yes"
             android:textColor="@color/content_label_unread"
-            android:textSize="@dimen/text_size_14" />
+            android:textSize="@dimen/text_size_14"/>
     </RelativeLayout>
 
     <View
@@ -87,7 +88,7 @@
         android:layout_height="1dp"
         android:layout_marginLeft="@dimen/common_horizontal_margin"
         android:layout_marginRight="@dimen/common_horizontal_margin"
-        android:background="@color/drawer_line" />
+        android:background="@color/drawer_line"/>
 
     <RelativeLayout
         android:id="@+id/offline_rl"
@@ -106,7 +107,7 @@
             android:clickable="false"
             android:focusable="false"
             android:focusableInTouchMode="false"
-            android:gravity="center_vertical" />
+            android:gravity="center_vertical"/>
 
         <TextView
             android:id="@+id/offline_setting"
@@ -115,7 +116,7 @@
             android:layout_toLeftOf="@id/offline_check"
             android:text="@string/offline_setting"
             android:textColor="@color/content_tile_unread"
-            android:textSize="@dimen/text_size_16" />
+            android:textSize="@dimen/text_size_16"/>
 
         <TextView
             android:id="@+id/offline_value"
@@ -126,7 +127,7 @@
             android:layout_toLeftOf="@id/offline_check"
             android:text="@string/offline_setting_yes"
             android:textColor="@color/content_label_unread"
-            android:textSize="@dimen/text_size_14" />
+            android:textSize="@dimen/text_size_14"/>
     </RelativeLayout>
 
     <View
@@ -134,7 +135,7 @@
         android:layout_height="1dp"
         android:layout_marginLeft="@dimen/common_horizontal_margin"
         android:layout_marginRight="@dimen/common_horizontal_margin"
-        android:background="@color/drawer_line" />
+        android:background="@color/drawer_line"/>
 
     <RelativeLayout
         android:id="@+id/app_update_rl"
@@ -151,7 +152,7 @@
             android:layout_height="wrap_content"
             android:text="@string/app_update"
             android:textColor="@color/content_tile_unread"
-            android:textSize="@dimen/text_size_16" />
+            android:textSize="@dimen/text_size_16"/>
 
         <TextView
             android:id="@+id/app_update_value"
@@ -161,7 +162,7 @@
             android:layout_marginTop="2dp"
             android:text="@string/app_update_lasted"
             android:textColor="@color/content_label_unread"
-            android:textSize="@dimen/text_size_14" />
+            android:textSize="@dimen/text_size_14"/>
     </RelativeLayout>
 
     <View
@@ -169,7 +170,7 @@
         android:layout_height="1dp"
         android:layout_marginLeft="@dimen/common_horizontal_margin"
         android:layout_marginRight="@dimen/common_horizontal_margin"
-        android:background="@color/drawer_line" />
+        android:background="@color/drawer_line"/>
 
     <RelativeLayout
         android:id="@+id/feedback_rl"
@@ -186,7 +187,7 @@
             android:layout_height="wrap_content"
             android:text="@string/feedback_title"
             android:textColor="@color/content_tile_unread"
-            android:textSize="@dimen/text_size_16" />
+            android:textSize="@dimen/text_size_16"/>
 
         <TextView
             android:id="@+id/feedback_value"
@@ -196,7 +197,7 @@
             android:layout_marginTop="2dp"
             android:text="@string/feedback_label"
             android:textColor="@color/content_label_unread"
-            android:textSize="@dimen/text_size_14" />
+            android:textSize="@dimen/text_size_14"/>
     </RelativeLayout>
 
     <View
@@ -204,7 +205,7 @@
         android:layout_height="1dp"
         android:layout_marginLeft="@dimen/common_horizontal_margin"
         android:layout_marginRight="@dimen/common_horizontal_margin"
-        android:background="@color/drawer_line" />
+        android:background="@color/drawer_line"/>
 
     <RelativeLayout
         android:id="@+id/share_setting_rl"
@@ -221,7 +222,7 @@
             android:layout_height="36dp"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:background="@mipmap/ic_publish_weibo_normal" />
+            android:background="@mipmap/ic_publish_weibo_normal"/>
 
         <TextView
             android:layout_width="match_parent"
@@ -230,7 +231,7 @@
             android:gravity="center_vertical"
             android:text="@string/share_account"
             android:textColor="@color/content_tile_unread"
-            android:textSize="@dimen/text_size_16" />
+            android:textSize="@dimen/text_size_16"/>
 
     </RelativeLayout>
 
@@ -239,7 +240,7 @@
         android:layout_height="1dp"
         android:layout_marginLeft="@dimen/common_horizontal_margin"
         android:layout_marginRight="@dimen/common_horizontal_margin"
-        android:background="@color/drawer_line" />
+        android:background="@color/drawer_line"/>
 
     <RelativeLayout
         android:id="@+id/open_src_rl"
@@ -256,7 +257,7 @@
             android:layout_height="wrap_content"
             android:text="@string/open_src_title"
             android:textColor="@color/content_tile_unread"
-            android:textSize="@dimen/text_size_16" />
+            android:textSize="@dimen/text_size_16"/>
 
         <TextView
             android:layout_width="match_parent"
@@ -265,7 +266,7 @@
             android:layout_marginTop="2dp"
             android:text="@string/open_src_label"
             android:textColor="@color/content_label_unread"
-            android:textSize="@dimen/text_size_14" />
+            android:textSize="@dimen/text_size_14"/>
     </RelativeLayout>
 
     <View
@@ -273,7 +274,7 @@
         android:layout_height="1dp"
         android:layout_marginLeft="@dimen/common_horizontal_margin"
         android:layout_marginRight="@dimen/common_horizontal_margin"
-        android:background="@color/drawer_line" />
+        android:background="@color/drawer_line"/>
 
     <RelativeLayout
         android:id="@+id/app_about_rl"
@@ -290,7 +291,7 @@
             android:layout_height="wrap_content"
             android:text="@string/app_about_tile"
             android:textColor="@color/content_tile_unread"
-            android:textSize="@dimen/text_size_16" />
+            android:textSize="@dimen/text_size_16"/>
 
         <TextView
             android:id="@+id/app_about_value"
@@ -300,7 +301,7 @@
             android:layout_marginTop="2dp"
             android:text="@string/app_about_label"
             android:textColor="@color/content_label_unread"
-            android:textSize="@dimen/text_size_14" />
+            android:textSize="@dimen/text_size_14"/>
     </RelativeLayout>
 
     <View
@@ -308,6 +309,6 @@
         android:layout_height="1dp"
         android:layout_marginLeft="@dimen/common_horizontal_margin"
         android:layout_marginRight="@dimen/common_horizontal_margin"
-        android:background="@color/drawer_line" />
+        android:background="@color/drawer_line"/>
 
 </LinearLayout>

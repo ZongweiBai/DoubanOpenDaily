@@ -17,7 +17,7 @@ import com.monosky.daily.constant.ConstData;
 import com.monosky.daily.module.entity.PostEntity;
 import com.monosky.daily.module.entity.ThumbEntity;
 import com.monosky.daily.ui.activity.MainActivity;
-import com.monosky.daily.ui.activity.PostDetailActivity;
+import com.monosky.daily.ui.activity.post.PostDetailActivity;
 import com.monosky.daily.util.ImageLoaderOption;
 import com.nostra13.universalimageloader.core.ImageLoader;
 

@@ -1,11 +1,9 @@
-package com.monosky.daily.ui.activity;
+package com.monosky.daily.ui.activity.init;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.Window;
@@ -19,7 +17,7 @@ import android.widget.Toast;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.monosky.daily.constant.ConstData;
 import com.monosky.daily.R;
-import com.monosky.daily.util.SystemBarTintManager;
+import com.monosky.daily.ui.activity.BaseActivity;
 import com.monosky.daily.util.SharedPreferencesUtil;
 
 public class LogonActivity extends BaseActivity {

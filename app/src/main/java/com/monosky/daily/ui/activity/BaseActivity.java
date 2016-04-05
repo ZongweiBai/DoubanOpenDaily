@@ -4,12 +4,15 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
+import android.view.MenuItem;
 import android.view.Window;
 import android.view.WindowManager;
 
 import com.monosky.daily.BaseApplication;
 import com.monosky.daily.R;
 import com.monosky.daily.util.SystemBarTintManager;
+
+import butterknife.ButterKnife;
 
 /**
  * Activity基类
@@ -34,6 +37,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         tintManager.setStatusBarTintResource(R.color.blue);//设置颜色
 
         setContentView(getLayout());
+        ButterKnife.bind(this);
     }
 
     private void getScreenParams() {
@@ -56,5 +60,15 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     protected abstract int getLayout();
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                supportFinishAfterTransition();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
 }

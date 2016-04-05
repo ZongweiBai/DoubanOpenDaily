@@ -5,7 +5,7 @@
     android:background="@color/app_main_bg"
     android:fitsSystemWindows="true"
     android:orientation="vertical"
-    tools:context=".ui.activity.WebviewActivity">
+    tools:context=".ui.activity.init.WebviewActivity">
 
     <include
         android:id="@+id/content_top"

@@ -13,7 +13,7 @@ import com.monosky.daily.BaseApplication;
 import com.monosky.daily.R;
 import com.monosky.daily.constant.ConstData;
 import com.monosky.daily.module.entity.AuthorEntity;
-import com.monosky.daily.ui.activity.AuthorActivity;
+import com.monosky.daily.ui.activity.author.AuthorActivity;
 import com.monosky.daily.util.ImageLoaderOption;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.timehop.stickyheadersrecyclerview.StickyRecyclerHeadersAdapter;

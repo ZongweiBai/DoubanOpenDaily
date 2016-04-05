@@ -1,7 +1,5 @@
 package com.monosky.daily.test;
 
-import com.monosky.daily.module.AuthorData;
-import com.monosky.daily.module.ContentData;
 import com.monosky.daily.module.ReplyData;
 import com.monosky.daily.module.entity.AuthorEntity;
 
@@ -13,62 +11,6 @@ import java.util.List;
  * Created by jonez_000 on 2015/8/16.
  */
 public class GenerateTestDatas {
-
-    /**
-     * 生成往期内容数据
-     *
-     * @return
-     */
-    public static List<ContentData> getHistoryContents() {
-        List<ContentData> contents = new ArrayList<>();
-        return contents;
-    }
-
-    /**
-     * 生成往期刷新内容
-     *
-     * @return
-     */
-    public static List<ContentData> loadHistoryContents() {
-        List<ContentData> contents = new ArrayList<>();
-        return contents;
-    }
-
-    /**
-     * 生成热门作者数据
-     */
-    public static List<AuthorData> getAuthors() {
-        List<AuthorData> authors = new ArrayList<>();
-//        authors.add(new AuthorData(AuthorData.SECTION, AuthorData.TYPE_WEEK));
-//        authors.add(new AuthorData("http://img3.douban.com/icon/ul79644553-1.jpg", "静岛", "写过风月小说，写过星座专栏，写过唱片简介，写过电视剧，面善嘴毒，脸尖腿粗", AuthorData.ITEM, AuthorData.TYPE_WEEK));
-//        authors.add(new AuthorData("http://img3.douban.com/icon/ul79644553-1.jpg", "静岛", "写过风月小说，写过星座专栏，写过唱片简介，写过电视剧，面善嘴毒，脸尖腿粗", AuthorData.ITEM, AuthorData.TYPE_WEEK));
-//        authors.add(new AuthorData("http://img3.douban.com/icon/ul79644553-1.jpg", "静岛", "写过风月小说，写过星座专栏，写过唱片简介，写过电视剧，面善嘴毒，脸尖腿粗", AuthorData.ITEM, AuthorData.TYPE_WEEK));
-//        authors.add(new AuthorData("http://img3.douban.com/icon/ul79644553-1.jpg", "静岛", "写过风月小说，写过星座专栏，写过唱片简介，写过电视剧，面善嘴毒，脸尖腿粗", AuthorData.ITEM, AuthorData.TYPE_WEEK));
-//        authors.add(new AuthorData(AuthorData.SECTION, AuthorData.TYPE_HOT));
-//        authors.add(new AuthorData("http://img3.douban.com/icon/ul79644553-1.jpg", "静岛", "写过风月小说，写过星座专栏，写过唱片简介，写过电视剧，面善嘴毒，脸尖腿粗", AuthorData.ITEM, AuthorData.TYPE_HOT));
-//        authors.add(new AuthorData("http://img3.douban.com/icon/ul79644553-1.jpg", "静岛", "写过风月小说，写过星座专栏，写过唱片简介，写过电视剧，面善嘴毒，脸尖腿粗", AuthorData.ITEM, AuthorData.TYPE_HOT));
-//        authors.add(new AuthorData("http://img3.douban.com/icon/ul79644553-1.jpg", "静岛", "写过风月小说，写过星座专栏，写过唱片简介，写过电视剧，面善嘴毒，脸尖腿粗", AuthorData.ITEM, AuthorData.TYPE_HOT));
-//        authors.add(new AuthorData("http://img3.douban.com/icon/ul79644553-1.jpg", "静岛", "写过风月小说，写过星座专栏，写过唱片简介，写过电视剧，面善嘴毒，脸尖腿粗", AuthorData.ITEM, AuthorData.TYPE_HOT));
-//        authors.add(new AuthorData("http://img3.douban.com/icon/ul79644553-1.jpg", "静岛", "写过风月小说，写过星座专栏，写过唱片简介，写过电视剧，面善嘴毒，脸尖腿粗", AuthorData.ITEM, AuthorData.TYPE_HOT));
-//        authors.add(new AuthorData("http://img3.douban.com/icon/ul79644553-1.jpg", "静岛", "写过风月小说，写过星座专栏，写过唱片简介，写过电视剧，面善嘴毒，脸尖腿粗", AuthorData.ITEM, AuthorData.TYPE_HOT));
-//        authors.add(new AuthorData("http://img3.douban.com/icon/ul79644553-1.jpg", "静岛", "写过风月小说，写过星座专栏，写过唱片简介，写过电视剧，面善嘴毒，脸尖腿粗", AuthorData.ITEM, AuthorData.TYPE_HOT));
-        return authors;
-    }
-
-    /**
-     * 生成热门作者刷新数据
-     *
-     * @return
-     */
-    public static List<AuthorData> loadAuthors() {
-        List<AuthorData> authors = new ArrayList<>();
-//        authors.add(new AuthorData("http://img3.douban.com/icon/ul81006765-2.jpg", "莫吉托", "天秤座，既往选择困难，人格分裂，时而正能量爆棚，时而45度仰望天空。拖着青春的尾巴不愿长大。", AuthorData.ITEM, AuthorData.TYPE_HOT));
-//        authors.add(new AuthorData("http://img3.douban.com/icon/ul81006765-2.jpg", "莫吉托", "天秤座，既往选择困难，人格分裂，时而正能量爆棚，时而45度仰望天空。拖着青春的尾巴不愿长大。", AuthorData.ITEM, AuthorData.TYPE_HOT));
-//        authors.add(new AuthorData("http://img3.douban.com/icon/ul81006765-2.jpg", "莫吉托", "天秤座，既往选择困难，人格分裂，时而正能量爆棚，时而45度仰望天空。拖着青春的尾巴不愿长大。", AuthorData.ITEM, AuthorData.TYPE_HOT));
-//        authors.add(new AuthorData("http://img3.douban.com/icon/ul81006765-2.jpg", "莫吉托", "天秤座，既往选择困难，人格分裂，时而正能量爆棚，时而45度仰望天空。拖着青春的尾巴不愿长大。", AuthorData.ITEM, AuthorData.TYPE_HOT));
-//        authors.add(new AuthorData("http://img3.douban.com/icon/ul81006765-2.jpg", "莫吉托", "天秤座，既往选择困难，人格分裂，时而正能量爆棚，时而45度仰望天空。拖着青春的尾巴不愿长大。", AuthorData.ITEM, AuthorData.TYPE_HOT));
-        return authors;
-    }
 
     /**
      * 获取评论内容

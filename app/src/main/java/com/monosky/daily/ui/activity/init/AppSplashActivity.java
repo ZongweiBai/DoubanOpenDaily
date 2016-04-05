@@ -1,4 +1,4 @@
-package com.monosky.daily.ui.activity;
+package com.monosky.daily.ui.activity.init;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,6 +8,8 @@ import android.widget.TextView;
 
 import com.monosky.daily.BaseApplication;
 import com.monosky.daily.R;
+import com.monosky.daily.ui.activity.BaseActivity;
+import com.monosky.daily.ui.activity.MainActivity;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;

@@ -1,4 +1,4 @@
-package com.monosky.daily.ui.activity;
+package com.monosky.daily.ui.activity.author;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,7 +16,8 @@ import com.monosky.daily.constant.ConstData;
 import com.monosky.daily.module.AuthorDetailData;
 import com.monosky.daily.module.entity.AuthorEntity;
 import com.monosky.daily.module.entity.PostEntity;
-import com.monosky.daily.ui.activity.adapter.AuthorAdapter;
+import com.monosky.daily.ui.activity.BaseRefreshActivity;
+import com.monosky.daily.ui.activity.author.adapter.AuthorAdapter;
 import com.monosky.daily.util.ToastUtils;
 import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration;
 

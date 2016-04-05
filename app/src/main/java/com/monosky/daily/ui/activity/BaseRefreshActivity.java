@@ -31,7 +31,7 @@ public abstract class BaseRefreshActivity extends AppCompatActivity {
     protected int mItemCount = 0;
 
     @Bind(R.id.swipe_refresh)
-    SwipeRefreshLayout mSwipeRefresh;
+    protected SwipeRefreshLayout mSwipeRefresh;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

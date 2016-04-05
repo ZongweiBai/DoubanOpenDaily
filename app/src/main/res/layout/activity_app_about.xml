@@ -1,12 +1,13 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     android:orientation="vertical"
-    tools:context=".ui.activity.AppAboutActivity">
+    tools:context=".ui.activity.setting.AppAboutActivity">
 
-    <include layout="@layout/actionbar_common" />
+    <include layout="@layout/toolbar_common"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -15,7 +16,7 @@
         android:layout_marginTop="24dp"
         android:text="一刻Android客户端"
         android:textColor="@color/content_tile_readed"
-        android:textSize="@dimen/text_size_20" />
+        android:textSize="@dimen/text_size_20"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -24,9 +25,10 @@
         android:layout_marginTop="24dp"
         android:text="仿豆瓣一刻UI客户端，仅供学习参考，不作商业用途"
         android:textColor="@color/content_label_readed"
-        android:textSize="@dimen/text_size_14" />
+        android:textSize="@dimen/text_size_14"/>
 
     <Button
+        android:id="@+id/official_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="24dp"
@@ -36,6 +38,6 @@
         android:onClick="downDaily"
         android:text="支持官方一刻应用"
         android:textColor="@color/white"
-        android:textSize="@dimen/text_size_16" />
+        android:textSize="@dimen/text_size_16"/>
 
 </LinearLayout>

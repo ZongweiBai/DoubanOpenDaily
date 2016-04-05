@@ -1,7 +1,8 @@
-package com.monosky.daily.ui.activity;
+package com.monosky.daily.ui.activity.setting;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.CheckBox;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.monosky.daily.R;
 import com.monosky.daily.constant.ConstData;
+import com.monosky.daily.ui.activity.BaseActivity;
 import com.monosky.daily.util.SharedPreferencesUtil;
 
 /**
@@ -18,7 +20,7 @@ import com.monosky.daily.util.SharedPreferencesUtil;
  */
 public class SettingActivity extends BaseActivity {
 
-    private TextView mTopTitle;
+    private Toolbar mToolBar;
     private RelativeLayout mFontSizeRl;
     private TextView mFontSizeValue;
     private RelativeLayout mInfoPushRl;
@@ -54,7 +56,7 @@ public class SettingActivity extends BaseActivity {
     }
 
     private void getViews() {
-        mTopTitle = (TextView) findViewById(R.id.actionbar_title);
+        mToolBar = (Toolbar) findViewById(R.id.tool_bar);
         mFontSizeRl = (RelativeLayout) findViewById(R.id.font_size_rl);
         mFontSizeValue = (TextView) findViewById(R.id.font_size_value);
         mInfoPushRl = (RelativeLayout) findViewById(R.id.info_push_rl);
@@ -73,12 +75,15 @@ public class SettingActivity extends BaseActivity {
     }
 
     private void setViews() {
-        mTopTitle.setText(getResources().getString(R.string.settings));
+        mToolBar.setTitle(getResources().getString(R.string.settings));
+        setSupportActionBar(mToolBar);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
 
         mInfoPushCheck.setChecked(true);
         mOfflineCheck.setChecked(true);
 
-        mTopTitle.setOnClickListener(onClickListener);
         mFontSizeRl.setOnClickListener(onClickListener);
         mInfoPushRl.setOnClickListener(onClickListener);
         mInfoPushCheck.setOnClickListener(onClickListener);
@@ -99,9 +104,6 @@ public class SettingActivity extends BaseActivity {
         @Override
         public void onClick(View v) {
             switch (v.getId()) {
-                case R.id.actionbar_title:
-                    SettingActivity.this.finish();
-                    break;
                 case R.id.font_size_rl:
                     showFontSizeSettingDialog();
                     break;

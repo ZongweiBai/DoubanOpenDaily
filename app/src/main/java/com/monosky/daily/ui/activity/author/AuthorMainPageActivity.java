@@ -1,4 +1,4 @@
-package com.monosky.daily.ui.activity;
+package com.monosky.daily.ui.activity.author;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -9,7 +9,6 @@ import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -24,6 +23,7 @@ import com.monosky.daily.constant.APIConstData;
 import com.monosky.daily.constant.ConstData;
 import com.monosky.daily.module.ProfileData;
 import com.monosky.daily.module.entity.AuthorEntity;
+import com.monosky.daily.ui.activity.BaseRefreshActivity;
 import com.monosky.daily.util.ImageLoaderOption;
 import com.monosky.daily.util.SharedPreferencesUtil;
 import com.monosky.daily.util.ToastUtils;
@@ -49,8 +49,6 @@ public class AuthorMainPageActivity extends BaseRefreshActivity {
     TextView mAuthorMainLike;
     @Bind(R.id.author_main_intro)
     TextView mAuthorMainIntro;
-    @Bind(R.id.author_main_layout)
-    LinearLayout mAuthorMainLayout;
     @Bind(R.id.following_count)
     TextView mFollowingCount;
     @Bind(R.id.follower_count)
@@ -154,8 +152,12 @@ public class AuthorMainPageActivity extends BaseRefreshActivity {
     private void setViewDate() {
         imageLoader.displayImage(mProfileData.getAvatar(), mAuthorMainImg, ImageLoaderOption.optionInfoImage(R.mipmap.ic_default_avatar_light));
         mAuthorMainName.setText(mProfileData.getName());
-        mLocName.setText(mProfileData.getLoc_name());
-        mLocName.setTextColor(ContextCompat.getColor(this, R.color.content_label_readed));
+        if (TextUtils.isEmpty(mProfileData.getLoc_name())) {
+            mLocName.setVisibility(View.GONE);
+        } else {
+            mLocName.setText(mProfileData.getLoc_name());
+            mLocName.setTextColor(ContextCompat.getColor(this, R.color.content_label_readed));
+        }
 
         mFollowingCount.setText(mProfileData.getFollowing_count());
         mFollowingCount.setTextColor(ContextCompat.getColor(this, R.color.main_color));
@@ -249,6 +251,7 @@ public class AuthorMainPageActivity extends BaseRefreshActivity {
             }
         }
         mAuthorMainIntro.setTextColor(ContextCompat.getColor(this, R.color.main_color));
+        mAuthorMainIntro.setOnClickListener(myOnClick);
 
         mContentScrollView.setVisibility(View.VISIBLE);
     }
@@ -278,6 +281,9 @@ public class AuthorMainPageActivity extends BaseRefreshActivity {
                             AuthorMainPageActivity.this.finish();
                         }
                     }, 5000);
+                    break;
+                case R.id.author_main_intro:
+                    AuthorIntroActivity.gotoAuthorIntro(mProfileData);
                     break;
                 default:
                     String redirectUrl = String.valueOf(view.getTag());

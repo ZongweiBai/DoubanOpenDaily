@@ -1,22 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!-- 自定义SwipeRefreshLayout属性 -->
-    <declare-styleable name="SwipyRefreshLayout">
-        <attr name="direction">
-            <enum name="top" value="0"/>
-            <enum name="bottom" value="1"/>
-            <enum name="both" value="2"/>
-        </attr>
-    </declare-styleable>
-
-    <!-- Declare custom theme attributes that allow changing which styles are
-         used for button bars depending on the API level.
-         ?android:attr/buttonBarStyle is new as of API 11 so this is
-         necessary to support previous API levels. -->
-    <declare-styleable name="ButtonBarContainerTheme">
-        <attr name="metaButtonBarStyle" format="reference"/>
-        <attr name="metaButtonBarButtonStyle" format="reference"/>
-    </declare-styleable>
-
 </resources>

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.monosky.daily">
+<manifest package="com.monosky.daily"
+          xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.INTERNET"/>
     <!-- Include next permission if you want to allow UIL to cache images on SD card -->
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
     <application
         android:name=".BaseApplication"
@@ -13,51 +13,53 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".ui.activity.AppSplashActivity"
+            android:name=".ui.activity.init.AppSplashActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
         <activity
             android:name=".ui.activity.MainActivity"
             android:label="@string/app_name"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"/>
         <activity
-            android:name=".ui.activity.SettingActivity"
+            android:name=".ui.activity.setting.SettingActivity"
             android:label="@string/app_name"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"/>
         <activity
-            android:name=".ui.activity.PostDetailActivity"
+            android:name=".ui.activity.post.PostDetailActivity"
             android:label="@string/app_name"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"/>
         <activity
-            android:name=".ui.activity.PostReplyActivity"
+            android:name=".ui.activity.post.PostReplyActivity"
             android:label="@string/app_name"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"/>
         <activity
-            android:name=".ui.activity.LogonActivity"
+            android:name=".ui.activity.init.LogonActivity"
             android:label="@string/app_name"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"/>
         <activity
-            android:name=".ui.activity.WebviewActivity"
+            android:name=".ui.activity.init.WebviewActivity"
             android:label="@string/app_name"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"/>
         <activity
-            android:name=".ui.activity.AuthorActivity"
+            android:name=".ui.activity.author.AuthorActivity"
             android:label="@string/app_name"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"/>
         <activity
-            android:name=".ui.activity.AppAboutActivity"
+            android:name=".ui.activity.setting.AppAboutActivity"
             android:label="@string/app_name"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"/>
         <activity
-            android:name=".ui.activity.AuthorMainPageActivity"
+            android:name=".ui.activity.author.AuthorMainPageActivity"
             android:label="@string/app_name"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"/>
+        <activity android:name=".ui.activity.author.AuthorIntroActivity">
+        </activity>
     </application>
 
 </manifest>

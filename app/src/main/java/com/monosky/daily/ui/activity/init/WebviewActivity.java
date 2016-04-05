@@ -1,4 +1,4 @@
-package com.monosky.daily.ui.activity;
+package com.monosky.daily.ui.activity.init;
 
 import android.os.Bundle;
 import android.view.View;
@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import com.monosky.daily.constant.ConstData;
 import com.monosky.daily.R;
+import com.monosky.daily.ui.activity.BaseActivity;
 
 /**
  * webview

@@ -1,4 +1,4 @@
-package com.monosky.daily.ui.activity.adapter;
+package com.monosky.daily.ui.activity.author.adapter;
 
 import android.content.Context;
 import android.support.v4.content.ContextCompat;
@@ -16,8 +16,8 @@ import com.monosky.daily.R;
 import com.monosky.daily.constant.ConstData;
 import com.monosky.daily.module.entity.AuthorEntity;
 import com.monosky.daily.module.entity.PostEntity;
-import com.monosky.daily.ui.activity.AuthorMainPageActivity;
-import com.monosky.daily.ui.activity.PostDetailActivity;
+import com.monosky.daily.ui.activity.author.AuthorMainPageActivity;
+import com.monosky.daily.ui.activity.post.PostDetailActivity;
 import com.monosky.daily.util.ImageLoaderOption;
 import com.nostra13.universalimageloader.core.ImageLoader;
 

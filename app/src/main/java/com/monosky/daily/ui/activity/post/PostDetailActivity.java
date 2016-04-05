@@ -1,4 +1,4 @@
-package com.monosky.daily.ui.activity;
+package com.monosky.daily.ui.activity.post;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.monosky.daily.BaseApplication;
 import com.monosky.daily.R;
 import com.monosky.daily.module.entity.PostEntity;
+import com.monosky.daily.ui.activity.BaseActivity;
 
 /**
  * 文章详细页，以webview加载

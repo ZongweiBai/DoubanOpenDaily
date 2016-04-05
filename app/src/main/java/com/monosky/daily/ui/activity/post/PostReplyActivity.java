@@ -1,4 +1,4 @@
-package com.monosky.daily.ui.activity;
+package com.monosky.daily.ui.activity.post;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,7 +8,9 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.monosky.daily.R;
-import com.monosky.daily.ui.activity.adapter.ContentReplyAdapter;
+import com.monosky.daily.ui.activity.BaseActivity;
+import com.monosky.daily.ui.activity.init.LogonActivity;
+import com.monosky.daily.ui.activity.post.adapter.PostReplyAdapter;
 import com.monosky.daily.module.ReplyData;
 import com.monosky.daily.test.GenerateTestDatas;
 
@@ -25,7 +27,7 @@ public class PostReplyActivity extends BaseActivity {
     private TextView mTopTitle;
     private ListView mRelpyListView;
     private TextView mReplyBottom;
-    private ContentReplyAdapter mRelpyAdapter;
+    private PostReplyAdapter mRelpyAdapter;
     private List<ReplyData> mReplyDataList = new ArrayList<>();
 
     @Override
@@ -59,7 +61,7 @@ public class PostReplyActivity extends BaseActivity {
         mTopTitle.setOnClickListener(replyOnClick);
         mReplyBottom.setOnClickListener(replyOnClick);
 
-        mRelpyAdapter = new ContentReplyAdapter(this, mReplyDataList);
+        mRelpyAdapter = new PostReplyAdapter(this, mReplyDataList);
         mRelpyListView.setAdapter(mRelpyAdapter);
         mRelpyListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
