@@ -10,7 +10,7 @@ import com.monosky.daily.R;
 import com.monosky.daily.constant.APIConstData;
 import com.monosky.daily.module.CatalogData;
 import com.monosky.daily.module.entity.ColumnEntity;
-import com.monosky.daily.ui.fragment.adapter.CatalogAdapter;
+import com.monosky.daily.ui.fragment.adapter.ColumnAdapter;
 import com.monosky.daily.util.ToastUtils;
 
 import java.util.ArrayList;
@@ -22,23 +22,23 @@ import butterknife.ButterKnife;
 /**
  * 栏目浏览Fragment
  */
-public class CatalogFragment extends BaseRefreshFragment {
+public class ColumnFragment extends BaseRefreshFragment {
 
-    @Bind(R.id.catalog_gridview)
-    GridView mCatalogGridview;
-    private CatalogAdapter mCatalogAdapter;
+    @Bind(R.id.column_grid_view)
+    GridView mColumnGridView;
+    private ColumnAdapter mColumnAdapter;
     private List<ColumnEntity> mColumnsEntities = new ArrayList<>();
 
     @Override
     protected int getLayout() {
-        return R.layout.fragment_catalog;
+        return R.layout.fragment_column;
     }
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mCatalogAdapter = new CatalogAdapter(mColumnsEntities);
-        mCatalogGridview.setAdapter(mCatalogAdapter);
+        mColumnAdapter = new ColumnAdapter(mColumnsEntities);
+        mColumnGridView.setAdapter(mColumnAdapter);
 
         initSwipeLayout();
     }
@@ -58,7 +58,7 @@ public class CatalogFragment extends BaseRefreshFragment {
                         CatalogData catalogData = JSON.parseObject(t, CatalogData.class);
                         mColumnsEntities.clear();
                         mColumnsEntities.addAll(catalogData.getColumns());
-                        mCatalogAdapter.notifyDataSetChanged();
+                        mColumnAdapter.notifyDataSetChanged();
                         ToastUtils.showShort(getContext(), "请求成功");
                     }
 

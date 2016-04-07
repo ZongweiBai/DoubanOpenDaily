@@ -44,5 +44,10 @@ public class APIConstData {
      */
     public static String GetProfile = "https://moment.douban.com/api/user/{authorId}/profile";
 
+    /**
+     *  栏目文章列表及翻页
+     *  https://moment.douban.com/api/column/26/posts?max_id=124073
+     */
+    public static String GetColumnPosts = "https://moment.douban.com/api/column/{columnId}/posts?max_id={maxId}";
 
 }

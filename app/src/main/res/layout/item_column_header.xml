@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:id="@+id/column_layout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal"
+    android:background="@color/app_main_bg"
+    android:orientation="vertical"
+    android:padding="@dimen/activity_vertical_margin">
+
+    <ImageView
+        android:id="@+id/column_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/common_horizontal_margin"
+        android:src="@mipmap/ic_column_default_light"/>
+
+    <TextView
+        android:id="@+id/column_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/column_img"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/common_horizontal_margin"
+        android:text="@string/app_name"
+        android:textColor="@color/main_color"
+        android:textSize="@dimen/text_size_16"/>
+
+    <TextView
+        android:id="@+id/column_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/column_title"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/common_horizontal_margin"
+        android:text="@string/app_name"
+        android:textColor="@color/content_label_unread"
+        android:textSize="@dimen/text_size_12"/>
+
+</RelativeLayout>

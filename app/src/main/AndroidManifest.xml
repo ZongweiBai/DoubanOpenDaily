@@ -58,7 +58,11 @@
             android:name=".ui.activity.author.AuthorMainPageActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"/>
-        <activity android:name=".ui.activity.author.AuthorIntroActivity">
+        <activity
+            android:name=".ui.activity.author.AuthorIntroActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".ui.activity.post.ColumnPostsActivity">
         </activity>
     </application>
 

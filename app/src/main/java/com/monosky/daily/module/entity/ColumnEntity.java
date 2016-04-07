@@ -2,10 +2,14 @@ package com.monosky.daily.module.entity;
 
 import com.alibaba.fastjson.annotation.JSONField;
 
+import java.io.Serializable;
+
 /**
  * 栏目实体类
  */
-public class ColumnEntity {
+public class ColumnEntity implements Serializable {
+
+    private static final long serialVersionUID = -819866529934718981L;
 
     private int id;
     private String icon;

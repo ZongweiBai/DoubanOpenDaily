@@ -25,7 +25,7 @@ import com.monosky.daily.test.GenerateTestDatas;
 import com.monosky.daily.ui.activity.author.AuthorMainPageActivity;
 import com.monosky.daily.ui.activity.init.LogonActivity;
 import com.monosky.daily.ui.activity.setting.SettingActivity;
-import com.monosky.daily.ui.fragment.CatalogFragment;
+import com.monosky.daily.ui.fragment.ColumnFragment;
 import com.monosky.daily.ui.fragment.FavoriteFragment;
 import com.monosky.daily.ui.fragment.HistoryFragment;
 import com.monosky.daily.ui.fragment.HotAuthorFragment;
@@ -87,7 +87,7 @@ public class MainActivity extends BaseActivity {
     private TodayFragment mTodayFragment;
     private HistoryFragment mHistoryFragment;
     private HotAuthorFragment mHotAuthorFragment;
-    private CatalogFragment mCatalogFragment;
+    private ColumnFragment mCatalogFragment;
     private FavoriteFragment mFavoriteFragment;
 
     @Override
@@ -108,7 +108,7 @@ public class MainActivity extends BaseActivity {
         mTodayFragment = new TodayFragment();
         mHistoryFragment = new HistoryFragment();
         mHotAuthorFragment = new HotAuthorFragment();
-        mCatalogFragment = new CatalogFragment();
+        mCatalogFragment = new ColumnFragment();
         mFavoriteFragment = new FavoriteFragment();
         // 添加显示第一个fragment
         fragmentList.add(mTodayFragment);

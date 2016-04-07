@@ -10,7 +10,7 @@
         android:layout_height="wrap_content">
 
         <GridView
-            android:id="@+id/catalog_gridview"
+            android:id="@+id/column_grid_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:horizontalSpacing="0dp"
