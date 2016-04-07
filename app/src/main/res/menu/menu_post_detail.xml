@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_comment"
+        android:icon="@mipmap/ic_ab_comment"
+        android:title="评论"
+        app:showAsAction="always"/>
+    <item
+        android:id="@+id/action_fav"
+        android:icon="@mipmap/ic_ab_fav_off"
+        android:title="喜欢"
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/action_share"
+        android:icon="@mipmap/ic_ab_share"
+        android:title="分享"
+        app:showAsAction="always"/>
+</menu>
