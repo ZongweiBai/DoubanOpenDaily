@@ -7,6 +7,8 @@ import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.webkit.JsPromptResult;
+import android.webkit.JsResult;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
@@ -16,6 +18,9 @@ import com.monosky.daily.module.entity.PostEntity;
 import com.monosky.daily.presenter.cache.ACache;
 import com.monosky.daily.ui.activity.BaseRefreshActivity;
 import com.monosky.daily.ui.view.actionItemBadge.ActionItemBadge;
+import com.monosky.daily.util.AssetsUtils;
+import com.monosky.daily.util.JsHostScope;
+import com.monosky.daily.util.LogUtils;
 import com.monosky.daily.util.MD5Util;
 import com.monosky.daily.util.ToastUtils;
 
@@ -28,6 +33,7 @@ import java.io.IOException;
 import java.lang.ref.WeakReference;
 
 import butterknife.Bind;
+import cn.pedant.SafeWebViewBridge.InjectedChromeClient;
 
 /**
  * 文章详细页，以webView加载
@@ -42,6 +48,7 @@ public class PostDetailActivity extends BaseRefreshActivity {
     private ACache mACache = ACache.get(BaseApplication.getContext());
     private String mPostHtml;
     private PostHandler mPostHandler = new PostHandler(this);
+    private String wholeJS;
 
     @Override
     protected int getLayout() {
@@ -51,6 +58,7 @@ public class PostDetailActivity extends BaseRefreshActivity {
     @Override
     protected void initData() {
         mPostEntity = (PostEntity) getIntent().getSerializableExtra("post");
+        wholeJS = AssetsUtils.loadText(this, "post_func.js");
     }
 
     @Override
@@ -63,6 +71,9 @@ public class PostDetailActivity extends BaseRefreshActivity {
         // 设置webview能执行javaScript脚本
         mContentWebView.getSettings().setJavaScriptEnabled(true);
         mContentWebView.setWebViewClient(new contentWebViewClient());
+        mContentWebView.setWebChromeClient(
+                new CustomChromeClient("HostApp", JsHostScope.class)
+        );
     }
 
     @Override
@@ -105,13 +116,19 @@ public class PostDetailActivity extends BaseRefreshActivity {
     @Override
     protected void onRefreshStarted() {
         final String md5Key = MD5Util.encrypt(mPostEntity.getUrl());
-        mPostHtml = mACache.getAsString(md5Key);
+//        mPostHtml = mACache.getAsString(md5Key);
         if (TextUtils.isEmpty(mPostHtml)) {
             new Thread(new Runnable() {
                 @Override
                 public void run() {
                     try {
                         Document doc = Jsoup.connect(mPostEntity.getUrl()).get();
+
+                        // 新增自定义js
+                        Element head = doc.getElementsByTag("title").first();
+                        head.after("<script>" + wholeJS + "</script>");
+
+                        // 去除不必要的div
                         Elements mastheads = doc.getElementsByClass("bs-header");
                         if (mastheads != null) {
                             for (Element element : mastheads) {
@@ -139,6 +156,81 @@ public class PostDetailActivity extends BaseRefreshActivity {
                                 footer.remove();
                             }
                         }
+
+                        // 遍历每个文章中的作者
+                        Elements metas = doc.getElementsByClass("meta");
+                        if (metas != null && !metas.isEmpty()) {
+                            Element meta = metas.first();
+                            Elements authorElements = meta.getElementsByTag("a");
+                            if (authorElements != null && !authorElements.isEmpty()) {
+                                Element authorElement = authorElements.first();
+                                String userId = authorElement.attr("href"); // https://www.douban.com/people/tiamat/
+                                if (!TextUtils.isEmpty(userId)) {
+                                    userId = userId.replace("https://www.douban.com/people/", "").replace("/", "");
+                                    authorElement.attr("href", "javascript:void(0);");
+                                    authorElement.attr("onclick", "gotoAuthor('" + userId + "');");
+                                }
+                            }
+                        }
+                        Elements hds = doc.getElementsByClass("hd");
+                        if (hds != null && !hds.isEmpty()) {
+                            Element meta = hds.first();
+                            Elements authorElements = meta.getElementsByTag("a");
+                            if (authorElements != null && !authorElements.isEmpty()) {
+                                Element authorElement = authorElements.first();
+                                String userId = authorElement.attr("href");
+                                if (!TextUtils.isEmpty(userId)) {
+                                    userId = userId.replace("https://www.douban.com/people/", "").replace("/", "");
+                                    authorElement.attr("href", "javascript:void(0);");
+                                    authorElement.attr("onclick", "gotoAuthor('" + userId + "');");
+                                }
+                            }
+                        }
+
+                        // 遍历文章中的图片
+                        Elements contentImgs = doc.getElementsByClass("content_img");
+                        if (contentImgs != null && !contentImgs.isEmpty()) {
+                            for (Element contentImg : contentImgs) {
+                                Elements imgElements = contentImg.getElementsByTag("img");
+                                if (imgElements != null && !imgElements.isEmpty()) {
+                                    for (Element imgElement : imgElements) {
+                                        String imgUrl = imgElement.attr("src");
+                                        if (!TextUtils.isEmpty(imgUrl)) {
+                                            imgElement.attr("onclick", "showLargeImg('" + imgUrl + "');");
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                        Elements bds = doc.getElementsByClass("bd");
+                        if (bds != null && !bds.isEmpty()) {
+                            for (Element contentImg : bds) {
+                                Elements imgElements = contentImg.getElementsByTag("img");
+                                if (imgElements != null && !imgElements.isEmpty()) {
+                                    for (Element imgElement : imgElements) {
+                                        String imgUrl = imgElement.attr("src");
+                                        if (!TextUtils.isEmpty(imgUrl)) {
+                                            imgElement.attr("onclick", "showLargeImg('" + imgUrl + "');");
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                        // 遍历文章中所有的a标签
+                        Elements hrefTags = doc.getElementsByTag("a");
+                        if (hrefTags != null && !hrefTags.isEmpty()) {
+                            String hrefUrl = null;
+                            for (Element hrefTag : hrefTags) {
+                                hrefUrl = hrefTag.attr("href");
+                                if (!TextUtils.isEmpty(hrefUrl) && !"javascript:void(0);".equals(hrefUrl)) {
+                                    hrefTag.attr("href", "javascript:void(0);");
+                                    hrefTag.attr("onclick", "openBrowser('" + hrefUrl + "');");
+                                }
+                            }
+                        }
+
                         mPostHtml = doc.toString();
                         mACache.put(md5Key, mPostHtml);
                         Message msg = new Message();
@@ -162,13 +254,30 @@ public class PostDetailActivity extends BaseRefreshActivity {
         @Override
         public void onPageFinished(WebView view, String url) {
             super.onPageFinished(view, url);
+            mContentWebView.loadUrl("javascript:" + wholeJS);
             mSwipeRefresh.setRefreshing(false);
+        }
+    }
+
+    public class CustomChromeClient extends InjectedChromeClient {
+
+        public CustomChromeClient(String injectedName, Class injectedCls) {
+            super(injectedName, injectedCls);
         }
 
         @Override
-        public boolean shouldOverrideUrlLoading(WebView view, String url) {
-            view.loadUrl(url);
-            return true;
+        public boolean onJsAlert(WebView view, String url, String message, final JsResult result) {
+            return super.onJsAlert(view, url, message, result);
+        }
+
+        @Override
+        public void onProgressChanged(WebView view, int newProgress) {
+            super.onProgressChanged(view, newProgress);
+        }
+
+        @Override
+        public boolean onJsPrompt(WebView view, String url, String message, String defaultValue, JsPromptResult result) {
+            return super.onJsPrompt(view, url, message, defaultValue, result);
         }
     }
 
@@ -196,6 +305,10 @@ public class PostDetailActivity extends BaseRefreshActivity {
             switch (msg.what) {
                 case 1:
                     postDetailActivity.mContentWebView.loadData(postDetailActivity.mPostHtml, "text/html; charset=UTF-8", "null");
+                    Document doc = Jsoup.parse(postDetailActivity.mPostHtml);
+                    Element head = doc.getElementsByTag("head").first();
+                    LogUtils.e("head:" + head.toString());
+                    LogUtils.e("all:" + postDetailActivity.mPostHtml);
                     ToastUtils.showShort(BaseApplication.getContext(), "请求成功");
                     break;
                 case 0:
