@@ -1,8 +1,8 @@
 package com.monosky.daily.ui.fragment.adapter;
 
 import android.content.Context;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -50,7 +50,7 @@ public class HotAuthorAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        if (viewType == -1) {
+        if (viewType == ConstData.FOOTER) {
             View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_common_simple_footer, parent, false);
             return new FooterViewHolder(view);
         } else {
@@ -68,6 +68,7 @@ public class HotAuthorAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             ItemViewHolder itemHolder = (ItemViewHolder) holder;
             AuthorEntity authorData = mAuthorsEntities.get(position);
             itemHolder.mAuthorName.setText(authorData.getName());
+            itemHolder.mAuthorName.setTextColor(ContextCompat.getColor(mContext, R.color.content_tile_unread));
             itemHolder.mAuthorLabel.setText(authorData.getEditorNotes());
             imageLoader.displayImage(authorData.getAvatar(), itemHolder.mAuthorImg, ImageLoaderOption.optionInfoImage(R.mipmap.ic_empty_light));
             itemHolder.mHotAuthorContentLayout.setTag(position);
@@ -106,10 +107,10 @@ public class HotAuthorAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
     @Override
     public int getItemViewType(int position) {
-        if (TextUtils.isEmpty(mAuthorsEntities.get(position).getName())) {
+        if (mAuthorsEntities.get(position) == null) {
             return ConstData.FOOTER;
         }
-        return 0;
+        return position;
     }
 
     static class ItemViewHolder extends RecyclerView.ViewHolder {

@@ -1,4 +1,5 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -9,13 +10,12 @@
 
     <include
         android:id="@+id/content_top"
-        layout="@layout/actionbar_common" />
+        layout="@layout/toolbar_common"/>
 
     <WebView
         android:id="@+id/content_webivew"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/content_bottom"
-        android:layout_below="@id/content_top"></WebView>
+        android:layout_below="@id/content_top"/>
 
-</RelativeLayout>
+</LinearLayout>

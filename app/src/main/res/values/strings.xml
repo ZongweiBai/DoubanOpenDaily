@@ -22,8 +22,6 @@
     <string name="author_all">热门作者暂时就这么多啦</string>
     <string name="author_post_all">TA的文章就就这么多啦！</string>
 
-    <string name="favorite_title">喜欢（%1$d）</string>
-
     <!-- 设置页面 -->
     <string name="font_size">正文字号</string>
     <string name="font_size_12">12号</string>

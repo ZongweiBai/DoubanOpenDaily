@@ -26,7 +26,8 @@
         android:gravity="top"
         android:text="@string/app_name"
         android:textColor="@color/content_tile_unread"
-        android:textSize="@dimen/text_size_16"/>
+        android:textSize="@dimen/text_size_18"
+        android:textStyle="bold"/>
 
     <TextView
         android:id="@+id/author_label"

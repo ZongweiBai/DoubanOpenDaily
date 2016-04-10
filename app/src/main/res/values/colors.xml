@@ -3,7 +3,6 @@
     <!-- APP主色调 -->
     <color name="blue">#00A387</color>
     <color name="main_color">#00BFA2</color>
-    <color name="logon_color">#6CD7B4</color>
     <color name="app_main_bg">#F8F8F7</color>
     <color name="drawer_bottom">#F1F0EE</color>
     <color name="drawer_line">#E3E1DE</color>
@@ -18,7 +17,6 @@
     <color name="content_label_readed">#676661</color>
     <color name="content_catalog">#BAB5AF</color>
 
-    <color name="black_overlay">#66000000</color>
     <!-- 自定义Toast背景色-->
     <color name="bg_toast">#CC00BFA2</color>
 </resources>

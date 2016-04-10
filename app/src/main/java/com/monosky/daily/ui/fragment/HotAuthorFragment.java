@@ -156,7 +156,7 @@ public class HotAuthorFragment extends BaseRefreshFragment {
                         mAuthorsEntities.addAll(authorData.getAuthors());
                         if (mAuthorsEntities.size() >= recCount + (authorData.getTotal())) {
                             mHasNext = false;
-                            mAuthorsEntities.add(new AuthorEntity());
+                            mAuthorsEntities.add(null);
                         }
                         mItemCount = mAuthorsEntities.size() - mPositionStart;
                         mAuthorAdapter.notifyItemRangeChanged(mPositionStart, mItemCount);

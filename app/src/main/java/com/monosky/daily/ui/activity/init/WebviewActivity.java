@@ -1,22 +1,25 @@
 package com.monosky.daily.ui.activity.init;
 
 import android.os.Bundle;
-import android.view.View;
+import android.support.v7.widget.Toolbar;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.TextView;
 
-import com.monosky.daily.constant.ConstData;
 import com.monosky.daily.R;
+import com.monosky.daily.constant.ConstData;
 import com.monosky.daily.ui.activity.BaseActivity;
+
+import butterknife.Bind;
 
 /**
  * webview
  */
 public class WebviewActivity extends BaseActivity {
 
-    private TextView mTopTitle;
-    private WebView mContentWebview;
+    @Bind(R.id.tool_bar)
+    Toolbar mToolBar;
+    @Bind(R.id.content_webivew)
+    WebView mContentWebivew;
     private String type;
 
     @Override
@@ -29,28 +32,25 @@ public class WebviewActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         type = getIntent().getStringExtra("type");
 
-        getViews();
-        setViews();
+        initViews();
     }
 
-    private void getViews() {
-        mTopTitle = (TextView) findViewById(R.id.actionbar_title);
-        mContentWebview = (WebView) findViewById(R.id.content_webivew);
-    }
-
-    private void setViews() {
+    private void initViews() {
         // 设置webview能执行javaScript脚本
-        mContentWebview.getSettings().setJavaScriptEnabled(true);
-        if((ConstData.LOGON_TYPE_REGISTER).equals(type)) {
-            mContentWebview.loadUrl("https://accounts.douban.com/register");
-            mTopTitle.setText(getResources().getString(R.string.register_account));
-        } else if((ConstData.LOGON_TYPE_FORGET).equals(type)) {
-            mContentWebview.loadUrl("https://accounts.douban.com/resetpassword");
-            mTopTitle.setText(getResources().getString(R.string.pwd_forget));
+        mContentWebivew.getSettings().setJavaScriptEnabled(true);
+        if ((ConstData.LOGON_TYPE_REGISTER).equals(type)) {
+            mContentWebivew.loadUrl("https://accounts.douban.com/register");
+            mToolBar.setTitle(getResources().getString(R.string.register_account));
+        } else if ((ConstData.LOGON_TYPE_FORGET).equals(type)) {
+            mContentWebivew.loadUrl("https://accounts.douban.com/resetpassword");
+            mToolBar.setTitle(getResources().getString(R.string.pwd_forget));
         }
-        mContentWebview.setWebViewClient(new contentWebViewClient());
+        mContentWebivew.setWebViewClient(new contentWebViewClient());
 
-        mTopTitle.setOnClickListener(contentOnClick);
+        setSupportActionBar(mToolBar);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
     }
 
     private class contentWebViewClient extends WebViewClient {
@@ -60,18 +60,5 @@ public class WebviewActivity extends BaseActivity {
             return true;
         }
     }
-
-    View.OnClickListener contentOnClick = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            switch (v.getId()) {
-                case R.id.actionbar_title:
-                    WebviewActivity.this.finish();
-                    break;
-                default:
-                    break;
-            }
-        }
-    };
 
 }

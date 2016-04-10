@@ -34,8 +34,8 @@ public class ConstData implements Serializable {
     public static int POST_LIST = 1;
     public static int POST_IMAGE = 2;
     public static int POST_IMG_BOX = 3;
-    public static int HEADER = 98;
-    public static int FOOTER = 99;
+    public static int HEADER = -98;
+    public static int FOOTER = -99;
 
     /**
      * SharePreference常量

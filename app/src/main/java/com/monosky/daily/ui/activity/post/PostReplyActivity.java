@@ -8,11 +8,11 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.monosky.daily.R;
-import com.monosky.daily.ui.activity.BaseActivity;
-import com.monosky.daily.ui.activity.init.LogonActivity;
-import com.monosky.daily.ui.activity.post.adapter.PostReplyAdapter;
 import com.monosky.daily.module.ReplyData;
 import com.monosky.daily.test.GenerateTestDatas;
+import com.monosky.daily.ui.activity.BaseRefreshActivity;
+import com.monosky.daily.ui.activity.init.LogonActivity;
+import com.monosky.daily.ui.activity.post.adapter.PostReplyAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +20,7 @@ import java.util.List;
 /**
  * 文章评论
  */
-public class PostReplyActivity extends BaseActivity {
+public class PostReplyActivity extends BaseRefreshActivity {
 
     public static PostReplyActivity mContentReplyActivity;
 
@@ -36,6 +36,21 @@ public class PostReplyActivity extends BaseActivity {
     }
 
     @Override
+    protected void initData() {
+
+    }
+
+    @Override
+    protected void initViews() {
+
+    }
+
+    @Override
+    protected void onRefreshStarted() {
+
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mContentReplyActivity = this;
@@ -45,7 +60,7 @@ public class PostReplyActivity extends BaseActivity {
     }
 
     private void getViews() {
-        mTopTitle = (TextView) findViewById(R.id.actionbar_title);
+//        mTopTitle = (TextView) findViewById(R.id.actionbar_title);
         mRelpyListView = (ListView) findViewById(R.id.reply_listview);
         mReplyBottom = (TextView) findViewById(R.id.reply_tip);
     }
@@ -75,9 +90,9 @@ public class PostReplyActivity extends BaseActivity {
         @Override
         public void onClick(View v) {
             switch (v.getId()) {
-                case R.id.actionbar_title:
-                    PostReplyActivity.this.finish();
-                    break;
+//                case R.id.actionbar_title:
+//                    PostReplyActivity.this.finish();
+//                    break;
                 case R.id.reply_tip:
                     // 跳转到登录页，登录成功后关闭登录页
                     Intent intent = new Intent(PostReplyActivity.this, LogonActivity.class);
