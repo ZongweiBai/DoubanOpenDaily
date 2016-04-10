@@ -4,10 +4,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.v4.content.ContextCompat;
 import android.text.TextUtils;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,18 +14,25 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
-import com.monosky.daily.constant.ConstData;
 import com.monosky.daily.R;
+import com.monosky.daily.constant.ConstData;
 import com.monosky.daily.ui.activity.BaseActivity;
 import com.monosky.daily.util.SharedPreferencesUtil;
 
+import butterknife.Bind;
+
 public class LogonActivity extends BaseActivity {
 
-    private EditText mLogonAccount;
-    private EditText mLogonPwd;
-    private Button mLogonBtn;
-    private TextView mRegister;
-    private TextView mForgetPwd;
+    @Bind(R.id.logon_account)
+    EditText mLogonAccount;
+    @Bind(R.id.logon_pwd)
+    EditText mLogonPwd;
+    @Bind(R.id.logon_btn)
+    Button mLogonBtn;
+    @Bind(R.id.register_account)
+    TextView mRegisterAccount;
+    @Bind(R.id.pwd_forget)
+    TextView mPwdForget;
 
     @Override
     protected int getLayout() {
@@ -37,22 +43,16 @@ public class LogonActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        getViews();
-        setViews();
+        initViews();
     }
 
-    private void getViews() {
-        mLogonAccount = (EditText) findViewById(R.id.logon_account);
-        mLogonPwd = (EditText) findViewById(R.id.logon_pwd);
-        mLogonBtn = (Button) findViewById(R.id.logon_btn);
-        mRegister = (TextView) findViewById(R.id.register_account);
-        mForgetPwd = (TextView) findViewById(R.id.pwd_forget);
-    }
-
-    private void setViews() {
+    private void initViews() {
+        mLogonBtn.setTextColor(ContextCompat.getColor(this, R.color.white));
+        mRegisterAccount.setTextColor(ContextCompat.getColor(this, R.color.white));
+        mPwdForget.setTextColor(ContextCompat.getColor(this, R.color.white));
         mLogonBtn.setOnClickListener(logonClickListener);
-        mRegister.setOnClickListener(logonClickListener);
-        mForgetPwd.setOnClickListener(logonClickListener);
+        mRegisterAccount.setOnClickListener(logonClickListener);
+        mPwdForget.setOnClickListener(logonClickListener);
     }
 
     View.OnClickListener logonClickListener = new View.OnClickListener() {
@@ -121,18 +121,6 @@ public class LogonActivity extends BaseActivity {
         } else {
             Toast.makeText(this, "用户名或密码错误", Toast.LENGTH_SHORT).show();
         }
-    }
-
-    private void setTranslucentStatus(boolean on) {
-        Window win = getWindow();
-        WindowManager.LayoutParams winParams = win.getAttributes();
-        final int bits = WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS;
-        if (on) {
-            winParams.flags |= bits;
-        } else {
-            winParams.flags &= ~bits;
-        }
-        win.setAttributes(winParams);
     }
 
     /**

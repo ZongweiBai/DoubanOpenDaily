@@ -45,9 +45,21 @@ public class APIConstData {
     public static String GetProfile = "https://moment.douban.com/api/user/{authorId}/profile";
 
     /**
-     *  栏目文章列表及翻页
-     *  https://moment.douban.com/api/column/26/posts?max_id=124073
+     * 栏目文章列表及翻页
+     * https://moment.douban.com/api/column/26/posts?max_id=124073
      */
     public static String GetColumnPosts = "https://moment.douban.com/api/column/{columnId}/posts?max_id={maxId}";
+
+    /**
+     * 文章热门评论列表
+     * https://moment.douban.com/api/post/{postId}/popular_comments
+     */
+    public static String GetPopularComments = "https://moment.douban.com/api/post/{postId}/popular_comments";
+
+    /**
+     * 文章评论列表
+     * https://moment.douban.com/api/post/125195/comments?count=20&max_id=406309
+     */
+    public static String GetComments = "https://moment.douban.com/api/post/{postId}/comments?count=20&max_id={maxId}";
 
 }

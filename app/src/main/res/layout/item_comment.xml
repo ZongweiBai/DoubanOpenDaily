@@ -1,0 +1,91 @@
+<LinearLayout
+    android:id="@+id/reply_layout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?android:attr/selectableItemBackground"
+    android:orientation="vertical"
+    android:padding="@dimen/activity_horizontal_margin">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/reply_avatar"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:scaleType="fitXY"
+            android:src="@mipmap/ic_default_avatar_author"/>
+
+        <TextView
+            android:id="@+id/reply_author"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/reply_avatar"
+            android:text="@string/app_name"
+            android:textColor="@color/content_tile_unread"
+            android:textSize="@dimen/text_size_18"/>
+
+        <TextView
+            android:id="@+id/vote_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:drawableLeft="@mipmap/ic_vote_0_light"
+            android:drawablePadding="@dimen/dp_8"
+            android:text="0"/>
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/reply_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="56dp"
+        android:layout_toRightOf="@id/reply_avatar"
+        android:text="@string/app_name"
+        android:textColor="@color/content_label_readed"
+        android:textSize="@dimen/text_size_14"/>
+
+    <com.ms.square.android.expandabletextview.ExpandableTextView
+        android:id="@+id/ref_comment"
+        xmlns:expandableTextView="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="56dp"
+        android:layout_marginTop="@dimen/common_horizontal_margin"
+        expandableTextView:animDuration="200"
+        expandableTextView:maxCollapsedLines="3">
+
+        <TextView
+            android:id="@id/expandable_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/common_horizontal_margin"
+            android:text="@string/app_name"
+            android:textColor="@color/content_tile_readed"
+            android:textSize="16sp"/>
+
+        <ImageButton
+            android:id="@id/expand_collapse"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right|bottom"
+            android:background="@android:color/transparent"
+            android:padding="16dp"/>
+    </com.ms.square.android.expandabletextview.ExpandableTextView>
+
+    <TextView
+        android:id="@+id/reply_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="56dp"
+        android:layout_marginTop="@dimen/common_horizontal_margin"
+        android:text="@string/app_name"
+        android:textColor="@color/content_tile_readed"
+        android:textSize="@dimen/text_size_16"/>
+</LinearLayout>

@@ -20,9 +20,6 @@ import android.widget.Toast;
 
 import com.monosky.daily.R;
 import com.monosky.daily.constant.ConstData;
-import com.monosky.daily.module.entity.AuthorEntity;
-import com.monosky.daily.test.GenerateTestDatas;
-import com.monosky.daily.ui.activity.author.AuthorMainPageActivity;
 import com.monosky.daily.ui.activity.init.LogonActivity;
 import com.monosky.daily.ui.activity.setting.SettingActivity;
 import com.monosky.daily.ui.fragment.ColumnFragment;
@@ -30,7 +27,6 @@ import com.monosky.daily.ui.fragment.FavoriteFragment;
 import com.monosky.daily.ui.fragment.HistoryFragment;
 import com.monosky.daily.ui.fragment.HotAuthorFragment;
 import com.monosky.daily.ui.fragment.TodayFragment;
-import com.monosky.daily.util.ImageLoaderOption;
 import com.monosky.daily.util.SharedPreferencesUtil;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
@@ -166,9 +162,9 @@ public class MainActivity extends BaseActivity {
     private void setDrawerView() {
 
         if (!TextUtils.isEmpty(SharedPreferencesUtil.getInstance().getValue(ConstData.LOGON_ACCOUNT))) {
-            AuthorEntity authorData = GenerateTestDatas.getLogonAuthor();
-            imageLoader.displayImage(authorData.getAvatar(), mDrawerAuthorImg, ImageLoaderOption.optionInfoImage(R.mipmap.ic_default_avatar_light));
-            mDrawerLogin.setText(authorData.getName());
+//            AuthorEntity authorData = GenerateTestDatas.getLogonAuthor();
+//            imageLoader.displayImage(authorData.getAvatar(), mDrawerAuthorImg, ImageLoaderOption.optionInfoImage(R.mipmap.ic_default_avatar_light));
+//            mDrawerLogin.setText(authorData.getName());
         }
 
         mDrawerLoginLayout.setOnClickListener(onClick);
@@ -197,13 +193,13 @@ public class MainActivity extends BaseActivity {
                         Intent intent = new Intent(mainActivity, LogonActivity.class);
                         mainActivity.startActivity(intent);
                     } else {
-                        AuthorEntity authorData = GenerateTestDatas.getLogonAuthor();
-                        Intent intent = new Intent(mainActivity, AuthorMainPageActivity.class);
-                        Bundle bundle = new Bundle();
-//                        bundle.putSerializable("authorData", authorData);
-                        intent.putExtras(bundle);
-                        intent.putExtra("type", ConstData.MAIN_PAGE_TYPE_SELF);
-                        mainActivity.startActivity(intent);
+//                        AuthorEntity authorData = GenerateTestDatas.getLogonAuthor();
+//                        Intent intent = new Intent(mainActivity, AuthorMainPageActivity.class);
+//                        Bundle bundle = new Bundle();
+////                        bundle.putSerializable("authorData", authorData);
+//                        intent.putExtras(bundle);
+//                        intent.putExtra("type", ConstData.MAIN_PAGE_TYPE_SELF);
+//                        mainActivity.startActivity(intent);
                     }
                     break;
                 case R.id.drawer_today:
@@ -306,9 +302,9 @@ public class MainActivity extends BaseActivity {
         public void onReceive(Context context, Intent intent) {
             if ((ConstData.BROADCAST_LOGON).equals(intent.getAction())) {
                 mDrawerLayout.closeDrawers();
-                AuthorEntity authorData = GenerateTestDatas.getLogonAuthor();
-                imageLoader.displayImage(authorData.getAvatar(), mDrawerAuthorImg, ImageLoaderOption.optionInfoImage(R.mipmap.ic_default_avatar_light));
-                mDrawerLogin.setText(authorData.getName());
+//                AuthorEntity authorData = GenerateTestDatas.getLogonAuthor();
+//                imageLoader.displayImage(authorData.getAvatar(), mDrawerAuthorImg, ImageLoaderOption.optionInfoImage(R.mipmap.ic_default_avatar_light));
+//                mDrawerLogin.setText(authorData.getName());
             }
         }
     };

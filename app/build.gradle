@@ -55,4 +55,5 @@ dependencies {
     compile 'com.timehop.stickyheadersrecyclerview:library:0.4.3'
     compile 'com.yqritc:recyclerview-flexibledivider:1.2.9'
     compile 'cn.pedant.safewebviewbridge:library:1.4'
+    compile 'com.ms-square:expandableTextView:0.1.4'
 }

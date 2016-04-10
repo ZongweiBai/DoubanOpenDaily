@@ -97,16 +97,15 @@ public class PostDetailActivity extends BaseRefreshActivity {
                 supportFinishAfterTransition();
                 break;
             case R.id.action_comment:
-                Intent intent = new Intent(PostDetailActivity.this, PostReplyActivity.class);
-                PostDetailActivity.this.startActivity(intent);
+                PostCommentsActivity.gotoPostComments(mPostEntity);
                 break;
             case R.id.action_fav:
                 break;
             case R.id.action_share:
                 Intent sendIntent = new Intent();
                 sendIntent.setAction(Intent.ACTION_SEND);
-                sendIntent.putExtra(Intent.EXTRA_TEXT, mPostEntity.getShare_pic_url());
-                sendIntent.setType("image/*");
+                sendIntent.putExtra(Intent.EXTRA_TEXT, mPostEntity.getUrl());
+                sendIntent.setType("text/plain");
                 startActivity(Intent.createChooser(sendIntent, "分享到"));
                 break;
             default:
@@ -118,7 +117,7 @@ public class PostDetailActivity extends BaseRefreshActivity {
     @Override
     protected void onRefreshStarted() {
         final String md5Key = MD5Util.encrypt(mPostEntity.getUrl());
-//        mPostHtml = mACache.getAsString(md5Key);
+        mPostHtml = mACache.getAsString(md5Key);
         if (TextUtils.isEmpty(mPostHtml)) {
             new Thread(new Runnable() {
                 @Override

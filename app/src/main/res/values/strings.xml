@@ -47,10 +47,13 @@
     <string name="app_about_tile">关于</string>
     <string name="app_about_label">1.0.1</string>
 
-    <string name="reply_all_tip">评论就这么多啦</string>
+    <string name="title_comments">%1$d条评论</string>
+    <string name="hot_comments">热门评论</string>
+    <string name="all_comments">全部评论</string>
     <string name="reply_login_tip">登录发表评论</string>
-    <string name="reply_copy">复制评论</string>
-    <string name="reply_report">举报评论</string>
+    <string name="reply_copy">复制评论内容</string>
+    <string name="reply_comment">回应此评论</string>
+    <string name="reply_report">举报此评论</string>
 
     <string name="logon_account_hint">豆瓣账号（邮箱/手机号）</string>
     <string name="logon_pwd_hint">密码</string>

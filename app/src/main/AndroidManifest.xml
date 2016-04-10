@@ -35,7 +35,7 @@
             android:label="@string/app_name"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".ui.activity.post.PostReplyActivity"
+            android:name=".ui.activity.post.PostCommentsActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"/>
         <activity

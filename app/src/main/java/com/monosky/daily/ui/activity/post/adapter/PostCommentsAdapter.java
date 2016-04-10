@@ -15,7 +15,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.monosky.daily.R;
-import com.monosky.daily.ui.activity.post.PostReplyActivity;
 import com.monosky.daily.module.ReplyData;
 import com.monosky.daily.util.ImageLoaderOption;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -28,7 +27,7 @@ import java.util.Map;
  * 文章评论Adapter
  * Created by jonez_000 on 2015/8/20.
  */
-public class PostReplyAdapter extends BaseAdapter {
+public class PostCommentsAdapter extends BaseAdapter {
 
     private Context mContext;
     private List<ReplyData> mReplyDatas;
@@ -36,7 +35,7 @@ public class PostReplyAdapter extends BaseAdapter {
     private View.OnClickListener mReplyOnClickListener;
     private Map<String, View> viewMap = new HashMap<>();
 
-    public PostReplyAdapter(Context mContext, List<ReplyData> mReplyDatas) {
+    public PostCommentsAdapter(Context mContext, List<ReplyData> mReplyDatas) {
         this.mContext = mContext;
         this.mReplyDatas = mReplyDatas;
         this.mReplyOnClickListener = replyOnClickListener;
@@ -55,13 +54,13 @@ public class PostReplyAdapter extends BaseAdapter {
 
     /**
      * 显示评论的可操作popupwindow
+     *
      * @param view
      * @param tag
      */
     private void showOperationWindow(View view, Object tag) {
         final int position = (int) tag;
         View contentView = LayoutInflater.from(mContext).inflate(R.layout.reply_operation, null);
-//        contentView.getBackground().setAlpha(0);
 
         final PopupWindow popupWindow = new PopupWindow(contentView,
                 LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT, true);
@@ -70,10 +69,6 @@ public class PostReplyAdapter extends BaseAdapter {
         // 我觉得这里是API的一个bug
         popupWindow.setBackgroundDrawable(mContext.getResources().getDrawable(
                 R.color.app_main_bg));
-//        // 打开窗口时设置窗体背景透明度
-//        WindowManager.LayoutParams lp = ((Activity) mContext).getWindow().getAttributes();
-//        lp.alpha = 1f;
-//        ((Activity) mContext).getWindow().setAttributes(lp);
         popupWindow.update();
 
         TextView mReplyCopy = (TextView) contentView.findViewById(R.id.reply_oper_copy);
@@ -99,30 +94,29 @@ public class PostReplyAdapter extends BaseAdapter {
         // 设置好参数之后再show
         contentView.measure(View.MeasureSpec.UNSPECIFIED, View.MeasureSpec.UNSPECIFIED);
         int popupWidth = contentView.getMeasuredWidth();
-        int popupHeight =  contentView.getMeasuredHeight();
+        int popupHeight = contentView.getMeasuredHeight();
         int[] location = new int[2];
         View viewShow = viewMap.get(String.valueOf(position));
         viewShow.getLocationOnScreen(location);
-        if(PostReplyActivity.mContentReplyActivity.getmRelpyListView().getLastVisiblePosition() == position) {
-            popupWindow.showAtLocation(viewShow, Gravity.NO_GRAVITY,
-                    popupWidth/2, location[1]-popupHeight);
-        } else {
-            popupWindow.showAsDropDown(viewShow,
-                    0, 0);
-        }
+//        if(PostCommentsActivity.mContentReplyActivity.getmRelpyListView().getLastVisiblePosition() == position) {
+        popupWindow.showAtLocation(viewShow, Gravity.NO_GRAVITY,
+                popupWidth / 2, location[1] - popupHeight);
+//        } else {
+        popupWindow.showAsDropDown(viewShow,
+                0, 0);
+//        }
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder viewHolder = null;
-        if(convertView == null) {
+        if (convertView == null) {
             viewHolder = new ViewHolder();
-            convertView = LayoutInflater.from(mContext).inflate(R.layout.activity_content_reply_item, null);
+            convertView = LayoutInflater.from(mContext).inflate(R.layout.item_comment, null);
             viewHolder.mAvatar = (ImageView) convertView.findViewById(R.id.reply_avatar);
             viewHolder.mAuthor = (TextView) convertView.findViewById(R.id.reply_author);
             viewHolder.mReplyTime = (TextView) convertView.findViewById(R.id.reply_time);
             viewHolder.mReplyContent = (TextView) convertView.findViewById(R.id.reply_content);
-            viewHolder.mReplyAll = (TextView) convertView.findViewById(R.id.reply_all);
             viewHolder.mReplyLayout = (LinearLayout) convertView.findViewById(R.id.reply_layout);
             convertView.setTag(viewHolder);
         } else {
@@ -134,7 +128,7 @@ public class PostReplyAdapter extends BaseAdapter {
         viewHolder.mAuthor.setText(replyData.getReplyAuthor());
         viewHolder.mReplyTime.setText(replyData.getReplyTime());
         viewHolder.mReplyContent.setText(replyData.getReplyContent());
-        if(position == getCount()-1) {
+        if (position == getCount() - 1) {
             viewHolder.mReplyAll.setVisibility(View.VISIBLE);
         } else {
             viewHolder.mReplyAll.setVisibility(View.GONE);
