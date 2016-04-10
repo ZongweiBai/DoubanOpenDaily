@@ -64,6 +64,8 @@
             android:screenOrientation="portrait"/>
         <activity android:name=".ui.activity.post.ColumnPostsActivity">
         </activity>
+        <activity android:name=".ui.activity.post.PostImageActivity">
+        </activity>
     </application>
 
 </manifest>

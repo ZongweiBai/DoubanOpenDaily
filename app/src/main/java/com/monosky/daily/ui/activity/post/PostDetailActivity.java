@@ -1,6 +1,7 @@
 package com.monosky.daily.ui.activity.post;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.widget.Toolbar;
@@ -33,6 +34,7 @@ import java.io.IOException;
 import java.lang.ref.WeakReference;
 
 import butterknife.Bind;
+import butterknife.ButterKnife;
 import cn.pedant.SafeWebViewBridge.InjectedChromeClient;
 
 /**
@@ -68,7 +70,7 @@ public class PostDetailActivity extends BaseRefreshActivity {
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
-        // 设置webview能执行javaScript脚本
+        // 设置webView能执行javaScript脚本
         mContentWebView.getSettings().setJavaScriptEnabled(true);
         mContentWebView.setWebViewClient(new contentWebViewClient());
         mContentWebView.setWebChromeClient(
@@ -221,7 +223,7 @@ public class PostDetailActivity extends BaseRefreshActivity {
                         // 遍历文章中所有的a标签
                         Elements hrefTags = doc.getElementsByTag("a");
                         if (hrefTags != null && !hrefTags.isEmpty()) {
-                            String hrefUrl = null;
+                            String hrefUrl;
                             for (Element hrefTag : hrefTags) {
                                 hrefUrl = hrefTag.attr("href");
                                 if (!TextUtils.isEmpty(hrefUrl) && !"javascript:void(0);".equals(hrefUrl)) {
@@ -247,6 +249,12 @@ public class PostDetailActivity extends BaseRefreshActivity {
         } else {
             mContentWebView.loadData(mPostHtml, "text/html; charset=UTF-8", "null");
         }
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        ButterKnife.bind(this);
     }
 
     private class contentWebViewClient extends WebViewClient {

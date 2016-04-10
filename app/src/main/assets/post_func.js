@@ -1,9 +1,9 @@
 function gotoAuthor(userId) {
-    HostApp.toast('我是作者：'+userId);
+    HostApp.gotoAuthor(userId);
 }
 
 function showLargeImg(imgUrl) {
-    HostApp.toast('我是图片：'+imgUrl);
+    HostApp.gotoLargeImg(imgUrl);
 }
 
 function openBrowser(url) {
