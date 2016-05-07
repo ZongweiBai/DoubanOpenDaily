@@ -3,17 +3,20 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/app_main_bg"
-    android:orientation="vertical"
-    android:padding="@dimen/activity_horizontal_margin">
+    android:orientation="vertical">
 
     <TextView
         android:id="@+id/comment_header"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_48"
+        android:background="@color/app_main_bg"
         android:gravity="center_vertical"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
         android:text="@string/hot_comments"
-        android:textColor="@color/content_label_unread"
         android:textSize="@dimen/text_size_16"/>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/common_divider"
+        android:background="@color/drawer_line"/>
 </LinearLayout>

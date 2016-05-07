@@ -21,7 +21,6 @@ import com.monosky.daily.ui.activity.BaseRefreshActivity;
 import com.monosky.daily.ui.view.actionItemBadge.ActionItemBadge;
 import com.monosky.daily.util.AssetsUtils;
 import com.monosky.daily.util.JsHostScope;
-import com.monosky.daily.util.LogUtils;
 import com.monosky.daily.util.MD5Util;
 import com.monosky.daily.util.ToastUtils;
 
@@ -312,10 +311,6 @@ public class PostDetailActivity extends BaseRefreshActivity {
             switch (msg.what) {
                 case 1:
                     postDetailActivity.mContentWebView.loadData(postDetailActivity.mPostHtml, "text/html; charset=UTF-8", "null");
-                    Document doc = Jsoup.parse(postDetailActivity.mPostHtml);
-                    Element head = doc.getElementsByTag("head").first();
-                    LogUtils.e("head:" + head.toString());
-                    LogUtils.e("all:" + postDetailActivity.mPostHtml);
                     ToastUtils.showShort(BaseApplication.getContext(), "请求成功");
                     break;
                 case 0:

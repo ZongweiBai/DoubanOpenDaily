@@ -3,11 +3,15 @@ package com.monosky.daily.ui.activity.post.adapter;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
+import android.support.v4.content.ContextCompat;
+import android.support.v7.widget.RecyclerView;
+import android.text.Html;
+import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
@@ -15,29 +19,43 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.monosky.daily.R;
-import com.monosky.daily.module.ReplyData;
+import com.monosky.daily.constant.ConstData;
+import com.monosky.daily.module.entity.CommentEntity;
+import com.monosky.daily.ui.view.readmoretextview.ReadMoreTextView;
+import com.monosky.daily.util.DateUtils;
 import com.monosky.daily.util.ImageLoaderOption;
+import com.ms.square.android.expandabletextview.ExpandableTextView;
 import com.nostra13.universalimageloader.core.ImageLoader;
+import com.timehop.stickyheadersrecyclerview.StickyRecyclerHeadersAdapter;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
+
 /**
  * 文章评论Adapter
- * Created by jonez_000 on 2015/8/20.
+ * Created by baymin on 2015/8/20.
  */
-public class PostCommentsAdapter extends BaseAdapter {
+public class PostCommentsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
+        implements StickyRecyclerHeadersAdapter<RecyclerView.ViewHolder> {
 
     private Context mContext;
-    private List<ReplyData> mReplyDatas;
+    private List<CommentEntity> mCommentEntities;
+    private Integer hotCommentsCount = 0;
     private ImageLoader imageLoader = ImageLoader.getInstance();
     private View.OnClickListener mReplyOnClickListener;
     private Map<String, View> viewMap = new HashMap<>();
+    private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
-    public PostCommentsAdapter(Context mContext, List<ReplyData> mReplyDatas) {
+    public PostCommentsAdapter(Context mContext, List<CommentEntity> mCommentEntities, Integer hotCommentsCount) {
         this.mContext = mContext;
-        this.mReplyDatas = mReplyDatas;
+        this.mCommentEntities = mCommentEntities;
+        this.hotCommentsCount = hotCommentsCount;
         this.mReplyOnClickListener = replyOnClickListener;
     }
 
@@ -67,8 +85,7 @@ public class PostCommentsAdapter extends BaseAdapter {
         popupWindow.setTouchable(true);
         // 如果不设置PopupWindow的背景，无论是点击外部区域还是Back键都无法dismiss弹框
         // 我觉得这里是API的一个bug
-        popupWindow.setBackgroundDrawable(mContext.getResources().getDrawable(
-                R.color.app_main_bg));
+        popupWindow.setBackgroundDrawable(ContextCompat.getDrawable(mContext, R.color.app_main_bg));
         popupWindow.update();
 
         TextView mReplyCopy = (TextView) contentView.findViewById(R.id.reply_oper_copy);
@@ -77,7 +94,7 @@ public class PostCommentsAdapter extends BaseAdapter {
             @Override
             public void onClick(View v) {
                 ClipboardManager cmb = (ClipboardManager) mContext.getSystemService(mContext.CLIPBOARD_SERVICE);
-                ClipData myClip = ClipData.newPlainText("text", mReplyDatas.get(position).getReplyContent());
+                ClipData myClip = ClipData.newPlainText("text", mCommentEntities.get(position).getContent());
                 cmb.setPrimaryClip(myClip);
                 popupWindow.dismiss();
                 Toast.makeText(mContext, "已复制到剪切板", Toast.LENGTH_SHORT).show();
@@ -108,58 +125,129 @@ public class PostCommentsAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        ViewHolder viewHolder = null;
-        if (convertView == null) {
-            viewHolder = new ViewHolder();
-            convertView = LayoutInflater.from(mContext).inflate(R.layout.item_comment, null);
-            viewHolder.mAvatar = (ImageView) convertView.findViewById(R.id.reply_avatar);
-            viewHolder.mAuthor = (TextView) convertView.findViewById(R.id.reply_author);
-            viewHolder.mReplyTime = (TextView) convertView.findViewById(R.id.reply_time);
-            viewHolder.mReplyContent = (TextView) convertView.findViewById(R.id.reply_content);
-            viewHolder.mReplyLayout = (LinearLayout) convertView.findViewById(R.id.reply_layout);
-            convertView.setTag(viewHolder);
+    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        if (viewType == ConstData.FOOTER) {
+            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_common_simple_footer, parent, false);
+            return new FooterViewHolder(view);
         } else {
-            viewHolder = (ViewHolder) convertView.getTag();
+            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_comment, parent, false);
+            return new ItemViewHolder(view);
         }
+    }
 
-        ReplyData replyData = getItem(position);
-        imageLoader.displayImage(replyData.getRelpyAuthorImg(), viewHolder.mAvatar, ImageLoaderOption.optionInfoImage(R.mipmap.ic_default_avatar_author));
-        viewHolder.mAuthor.setText(replyData.getReplyAuthor());
-        viewHolder.mReplyTime.setText(replyData.getReplyTime());
-        viewHolder.mReplyContent.setText(replyData.getReplyContent());
-        if (position == getCount() - 1) {
-            viewHolder.mReplyAll.setVisibility(View.VISIBLE);
+    @Override
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+        if (ConstData.FOOTER == getItemViewType(position)) {
+            FooterViewHolder footerViewHolder = (FooterViewHolder) holder;
+            footerViewHolder.mSimpleFooterText.setText(mContext.getText(R.string.comments_all));
         } else {
-            viewHolder.mReplyAll.setVisibility(View.GONE);
+            ItemViewHolder itemViewHolder = (ItemViewHolder) holder;
+            CommentEntity commentEntity = mCommentEntities.get(position);
+            if (TextUtils.isEmpty(commentEntity.getAuthor().getAvatar())) {
+                itemViewHolder.mReplyAvatar.setImageResource(R.mipmap.ic_default_avatar_author);
+            } else {
+                imageLoader.displayImage(commentEntity.getAuthor().getAvatar(), itemViewHolder.mReplyAvatar, ImageLoaderOption.optionInfoImage(R.mipmap.ic_default_avatar_author));
+            }
+            itemViewHolder.mReplyAuthor.setText(commentEntity.getAuthor().getName());
+            itemViewHolder.mVoteCount.setText(String.valueOf(commentEntity.getVoteCount()));
+            try {
+                itemViewHolder.mReplyTime.setText(DateUtils.fromToday(sdf.parse(commentEntity.getCreatedTime())));
+            } catch (ParseException e) {
+                e.printStackTrace();
+                itemViewHolder.mReplyTime.setText(commentEntity.getCreatedTime());
+            }
+            if (commentEntity.getRefComment() != null) {
+                itemViewHolder.mRefComment.setVisibility(View.VISIBLE);
+                String expandText = "<font color=\"#00BFA2\">" + commentEntity.getRefComment().getAuthor().getName() + "</font>&nbsp;&nbsp;";
+                expandText = expandText + commentEntity.getRefComment().getContent();
+                itemViewHolder.mExpandableText.setText(Html.fromHtml(expandText));
+            } else {
+                itemViewHolder.mRefComment.setVisibility(View.GONE);
+            }
+            itemViewHolder.mReplyContent.setText(commentEntity.getContent());
         }
-        viewHolder.mReplyLayout.setTag(R.id.reply_layout, position);
-        viewHolder.mReplyLayout.setOnClickListener(mReplyOnClickListener);
-        viewMap.put(String.valueOf(position), viewHolder.mAuthor);
-        return convertView;
     }
 
     @Override
-    public int getCount() {
-        return mReplyDatas.size();
+    public long getHeaderId(int position) {
+        if (position < hotCommentsCount) {
+            return 0;
+        }
+        return 1;
     }
 
     @Override
-    public ReplyData getItem(int position) {
-        return mReplyDatas.get(position);
+    public RecyclerView.ViewHolder onCreateHeaderViewHolder(ViewGroup parent) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_comment_header, parent, false);
+        return new HeaderViewHolder(view);
     }
 
     @Override
-    public long getItemId(int position) {
+    public void onBindHeaderViewHolder(RecyclerView.ViewHolder holder, int position) {
+        HeaderViewHolder headerHolder = (HeaderViewHolder) holder;
+        if (position < hotCommentsCount) {
+            headerHolder.mCommentHeader.setText(mContext.getString(R.string.hot_comments));
+        } else {
+            headerHolder.mCommentHeader.setText(mContext.getString(R.string.all_comments));
+        }
+    }
+
+    @Override
+    public int getItemCount() {
+        return mCommentEntities.size();
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        if (mCommentEntities.get(position) == null) {
+            return ConstData.FOOTER;
+        }
         return position;
     }
 
-    public class ViewHolder {
-        ImageView mAvatar;
-        TextView mAuthor;
+    static class FooterViewHolder extends RecyclerView.ViewHolder {
+        @Bind(R.id.simple_footer_text)
+        TextView mSimpleFooterText;
+
+        FooterViewHolder(View view) {
+            super(view);
+            ButterKnife.bind(this, view);
+        }
+    }
+
+    static class ItemViewHolder extends RecyclerView.ViewHolder {
+        @Bind(R.id.reply_avatar)
+        ImageView mReplyAvatar;
+        @Bind(R.id.reply_author)
+        TextView mReplyAuthor;
+        @Bind(R.id.vote_count)
+        TextView mVoteCount;
+        @Bind(R.id.reply_time)
         TextView mReplyTime;
-        TextView mReplyContent;
-        TextView mReplyAll;
+        @Bind(R.id.expandable_text)
+        TextView mExpandableText;
+        @Bind(R.id.expand_collapse)
+        ImageButton mExpandCollapse;
+        @Bind(R.id.ref_comment)
+        ExpandableTextView mRefComment;
+        @Bind(R.id.reply_content)
+        ReadMoreTextView mReplyContent;
+        @Bind(R.id.reply_layout)
         LinearLayout mReplyLayout;
+
+        ItemViewHolder(View view) {
+            super(view);
+            ButterKnife.bind(this, view);
+        }
+    }
+
+    static class HeaderViewHolder extends RecyclerView.ViewHolder {
+        @Bind(R.id.comment_header)
+        TextView mCommentHeader;
+
+        HeaderViewHolder(View view) {
+            super(view);
+            ButterKnife.bind(this, view);
+        }
     }
 }

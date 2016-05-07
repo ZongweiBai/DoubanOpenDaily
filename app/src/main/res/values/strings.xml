@@ -20,7 +20,8 @@
     <string name="week_rec">本周推荐</string>
     <string name="hot_author_rec">热门作者</string>
     <string name="author_all">热门作者暂时就这么多啦</string>
-    <string name="author_post_all">TA的文章就就这么多啦！</string>
+    <string name="author_post_all">TA的文章就这么多啦！</string>
+    <string name="comments_all">文章的评论就这么多啦！</string>
 
     <!-- 设置页面 -->
     <string name="font_size">正文字号</string>
@@ -82,5 +83,8 @@
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="read_less">收起</string>
+    <string name="read_more">全文</string>
 
 </resources>

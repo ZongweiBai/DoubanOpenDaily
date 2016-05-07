@@ -1,6 +1,7 @@
 <LinearLayout
     android:id="@+id/reply_layout"
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="?android:attr/selectableItemBackground"
@@ -11,14 +12,15 @@
         android:layout_width="match_parent"
         android:layout_height="40dp">
 
-        <de.hdodenhof.circleimageview.CircleImageView
+        <cn.gavinliu.android.lib.shapedimageview.ShapedImageView
             android:id="@+id/reply_avatar"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_gravity="center_vertical"
             android:layout_marginRight="@dimen/activity_horizontal_margin"
             android:scaleType="fitXY"
-            android:src="@mipmap/ic_default_avatar_author"/>
+            android:src="@mipmap/ic_default_avatar_author"
+            app:shape_mode="circle"/>
 
         <TextView
             android:id="@+id/reply_author"
@@ -58,6 +60,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="56dp"
         android:layout_marginTop="@dimen/common_horizontal_margin"
+        android:background="#EFEFEF"
         expandableTextView:animDuration="200"
         expandableTextView:maxCollapsedLines="3">
 
@@ -79,7 +82,7 @@
             android:padding="16dp"/>
     </com.ms.square.android.expandabletextview.ExpandableTextView>
 
-    <TextView
+    <com.monosky.daily.ui.view.readmoretextview.ReadMoreTextView
         android:id="@+id/reply_content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -87,5 +90,10 @@
         android:layout_marginTop="@dimen/common_horizontal_margin"
         android:text="@string/app_name"
         android:textColor="@color/content_tile_readed"
-        android:textSize="@dimen/text_size_16"/>
+        android:textSize="@dimen/text_size_16"
+        app:colorClickableText="@color/main_color"
+        app:showTrimExpandedText="true"
+        app:trimCollapsedText="全文"
+        app:trimExpandedText="收起"
+        app:trimLength="100"/>
 </LinearLayout>

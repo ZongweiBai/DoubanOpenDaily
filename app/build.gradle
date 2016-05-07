@@ -56,4 +56,5 @@ dependencies {
     compile 'com.yqritc:recyclerview-flexibledivider:1.2.9'
     compile 'cn.pedant.safewebviewbridge:library:1.4'
     compile 'com.ms-square:expandableTextView:0.1.4'
+    compile 'cn.gavinliu.android.lib:ShapedImageView:0.5'
 }
