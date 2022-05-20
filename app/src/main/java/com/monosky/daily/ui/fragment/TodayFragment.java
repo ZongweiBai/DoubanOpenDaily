@@ -1,8 +1,9 @@
 package com.monosky.daily.ui.fragment;
 
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.alibaba.fastjson.JSON;
 import com.kymjs.rxvolley.RxVolley;
@@ -39,6 +40,7 @@ public class TodayFragment extends BaseRefreshFragment {
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
         super.onCreate(savedInstanceState);
 
         // 创建一个线性布局管理器

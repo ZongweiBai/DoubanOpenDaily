@@ -3,7 +3,6 @@ package com.monosky.daily.ui.view.readmoretextview;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
-import android.support.v4.content.ContextCompat;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 import android.text.TextPaint;
@@ -11,14 +10,16 @@ import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
 import android.util.AttributeSet;
 import android.view.View;
-import android.widget.TextView;
+
+import androidx.appcompat.widget.AppCompatTextView;
+import androidx.core.content.ContextCompat;
 
 import com.monosky.daily.R;
 
 /**
  * Created by jonez_000 on 2016/5/7.
  */
-public class ReadMoreTextView extends TextView {
+public class ReadMoreTextView extends AppCompatTextView {
 
     private static final int DEFAULT_TRIM_LENGTH = 240;
     private static final boolean DEFAULT_SHOW_TRIM_EXPANDED_TEXT = true;

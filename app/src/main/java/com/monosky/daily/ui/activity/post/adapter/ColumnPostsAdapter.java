@@ -1,6 +1,5 @@
 package com.monosky.daily.ui.activity.post.adapter;
 
-import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,7 +8,8 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.monosky.daily.BaseApplication;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.monosky.daily.R;
 import com.monosky.daily.constant.ConstData;
 import com.monosky.daily.module.entity.ColumnEntity;

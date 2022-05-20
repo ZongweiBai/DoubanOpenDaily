@@ -1,15 +1,15 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion Integer.parseInt(project.ANDROID_COMPILE_SDK_VERSION)
-    buildToolsVersion project.ANDROID_BUILD_TOOLS_VERSION
+    compileSdk 28
 
     defaultConfig {
         applicationId "com.monosky.daily"
-        minSdkVersion Integer.parseInt(project.ANDROID_BUILD_MIN_SDK_VERSION)
-        targetSdkVersion Integer.parseInt(project.ANDROID_TARGET_SDK_VERSION)
-        versionCode Integer.parseInt(project.VERSION_CODE)
-        versionName project.VERSION_NAME
+        minSdk 19
+        targetSdk 28
+        versionCode 1
+        versionName VERSION_NAME
+        multiDexEnabled true
     }
 
     // 签名
@@ -32,29 +32,35 @@ android {
             signingConfig signingConfigs.release
         }
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    buildToolsVersion '28.0.3'
 }
 
 dependencies {
     // material-dialogs要依赖materialprogressbar
-    compile 'com.android.support:recyclerview-v7:24.0.0-alpha1'
-    compile 'com.android.support:appcompat-v7:24.0.0-alpha1'
-    compile 'com.android.support:support-v4:24.0.0-alpha1'
-    compile 'com.android.support:design:24.0.0-alpha1'
-    compile 'org.jsoup:jsoup:1.8.3'
-    compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
-    compile 'com.github.afollestad.material-dialogs:core:0.8.5.7@aar'
-    compile 'me.zhanghai.android.materialprogressbar:library:1.1.5'
-    compile 'com.jakewharton:butterknife:7.0.1'
-    compile 'com.kymjs.rxvolley:rxvolley:1.0.9'
-    compile 'com.kymjs.rxvolley:okhttp:1.0.9'
-    compile 'io.reactivex:rxjava:1.1.2'
-    compile 'io.reactivex:rxandroid:1.1.0'
-    compile 'com.alibaba:fastjson:1.2.8'
-    compile 'de.hdodenhof:circleimageview:2.0.0'
-    compile 'com.bm.photoview:library:1.3.6'
-    compile 'com.timehop.stickyheadersrecyclerview:library:0.4.3'
-    compile 'com.yqritc:recyclerview-flexibledivider:1.2.9'
-    compile 'cn.pedant.safewebviewbridge:library:1.4'
-    compile 'com.ms-square:expandableTextView:0.1.4'
-    compile 'cn.gavinliu.android.lib:ShapedImageView:0.5'
+    implementation 'com.android.support:recyclerview-v7:28.0.0'
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'com.android.support:support-v4:28.0.0'
+    implementation 'com.android.support:design:28.0.0'
+    implementation 'org.jsoup:jsoup:1.15.1'
+    implementation 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
+    implementation 'com.github.afollestad.material-dialogs:core:0.8.5.7@aar'
+    implementation 'me.zhanghai.android.materialprogressbar:library:1.6.1'
+    implementation 'com.jakewharton:butterknife:7.0.1'
+    implementation 'com.github.kymjs.rxvolley:rxvolley:3.0.0'
+    implementation 'com.github.kymjs.rxvolley:okhttp:3.0.0'
+    implementation 'io.reactivex:rxjava:1.3.8'
+    implementation 'io.reactivex:rxandroid:1.2.1'
+    implementation 'com.alibaba:fastjson:1.2.8'
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+//    implementation 'com.bm.photoview:library:1.4.0'
+    implementation 'com.timehop.stickyheadersrecyclerview:library:0.4.3'
+    implementation 'com.github.mazenrashed:RecyclerView-FlexibleDivider:1.5.0'
+    implementation 'cn.pedant.safewebviewbridge:library:1.4'
+    implementation 'com.ms-square:expandableTextView:0.1.4'
+    implementation 'cn.gavinliu:ShapedImageView:0.8.7'
+    implementation 'com.android.support:multidex:1.0.3'
 }

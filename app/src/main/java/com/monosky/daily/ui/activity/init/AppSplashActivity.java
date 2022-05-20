@@ -3,8 +3,9 @@ package com.monosky.daily.ui.activity.init;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.v4.content.ContextCompat;
 import android.widget.TextView;
+
+import androidx.core.content.ContextCompat;
 
 import com.monosky.daily.BaseApplication;
 import com.monosky.daily.R;

@@ -1,8 +1,9 @@
 package com.monosky.daily.ui.fragment.adapter;
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.monosky.daily.BaseApplication;
 import com.monosky.daily.module.entity.PostEntity;

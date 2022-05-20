@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -12,6 +11,8 @@ import android.webkit.JsPromptResult;
 import android.webkit.JsResult;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+
+import androidx.appcompat.widget.Toolbar;
 
 import com.monosky.daily.BaseApplication;
 import com.monosky.daily.R;

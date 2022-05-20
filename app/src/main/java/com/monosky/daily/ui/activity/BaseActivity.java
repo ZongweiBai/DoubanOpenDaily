@@ -2,11 +2,12 @@ package com.monosky.daily.ui.activity;
 
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
 import android.view.MenuItem;
 import android.view.Window;
 import android.view.WindowManager;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.monosky.daily.BaseApplication;
 import com.monosky.daily.R;

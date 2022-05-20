@@ -9,7 +9,7 @@
 
     <include layout="@layout/toolbar_common"/>
 
-    <android.support.v4.widget.SwipeRefreshLayout
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@id/swipe_refresh"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -616,6 +616,6 @@
                     android:textSize="@dimen/text_size_16"/>
             </LinearLayout>
         </ScrollView>
-    </android.support.v4.widget.SwipeRefreshLayout>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 </LinearLayout>
